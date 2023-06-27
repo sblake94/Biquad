@@ -8,33 +8,49 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "GUI/CustomLookAndFeel.h"
 
-//==============================================================================
-BiquadAudioProcessorEditor::BiquadAudioProcessorEditor (BiquadAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+/////////////////////////////////////////////////////////////////////////////////////
+BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
+    : AudioProcessorEditor(&p)
+    , audioProcessor(p)
+    , m_background()
+    , m_controlManager(m_windowWidth, m_windowHeight, new GUI::CustomLookAndFeel())
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize (m_windowWidth, m_windowHeight);
+    setResizable(false, false);
+    
+    // Make all controls visible
+    for (juce::Component* control : m_controlManager.GetAllControls())
+    {
+        addAndMakeVisible(control);
+    }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
 BiquadAudioProcessorEditor::~BiquadAudioProcessorEditor()
 {
 }
 
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 void BiquadAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    
+    m_background.paint(g, m_windowWidth, m_windowHeight);
+    m_controlManager.paint(g);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
 void BiquadAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
-}
+    // Get new window size
+    m_windowWidth = getWidth();
+    m_windowHeight = getHeight();
+
+
+    // Resize Controls
+    m_controlManager.resized(m_windowWidth, m_windowHeight);
+} 

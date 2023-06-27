@@ -604,6 +604,12 @@
     <Filter Include="JUCE Library Code">
       <UniqueIdentifier>{7ED5A90E-41AF-A1EF-659B-37CEEAB9BA61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Biquad\Source\GUI">
+      <UniqueIdentifier>{d77a4cd0-b64e-4e43-8389-ef4f3f01deac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Biquad\Source\GUI\Controls">
+      <UniqueIdentifier>{e273fda8-063d-48c0-9987-a1d0ac8d7466}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -2948,6 +2954,18 @@
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp">
       <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Background.cpp">
+      <Filter>Biquad\Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\ControlManager.cpp">
+      <Filter>Biquad\Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomLookAndFeel.cpp">
+      <Filter>Biquad\Source\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5821,6 +5839,18 @@
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h">
       <Filter>JUCE Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Background.h">
+      <Filter>Biquad\Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\ControlManager.h">
+      <Filter>Biquad\Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomLookAndFeel.h">
+      <Filter>Biquad\Source\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

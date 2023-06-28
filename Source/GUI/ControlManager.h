@@ -23,6 +23,7 @@ namespace GUI
 	class ControlManager
 	{
 	public:
+		
 		ControlManager(
 			const int _windowWidth, 
 			const int _windowHeight,

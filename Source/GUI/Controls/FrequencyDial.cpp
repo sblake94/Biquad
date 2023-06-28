@@ -6,11 +6,13 @@ using namespace GUI::Controls;
 FrequencyDial::FrequencyDial
 (
 	const char* _labelText,
-	const int _xPos, 
+	const int _xPos,
 	const int _yPos,
+	juce::ParameterID _parameterID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider(_labelText)
+	, CustomSliderBase(_parameterID)
 	, m_labelText(_labelText)
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
@@ -21,6 +23,9 @@ FrequencyDial::FrequencyDial
 	this->setNumDecimalPlacesToDisplay(0);
 	this->setTooltip(_labelText);
 	
+	this->setComponentID(_labelText);
+	
+
 	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
 	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
 
@@ -54,4 +59,10 @@ void FrequencyDial::paint(juce::Graphics& g)
 	g.setColour(lookAndFeel.findColour(juce::Slider::textBoxTextColourId));
 	g.setFont(font);
 	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+void FrequencyDial::SetParameterID(const juce::ParameterID _parameterID)
+{
+	this->m_parameterID = _parameterID;
 }

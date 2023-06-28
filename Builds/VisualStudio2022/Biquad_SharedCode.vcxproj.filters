@@ -610,6 +610,9 @@
     <Filter Include="Biquad\Source\GUI\Controls">
       <UniqueIdentifier>{e273fda8-063d-48c0-9987-a1d0ac8d7466}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Biquad\Source\Processing">
+      <UniqueIdentifier>{7de29664-706b-4922-9c6e-b9e216562129}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -2972,6 +2975,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\ResonanceDial.cpp">
       <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Processing\Parameters.cpp">
+      <Filter>Biquad\Source\Processing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5862,6 +5868,12 @@
       <Filter>Biquad\Source\GUI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Processing\Parameters.h">
+      <Filter>Biquad\Source\Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
   </ItemGroup>

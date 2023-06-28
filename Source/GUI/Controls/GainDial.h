@@ -1,16 +1,19 @@
 #pragma once
 #include <JuceHeader.h>
+#include "CustomSliderBase.h"
 
 namespace GUI::Controls
 {
 	class GainDial
 		: public juce::Slider
+		, public CustomSliderBase
 	{
 	public:
 		GainDial(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~GainDial();
 

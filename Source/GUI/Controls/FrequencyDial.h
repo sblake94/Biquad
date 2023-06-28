@@ -12,7 +12,10 @@
 #include <JuceHeader.h>
 
 namespace GUI::Controls
-{
+{	
+	/// <summary>
+	/// A custom slider class for the frequency dial.
+	/// </summary>
 	class FrequencyDial
 		: public juce::Slider
 	{
@@ -28,11 +31,12 @@ namespace GUI::Controls
 		
 		const char* m_labelText;
 		int m_xPos, m_yPos;
-	private:
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencyDial);
 
+	private:
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;
+
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencyDial);
 	};
 }

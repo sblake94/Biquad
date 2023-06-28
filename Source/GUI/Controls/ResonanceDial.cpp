@@ -1,13 +1,13 @@
-#include "FrequencyDial.h"
+#include "ResonanceDial.h"
 
 using namespace GUI::Controls;
 
 /////////////////////////////////////////////////////////////////////////////////////
-FrequencyDial::FrequencyDial
+ResonanceDial::ResonanceDial
 (
-	const char* _labelText,
+	const char* _labelText, 
 	const int _xPos, 
-	const int _yPos,
+	const int _yPos, 
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider(_labelText)
@@ -15,10 +15,9 @@ FrequencyDial::FrequencyDial
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
 {
-	this->setRange(20.0, 20000.0, 0.0);
-	this->setValue(20000.0);
-	this->setSkewFactorFromMidPoint(2000.0);
-	this->setNumDecimalPlacesToDisplay(0);
+	this->setRange(0.0, 1.0, 0.0);
+	this->setValue(0.5);
+	this->setNumDecimalPlacesToDisplay(1);
 	this->setTooltip(_labelText);
 	
 	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
@@ -29,22 +28,22 @@ FrequencyDial::FrequencyDial
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-FrequencyDial::~FrequencyDial()
+ResonanceDial::~ResonanceDial()
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-void FrequencyDial::paint(juce::Graphics& g)
+void ResonanceDial::paint(juce::Graphics& g)
 {
 	/*
 	*   TODO: I think there could be a better way to do this,
 	*	seems like we're doing all the maths twice.
 	*	- Can we just store the variables here as members?
-	*/ 
+	*/
 
 	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
 	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
-	
+
 	const int sliderTop = m_textBoxHeight;
 	const juce::Rectangle<int> sliderBounds(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
 	juce::Slider::paint(g);

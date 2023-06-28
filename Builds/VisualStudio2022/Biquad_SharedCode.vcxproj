@@ -135,6 +135,9 @@
     <ClCompile Include="..\..\Source\GUI\Background.cpp" />
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\ResonanceDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -2444,12 +2447,14 @@
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp" />
-    <ClCompile Include="CustomLookAndFeel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\GUI\Background.h" />
     <ClInclude Include="..\..\Source\GUI\ControlManager.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h" />
+    <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h" />
@@ -3407,7 +3412,6 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h" />
-    <ClInclude Include="CustomLookAndFeel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt" />

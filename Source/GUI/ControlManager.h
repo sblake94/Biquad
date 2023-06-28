@@ -12,6 +12,8 @@
 
 #include <JuceHeader.h>
 #include "Controls/FrequencyDial.h"
+#include "Controls/GainDial.h"
+#include "Controls/ResonanceDial.h"
 
 using namespace GUI::Controls;
 
@@ -33,22 +35,29 @@ namespace GUI
 		const std::vector<juce::Component*> GetAllControls();
 
 	private:
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ControlManager);
-
 		FrequencyDial m_highFreqSlider;
 		FrequencyDial m_midFreqSlider;
 		FrequencyDial m_lowFreqSlider;
 
+		GainDial m_highGainSlider;
+		GainDial m_midGainSlider;
+		GainDial m_lowGainSlider;
+
+		ResonanceDial m_highResSlider;
+		ResonanceDial m_midResSlider;
+		ResonanceDial m_lowResSlider;
+
 		const int m_margin = 20;
 		const int m_controlGridSizeX = 6;
 		const int m_controlGridSizeY = 6;
-		const int m_gridSpacingX = 10;  // Horizontal spacing between grid cells
-		const int m_gridSpacingY = 10;  // Vertical spacing between grid cells
-
+		const int m_gridSpacingX = 10;
+		const int m_gridSpacingY = 10;
 
 		int m_controlAreaWidth;
 		int m_controlAreaHeight;
 		int m_controlAreaX = m_margin;
 		int m_controlAreaY = m_margin;
+
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ControlManager);
 	};
 }

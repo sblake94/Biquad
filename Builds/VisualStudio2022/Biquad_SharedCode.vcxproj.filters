@@ -2964,8 +2964,14 @@
     <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="CustomLookAndFeel.cpp">
+    <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp">
       <Filter>Biquad\Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\ResonanceDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5849,8 +5855,14 @@
     <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="CustomLookAndFeel.h">
+    <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h">
       <Filter>Biquad\Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h">
+      <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

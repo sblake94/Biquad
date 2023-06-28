@@ -10,12 +10,14 @@
 #include "PluginEditor.h"
 #include "GUI/CustomLookAndFeel.h"
 
+using namespace GUI;
+
 /////////////////////////////////////////////////////////////////////////////////////
 BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     : AudioProcessorEditor(&p)
     , audioProcessor(p)
     , m_background()
-    , m_controlManager(m_windowWidth, m_windowHeight, new GUI::CustomLookAndFeel())
+    , m_controlManager(m_windowWidth, m_windowHeight, new CustomLookAndFeel())
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.

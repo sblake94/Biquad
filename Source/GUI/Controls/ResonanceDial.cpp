@@ -8,9 +8,11 @@ ResonanceDial::ResonanceDial
 	const char* _labelText, 
 	const int _xPos, 
 	const int _yPos, 
+	juce::ParameterID _parameterID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider(_labelText)
+	, CustomSliderBase(_parameterID)
 	, m_labelText(_labelText)
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)

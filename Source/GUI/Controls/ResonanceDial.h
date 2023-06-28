@@ -1,16 +1,19 @@
 #pragma once
 #include <JuceHeader.h>
+#include "CustomSliderBase.h"
 
 namespace GUI::Controls
 {
 	class ResonanceDial
 		: public juce::Slider
+		, public CustomSliderBase
 	{
 	public:
 		ResonanceDial(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~ResonanceDial();
 

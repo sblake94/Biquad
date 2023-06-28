@@ -1,5 +1,7 @@
 #include "ControlManager.h"
 
+#include "../Processing/Parameters.h"
+
 namespace GUI
 {
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -11,16 +13,17 @@ namespace GUI
 	)
 		: m_controlAreaHeight(_windowHeight - 2 * m_margin)
 		, m_controlAreaWidth(_windowWidth - 2 * m_margin)
-		, m_lowFreqSlider(FrequencyDial("Low Freq", 1, 0, _lookAndFeelPtr))
-		, m_midFreqSlider(FrequencyDial("Mid Freq", 2, 0, _lookAndFeelPtr))
-		, m_highFreqSlider(FrequencyDial("Hi Freq", 3, 0, _lookAndFeelPtr))
-		, m_lowGainSlider(GainDial("Low Gain", 1, 1, _lookAndFeelPtr))
-		, m_midGainSlider(GainDial("Mid Gain", 2, 1, _lookAndFeelPtr))
-		, m_highGainSlider(GainDial("Hi Gain", 3, 1, _lookAndFeelPtr))
-		, m_lowResSlider(ResonanceDial("Low Res", 1, 2, _lookAndFeelPtr))
-		, m_midResSlider(ResonanceDial("Mid Res", 2, 2, _lookAndFeelPtr))
-		, m_highResSlider(ResonanceDial("Hi Res", 3, 2, _lookAndFeelPtr))
+		, m_lowFreqSlider(FrequencyDial("LowFreq", 1, 0, Processing::s_lowFreqCutoffParamID, _lookAndFeelPtr))
+		, m_midFreqSlider(FrequencyDial("MidFreq", 2, 0, Processing::s_midFreqCutoffParamID, _lookAndFeelPtr))
+		, m_highFreqSlider(FrequencyDial("HiFreq", 3, 0, Processing::s_highFreqCutoffParamID, _lookAndFeelPtr))
+		, m_lowGainSlider(GainDial("LowGain", 1, 1, Processing::s_lowGainParamID, _lookAndFeelPtr))
+		, m_midGainSlider(GainDial("MidGain", 2, 1, Processing::s_midGainParamID, _lookAndFeelPtr))
+		, m_highGainSlider(GainDial("HiGain", 3, 1, Processing::s_highGainParamID, _lookAndFeelPtr))
+		, m_lowResSlider(ResonanceDial("LowRes", 1, 2, Processing::s_lowResonanceParamID, _lookAndFeelPtr))
+		, m_midResSlider(ResonanceDial("MidRes", 2, 2, Processing::s_midResonanceParamID, _lookAndFeelPtr))
+		, m_highResSlider(ResonanceDial("HiRes", 3, 2, Processing::s_highResonanceParamID, _lookAndFeelPtr))
 	{
+		
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////

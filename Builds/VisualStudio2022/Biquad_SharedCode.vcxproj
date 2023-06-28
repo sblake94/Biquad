@@ -2447,10 +2447,12 @@
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp" />
+    <ClCompile Include="..\..\Source\Processing\Parameters.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\GUI\Background.h" />
     <ClInclude Include="..\..\Source\GUI\ControlManager.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h" />
@@ -3412,6 +3414,7 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h" />
+    <ClInclude Include="..\..\Source\Processing\Parameters.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt" />

@@ -5,6 +5,12 @@
 namespace GUI
 {
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Constructor for the ControlManager class.
+	/// </summary>
+	/// <param name="_windowWidth">The width of the editor window</param>
+	/// <param name="_windowHeight">The height of the editor window</param>
+	/// <param name="_lookAndFeelPtr">The custom LookAndFeel to be used when drawing the controls</param>
 	ControlManager::ControlManager
 	(
 		const int _windowWidth,
@@ -27,17 +33,28 @@ namespace GUI
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Destructor for the ControlManager class.
+	/// </summary>
 	ControlManager::~ControlManager()
 	{
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Distributes the paint call to all components.
+	/// </summary>
 	void ControlManager::paint(juce::Graphics& _graphics)
 	{
 		m_highFreqSlider.paint(_graphics);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Resizes and Repositions all components.
+	/// </summary>
+	/// <param name="_newWidth"></param>
+	/// <param name="_newHeight"></param>
 	void ControlManager::resized
 	(
 		const int _newWidth, 
@@ -117,6 +134,10 @@ namespace GUI
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Returns a vector of pointers to all controls.
+	/// </summary>
+	/// <returns>Vector of Component*</returns>
 	const std::vector<juce::Component*> ControlManager::GetAllControls()
 	{
 		std::vector<juce::Component*> result;

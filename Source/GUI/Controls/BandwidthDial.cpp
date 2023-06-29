@@ -3,6 +3,14 @@
 using namespace GUI::Controls;
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Constructor for the bandwidth dial.
+/// </summary>
+/// <param name="_labelText">The text that will appear in the slider's Label</param>
+/// <param name="_xPos">The X Position of the Dial on the Grid</param>
+/// <param name="_yPos">The Y Position of the Dial on the Grid</param>
+/// <param name="_parameterID">The ID linking the Dial to it's associated Parameter (See Parameters.h)</param>
+/// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 BandwidthDial::BandwidthDial
 (
 	const char* _labelText, 
@@ -30,19 +38,20 @@ BandwidthDial::BandwidthDial
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Destructor for the bandwidth dial.
+/// </summary>
 BandwidthDial::~BandwidthDial()
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Handles the drawing of the dial
+/// </summary>
+/// <param name="g">The Graphics unit to be used to draw the dial</param>
 void BandwidthDial::paint(juce::Graphics& g)
 {
-	/*
-	*   TODO: I think there could be a better way to do this,
-	*	seems like we're doing all the maths twice.
-	*	- Can we just store the variables here as members?
-	*/
-
 	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
 	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
 

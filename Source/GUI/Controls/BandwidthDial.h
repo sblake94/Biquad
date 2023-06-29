@@ -4,11 +4,15 @@
 
 namespace GUI::Controls
 {
+	/////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// A dial for controlling the bandwidth of a filter.
+	/// </summary>
 	class BandwidthDial
 		: public juce::Slider
 		, public CustomSliderBase
 	{
-	public:
+	public: /////////////////////////////////////////////////////////////////////////////////////////
 		BandwidthDial(
 			const char* _labelText,
 			const int _xPos,
@@ -22,7 +26,7 @@ namespace GUI::Controls
 		const char* m_labelText;
 		int m_xPos, m_yPos;
 
-	private:
+	private: /////////////////////////////////////////////////////////////////////////////////////////
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;

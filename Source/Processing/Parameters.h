@@ -9,6 +9,10 @@ using ParamDirectory = std::map<int, juce::AudioParameterFloat*>;
 
 namespace Processing
 {
+	//////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Static Ids to be used for linging parameters to dials,
+	/// </summary>
 	static const int s_lowFreqCutoffParamID(0);
 	static const int s_midFreqCutoffParamID(1);
 	static const int s_highFreqCutoffParamID(2);
@@ -19,15 +23,19 @@ namespace Processing
 	static const int s_midBandwidthParamID(7);
 	static const int s_highBandwidthParamID(8);
 
+	//////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Holds all the parameters for the plugin
+	/// </summary>
 	class Parameters
 	{
-	public:
+	public: //////////////////////////////////////////////////////////////////////
 		Parameters();
 		~Parameters();
 
 		ParamDirectory& GetSliderParams();
 
-	private:
+	private: //////////////////////////////////////////////////////////////////////
 		ParamDirectory m_sliderParams;
 
 		AudioParameterFloat m_lowFreqCutoff;

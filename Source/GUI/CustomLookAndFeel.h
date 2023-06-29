@@ -2,19 +2,24 @@
 
 #include <JuceHeader.h>
 
-////////////////////////////////////////////////////////////////////////////////////////////////
 namespace GUI
 {
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// A custom look and feel for the GUI. 
+	/// </summary>
 	class CustomLookAndFeel
 		: public juce::LookAndFeel_V4
 	{
-	public:
+	public: ////////////////////////////////////////////////////////////////////////////////////////////////
+
 		CustomLookAndFeel();
 		~CustomLookAndFeel();
 
 		void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
 			const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider&) override;
-	private:
+
+	private:////////////////////////////////////////////////////////////////////////////////////////////////
 
 		juce::Colour m_dialFillColour = juce::Colour(17u,17u,17u);
 		juce::Colour m_dialOutlineColour = juce::Colour(17u, 17u, 17u);

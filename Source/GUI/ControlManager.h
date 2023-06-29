@@ -20,10 +20,13 @@ using namespace GUI::Controls;
 namespace GUI
 {
 	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	///		This class handles contains all of the dials, knobs,
+	///		and buttons of the GUI
+	/// </summary>
 	class ControlManager
 	{
-	public:
-		
+	public: /////////////////////////////////////////////////////////////////////////////////////
 		ControlManager(
 			const int _windowWidth, 
 			const int _windowHeight,
@@ -35,7 +38,7 @@ namespace GUI
 
 		const std::vector<juce::Component*> GetAllControls();
 
-	private:
+	private: /////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial m_highFreqSlider;
 		FrequencyDial m_midFreqSlider;
 		FrequencyDial m_lowFreqSlider;

@@ -2,7 +2,7 @@
 	==========================================================================================
 
 	@Author : SBlake
-	This class describes a slider with prebaked customizations for this project.
+	This class describes a Frequency Slider with prebaked customizations for this project.
 
 	==========================================================================================
 */
@@ -14,14 +14,15 @@
 
 namespace GUI::Controls
 {	
+	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// A custom slider class for the frequency dial.
+	/// A custom dial for frequency parameters.
 	/// </summary>
 	class FrequencyDial
 		: public juce::Slider
 		, public CustomSliderBase
 	{
-	public:
+	public: /////////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial(
 			const char* _labelText,
 			const int _xPos,
@@ -29,14 +30,15 @@ namespace GUI::Controls
 			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr
 		);
-		~FrequencyDial();
 
+		~FrequencyDial();
+		
 		void paint(juce::Graphics& g) override;
 		
 		const char* m_labelText;
 		int m_xPos, m_yPos;
 
-	private:
+	private: /////////////////////////////////////////////////////////////////////////////////////////
 		void SetParameterID(const juce::ParameterID _parameterID);
 		juce::ParameterID m_parameterID;
 

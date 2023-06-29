@@ -2,7 +2,15 @@
 
 using namespace GUI::Controls;
 
-/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Constructor for the FrequencyDial class.
+/// </summary>
+/// <param name="_labelText">The text that will appear in the slider's Label</param>
+/// <param name="_xPos">The X Position of the Dial on the Grid</param>
+/// <param name="_yPos">The Y Position of the Dial on the Grid</param>
+/// <param name="_parameterID">The ID linking the Dial to it's associated Parameter (See Parameters.h)</param>
+/// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 FrequencyDial::FrequencyDial
 (
 	const char* _labelText,
@@ -33,20 +41,21 @@ FrequencyDial::FrequencyDial
 		this->setLookAndFeel(_lookAndFeel);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Destructor for the FrequencyDial class.
+/// </summary>
 FrequencyDial::~FrequencyDial()
 {
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Handles the drawing of the dial
+/// </summary>
+/// <param name="g">The Graphics unit to be used to draw the dial</param>
 void FrequencyDial::paint(juce::Graphics& g)
 {
-	/*
-	*   TODO: I think there could be a better way to do this,
-	*	seems like we're doing all the maths twice.
-	*	- Can we just store the variables here as members?
-	*/ 
-
 	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
 	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
 	
@@ -61,7 +70,11 @@ void FrequencyDial::paint(juce::Graphics& g)
 	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the ID of the parameter that the dial is linked to.
+/// </summary>
+/// <param name="_parameterID"></param>
 void FrequencyDial::SetParameterID(const juce::ParameterID _parameterID)
 {
 	this->m_parameterID = _parameterID;

@@ -3,6 +3,14 @@
 using namespace GUI::Controls;
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Constructor for the GainDial class.
+/// </summary>
+/// <param name="_labelText">The text that will appear in the slider's Label</param>
+/// <param name="_xPos">The X Position of the Dial on the Grid</param>
+/// <param name="_yPos">The Y Position of the Dial on the Grid</param>
+/// <param name="_parameterID">The ID linking the Dial to it's associated Parameter (See Parameters.h)</param>
+/// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 GainDial::GainDial
 (
 	const char* _labelText, 
@@ -17,7 +25,7 @@ GainDial::GainDial
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
 {
-	this->setRange(-12.0, 12.0, 0.0);
+	this->setRange(-24.0, 24.0, 0.0);
 	this->setValue(0.0);
 	this->setNumDecimalPlacesToDisplay(1);
 	this->setTooltip(_labelText);
@@ -30,19 +38,20 @@ GainDial::GainDial
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Destructor for the GainDial class.
+/// </summary>
 GainDial::~GainDial()
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the position of the GainDial on the Grid.
+/// </summary>
+/// <param name="g">The Graphics unit to be used to draw the dial</param>
 void GainDial::paint(juce::Graphics& g)
 {
-	/*
-	*   TODO: I think there could be a better way to do this,
-	*	seems like we're doing all the maths twice.
-	*	- Can we just store the variables here as members?
-	*/
-
 	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
 	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
 

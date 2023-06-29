@@ -69,7 +69,7 @@ void BiquadAudioProcessorEditor::resized()
 void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 {
     // Get the slider's ID
-    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::CustomSliderBase*>(slider)->id;
+    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::CustomSliderBase*>(slider)->m_id;
 
 	// Get the slider's value
 	double sliderValue = slider->getValue();

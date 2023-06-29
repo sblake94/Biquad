@@ -5,14 +5,33 @@ using namespace Processing;
 
 #define E_PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Constructor
+/// </summary>
 BiquadUnit::BiquadUnit()
 {
 }
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Destructor
+///	</summary>
 BiquadUnit::~BiquadUnit()
 {
 }
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Applies the biquad filter to the input buffer and stores the
+/// result in the output buffer
+/// </summary>
+/// <param name="_inputBuffer">The input buffer</param>
+/// <param name="_outputBuffer">The output buffer</param>
+/// <param name="_params">The parameters</param>
+/// <param name="_filterType">The filter type</param>
+/// <param name="_sampleRate">The sample rate</param>
+/// <param name="_sampleFrames">The number of sample frames</param>
 void BiquadUnit::ApplyBiquad
 (
 	juce::AudioBuffer<float>& _inputBuffer,
@@ -99,6 +118,14 @@ void BiquadUnit::ApplyBiquad
 	}
 }
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the shared coefficients for a shelf filter
+/// </summary>
+/// <param name="_gain">The gain</param>
+/// <param name="_cutoff">The cutoff frequency</param>
+/// <param name="_sliderParams">The slider parameters</param>
+/// <param name="_sampleRate">The sample rate</param>
 void BiquadUnit::SetShelfCoeffs
 (
 	float _gain, 
@@ -114,6 +141,13 @@ void BiquadUnit::SetShelfCoeffs
 	alpha = sinw0 * sinh((log10(2) / 2) * _bandwidth * (w0 / sinw0));
 }
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the coefficients for a High shelf filter
+/// </summary>
+/// <param name="_sliderParams">The slider parameters</param>
+/// <param name="_sampleRate">The sample rate</param>
+/// 
 void BiquadUnit::SetHighShelfCoeffs
 (
 	ParamDirectory& _sliderParams, 
@@ -134,7 +168,12 @@ void BiquadUnit::SetHighShelfCoeffs
 	m_a2 = (A + 1) - (A - 1) * cosw0 - 2 * sqrt(A * alpha);
 }
 
-
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the coefficients for a Peak shelf filter
+/// </summary>
+/// <param name="_sliderParams">The slider parameters</param>
+/// <param name="_sampleRate">The sample rate</param>
 void BiquadUnit::SetPeakShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate)
 {
 	float peakCutoff = *(_sliderParams[s_midFreqCutoffParamID]);
@@ -151,6 +190,12 @@ void BiquadUnit::SetPeakShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRa
 	m_a2 = 1 - alpha / A;
 }
 
+//////////////////////////////////////////////////////////////////
+/// <summary>
+/// Sets the coefficients for a Low shelf filter
+/// </summary>
+/// <param name="_sliderParams">The slider parameters</param>
+/// <param name="_sampleRate">The sample rate</param>
 void BiquadUnit::SetLowShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate)
 {
 	float lfCutoff = *(_sliderParams[s_lowFreqCutoffParamID]);

@@ -5,9 +5,13 @@
 
 namespace Processing
 {
+	///////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Dedicated class for holding all DSP logic
+	/// </summary>
 	class BiquadProcessor
 	{
-	public:
+	public: //////////////////////////////////////////////////////////////////
 		BiquadProcessor();
 		~BiquadProcessor();
 
@@ -20,7 +24,7 @@ namespace Processing
 			int _sampleFrames
 		);
 
-	private:
+	private://////////////////////////////////////////////////////////////////
 		BiquadUnit m_biquadA;
 		BiquadUnit m_biquadB;
 		BiquadUnit m_biquadC;

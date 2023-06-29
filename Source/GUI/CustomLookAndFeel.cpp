@@ -2,16 +2,34 @@
 
 
 /////////////////////////////////////////////////
+/// <summary>
+/// Constructor for the custom look and feel
+/// </summary>
 GUI::CustomLookAndFeel::CustomLookAndFeel()
 {
 }
 
 /////////////////////////////////////////////////
+/// <summary>
+/// Destructor for the custom look and feel
+/// </summary>
 GUI::CustomLookAndFeel::~CustomLookAndFeel()
 {
 }
 
 /////////////////////////////////////////////////
+/// <summary>
+/// Defines the behaviour for drawing sliders
+/// </summary>
+/// <param name="g">The Graphics context</param>
+/// <param name="x">The X Position of the Slider</param>
+/// <param name="y">The Y Position of the Slider</param>
+/// <param name="width">The width of the Slider</param>
+/// <param name="height">The width of the Slider</param>
+/// <param name="sliderPos">The initial position of the Slider</param>
+/// <param name="rotaryStartAngle">The start of the rotational track</param>
+/// <param name="rotaryEndAngle">The end of the rotational track</param>
+/// <param name="slider">The Slider itself</param>
 void GUI::CustomLookAndFeel::drawRotarySlider
 (
 	juce::Graphics& g, 

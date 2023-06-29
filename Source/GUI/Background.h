@@ -12,18 +12,24 @@
 
 #include <JuceHeader.h>
 
-
 namespace GUI
 {
 	////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// This class simply draws the background of the GUI
+	/// This allows us to contain future fancy logic for making the background reactive
+	/// </summary>
 	class Background
 		: public juce::Component
 	{
-	public:
+	public: ////////////////////////////////////////////////////////////////////////////////////////////
+
 		Background();
 		~Background();
 
 		void paint(juce::Graphics& g, int width, int height);
-	private:
+
+	private: ////////////////////////////////////////////////////////////////////////////////////////////
+		const juce::Colour m_backgroundColour = juce::Colour::fromRGB(34, 34, 34);
 	};
 }

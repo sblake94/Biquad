@@ -1,14 +1,27 @@
+/*
+	==========================================================================================
+
+	@Author : SBlake
+	This class describes a Gain Slider with prebaked customizations for this project.
+
+	==========================================================================================
+*/
+
 #pragma once
 #include <JuceHeader.h>
 #include "CustomSliderBase.h"
 
 namespace GUI::Controls
 {
+	/////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// A custom dial for Gain-specific parameters.
+	/// </summary>
 	class GainDial
 		: public juce::Slider
 		, public CustomSliderBase
 	{
-	public:
+	public: /////////////////////////////////////////////////////////////////////////////////////////
 		GainDial(
 			const char* _labelText,
 			const int _xPos,
@@ -22,7 +35,7 @@ namespace GUI::Controls
 		const char* m_labelText;
 		int m_xPos, m_yPos;
 
-	private:
+	private: /////////////////////////////////////////////////////////////////////////////////////////
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;

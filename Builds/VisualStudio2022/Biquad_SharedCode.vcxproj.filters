@@ -2973,10 +2973,16 @@
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp">
       <Filter>Biquad\Source\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\ResonanceDial.cpp">
+    <ClCompile Include="..\..\Source\GUI\Controls\BandwidthDial.cpp">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Processing\Parameters.cpp">
+      <Filter>Biquad\Source\Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Processing\BiquadProcessing.cpp">
+      <Filter>Biquad\Source\Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Processing\BiquadUnit.cpp">
       <Filter>Biquad\Source\Processing</Filter>
     </ClCompile>
   </ItemGroup>
@@ -5867,7 +5873,7 @@
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h">
       <Filter>Biquad\Source\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h">
+    <ClInclude Include="..\..\Source\GUI\Controls\BandwidthDial.h">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Processing\Parameters.h">
@@ -5875,6 +5881,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h">
       <Filter>Biquad\Source\GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Processing\BiquadProcessing.h">
+      <Filter>Biquad\Source\Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Processing\BiquadUnit.h">
+      <Filter>Biquad\Source\Processing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

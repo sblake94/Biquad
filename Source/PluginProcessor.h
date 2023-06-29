@@ -9,7 +9,10 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Processing/BiquadProcessing.h"
 #include "Processing/Parameters.h"
+
+using namespace Processing;
 
 //==============================================================================
 /**
@@ -61,7 +64,8 @@ public:
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BiquadAudioProcessor)
-
     Processing::Parameters m_parameters;
+    Processing::BiquadProcessor m_biquadProc;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BiquadAudioProcessor)
 };

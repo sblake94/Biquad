@@ -1,9 +1,9 @@
-#include "ResonanceDial.h"
+#include "BandwidthDial.h"
 
 using namespace GUI::Controls;
 
 /////////////////////////////////////////////////////////////////////////////////////
-ResonanceDial::ResonanceDial
+BandwidthDial::BandwidthDial
 (
 	const char* _labelText, 
 	const int _xPos, 
@@ -17,8 +17,8 @@ ResonanceDial::ResonanceDial
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
 {
-	this->setRange(0.0, 1.0, 0.0);
-	this->setValue(0.5);
+	this->setRange(0.0001, 4.0, 0.0);
+	this->setValue(1.0);
 	this->setNumDecimalPlacesToDisplay(1);
 	this->setTooltip(_labelText);
 	
@@ -30,12 +30,12 @@ ResonanceDial::ResonanceDial
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-ResonanceDial::~ResonanceDial()
+BandwidthDial::~BandwidthDial()
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-void ResonanceDial::paint(juce::Graphics& g)
+void BandwidthDial::paint(juce::Graphics& g)
 {
 	/*
 	*   TODO: I think there could be a better way to do this,

@@ -13,7 +13,7 @@
 #include <JuceHeader.h>
 #include "Controls/FrequencyDial.h"
 #include "Controls/GainDial.h"
-#include "Controls/ResonanceDial.h"
+#include "Controls/BandwidthDial.h"
 
 using namespace GUI::Controls;
 
@@ -44,9 +44,9 @@ namespace GUI
 		GainDial m_midGainSlider;
 		GainDial m_lowGainSlider;
 
-		ResonanceDial m_highResSlider;
-		ResonanceDial m_midResSlider;
-		ResonanceDial m_lowResSlider;
+		BandwidthDial m_highBandwidthSlider;
+		BandwidthDial m_midBandwidthSlider;
+		BandwidthDial m_lowBandwidthSlider;
 
 		const int m_margin = 20;
 		const int m_controlGridSizeX = 6;

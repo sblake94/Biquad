@@ -11,9 +11,9 @@ Parameters::Parameters()
 	, m_lowGain(ParameterID(s_lowGainParamID), juce::String("Low Gain"), -24.0f, 24.0f, 0.0f)
 	, m_midGain(ParameterID(s_midGainParamID), juce::String("Mid Gain"), -24.0f, 24.0f, 0.0f)
 	, m_highGain(ParameterID(s_highGainParamID), juce::String("High Gain"), -24.0f, 24.0f, 0.0f)
-	, m_lowResonance(ParameterID(s_lowResonanceParamID), juce::String("Low Resonance"), 0.001f, 1.0f, 0.001f)
-	, m_midResonance(ParameterID(s_midResonanceParamID), juce::String("Mid Resonance"), 0.001f, 1.0f, 0.001f)
-	, m_highResonance(ParameterID(s_highResonanceParamID), juce::String("High Resonance"), 0.001f, 1.0f, 0.001f)
+	, m_lowBandwidth(ParameterID(s_lowBandwidthParamID), juce::String("Low Bandwidth"), 0.001f, 1.0f, 0.001f)
+	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 1.0f, 0.001f)
+	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 1.0f, 0.001f)
 {
 	m_sliderParams = ParamDirectory
 	{
@@ -23,9 +23,9 @@ Parameters::Parameters()
 		{ s_lowGainParamID, &m_lowGain },
 		{ s_midGainParamID, &m_midGain },
 		{ s_highGainParamID, &m_highGain },
-		{ s_lowResonanceParamID, &m_lowResonance },
-		{ s_midResonanceParamID, &m_midResonance },
-		{ s_highResonanceParamID, &m_highResonance }
+		{ s_lowBandwidthParamID, &m_lowBandwidth },
+		{ s_midBandwidthParamID, &m_midBandwidth },
+		{ s_highBandwidthParamID, &m_highBandwidth }
 	};
 }
 
@@ -37,4 +37,3 @@ ParamDirectory& Parameters::GetSliderParams()
 {
 	return m_sliderParams;
 }
-

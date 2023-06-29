@@ -19,9 +19,9 @@ namespace GUI
 		, m_lowGainSlider(GainDial("LowGain", 1, 1, Processing::s_lowGainParamID, _lookAndFeelPtr))
 		, m_midGainSlider(GainDial("MidGain", 2, 1, Processing::s_midGainParamID, _lookAndFeelPtr))
 		, m_highGainSlider(GainDial("HiGain", 3, 1, Processing::s_highGainParamID, _lookAndFeelPtr))
-		, m_lowResSlider(ResonanceDial("LowRes", 1, 2, Processing::s_lowResonanceParamID, _lookAndFeelPtr))
-		, m_midResSlider(ResonanceDial("MidRes", 2, 2, Processing::s_midResonanceParamID, _lookAndFeelPtr))
-		, m_highResSlider(ResonanceDial("HiRes", 3, 2, Processing::s_highResonanceParamID, _lookAndFeelPtr))
+		, m_lowBandwidthSlider(BandwidthDial("LowBW", 1, 2, Processing::s_lowBandwidthParamID, _lookAndFeelPtr))
+		, m_midBandwidthSlider(BandwidthDial("MidBW", 2, 2, Processing::s_midBandwidthParamID, _lookAndFeelPtr))
+		, m_highBandwidthSlider(BandwidthDial("HighBW", 3, 2, Processing::s_highBandwidthParamID, _lookAndFeelPtr))
 	{
 		
 	}
@@ -96,21 +96,21 @@ namespace GUI
 			cellWidth,
 			cellHeight);
 
-		m_highResSlider.setBounds(
-			controlXPos(m_highResSlider.m_xPos),
-			controlYPos(m_highResSlider.m_yPos),
+		m_highBandwidthSlider.setBounds(
+			controlXPos(m_highBandwidthSlider.m_xPos),
+			controlYPos(m_highBandwidthSlider.m_yPos),
 			cellWidth,
 			cellHeight);
 
-		m_midResSlider.setBounds(
-			controlXPos(m_midResSlider.m_xPos),
-			controlYPos(m_midResSlider.m_yPos),
+		m_midBandwidthSlider.setBounds(
+			controlXPos(m_midBandwidthSlider.m_xPos),
+			controlYPos(m_midBandwidthSlider.m_yPos),
 			cellWidth,
 			cellHeight);
 
-		m_lowResSlider.setBounds(
-			controlXPos(m_lowResSlider.m_xPos),
-			controlYPos(m_lowResSlider.m_yPos),
+		m_lowBandwidthSlider.setBounds(
+			controlXPos(m_lowBandwidthSlider.m_xPos),
+			controlYPos(m_lowBandwidthSlider.m_yPos),
 			cellWidth,
 			cellHeight);
 
@@ -129,9 +129,9 @@ namespace GUI
 		result.push_back(&m_midGainSlider);
 		result.push_back(&m_highGainSlider);
 
-		result.push_back(&m_lowResSlider);
-		result.push_back(&m_midResSlider);
-		result.push_back(&m_highResSlider);
+		result.push_back(&m_lowBandwidthSlider);
+		result.push_back(&m_midBandwidthSlider);
+		result.push_back(&m_highBandwidthSlider);
 
 		return result;
 	}

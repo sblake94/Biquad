@@ -4,18 +4,18 @@
 
 namespace GUI::Controls
 {
-	class ResonanceDial
+	class BandwidthDial
 		: public juce::Slider
 		, public CustomSliderBase
 	{
 	public:
-		ResonanceDial(
+		BandwidthDial(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
 			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
-		~ResonanceDial();
+		~BandwidthDial();
 
 		void paint(juce::Graphics& g) override;
 
@@ -27,6 +27,6 @@ namespace GUI::Controls
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;
 
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ResonanceDial)
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BandwidthDial)
 	};
 }

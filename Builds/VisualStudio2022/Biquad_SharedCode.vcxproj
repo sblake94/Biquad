@@ -86,6 +86,10 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\Biquad.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -136,7 +140,7 @@
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp" />
-    <ClCompile Include="..\..\Source\GUI\Controls\ResonanceDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\BandwidthDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
@@ -2447,6 +2451,8 @@
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp" />
+    <ClCompile Include="..\..\Source\Processing\BiquadProcessing.cpp" />
+    <ClCompile Include="..\..\Source\Processing\BiquadUnit.cpp" />
     <ClCompile Include="..\..\Source\Processing\Parameters.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -2455,7 +2461,7 @@
     <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\ResonanceDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\BandwidthDial.h" />
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />
@@ -3414,6 +3420,8 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h" />
+    <ClInclude Include="..\..\Source\Processing\BiquadProcessing.h" />
+    <ClInclude Include="..\..\Source\Processing\BiquadUnit.h" />
     <ClInclude Include="..\..\Source\Processing\Parameters.h" />
   </ItemGroup>
   <ItemGroup>

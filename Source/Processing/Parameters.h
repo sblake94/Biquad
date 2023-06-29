@@ -9,15 +9,15 @@ using ParamDirectory = std::map<int, juce::AudioParameterFloat*>;
 
 namespace Processing
 {
-static const int s_lowFreqCutoffParamID(0);
-static const int s_midFreqCutoffParamID(1);
-static const int s_highFreqCutoffParamID(2);
-static const int s_lowGainParamID(3);
-static const int s_midGainParamID(4);
-static const int s_highGainParamID(5);
-static const int s_lowResonanceParamID(6);
-static const int s_midResonanceParamID(7);
-static const int s_highResonanceParamID(8);
+	static const int s_lowFreqCutoffParamID(0);
+	static const int s_midFreqCutoffParamID(1);
+	static const int s_highFreqCutoffParamID(2);
+	static const int s_lowGainParamID(3);
+	static const int s_midGainParamID(4);
+	static const int s_highGainParamID(5);
+	static const int s_lowBandwidthParamID(6);
+	static const int s_midBandwidthParamID(7);
+	static const int s_highBandwidthParamID(8);
 
 	class Parameters
 	{
@@ -38,8 +38,8 @@ static const int s_highResonanceParamID(8);
 		AudioParameterFloat m_midGain;
 		AudioParameterFloat m_highGain;
 
-		AudioParameterFloat m_lowResonance;
-		AudioParameterFloat m_midResonance;
-		AudioParameterFloat m_highResonance;
+		AudioParameterFloat m_lowBandwidth;
+		AudioParameterFloat m_midBandwidth;
+		AudioParameterFloat m_highBandwidth;
 	};
 }

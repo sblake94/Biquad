@@ -56,5 +56,7 @@ namespace Processing
 		AudioParameterFloat m_highBandwidth;
 
 		AudioParameterBool m_engageHeat;
+		AudioParameterBool m_masterBypass;
+
 	};
 }

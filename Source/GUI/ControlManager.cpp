@@ -48,9 +48,16 @@ namespace GUI
 	/// </summary>
 	void ControlManager::paint(juce::Graphics& _graphics)
 	{
-		for (auto* item : this->GetAllCustomControls())
+		for (juce::Component* item : this->GetAllCustomControls())
 		{
-			((juce::Component*)item)->paint(_graphics);
+			try
+			{
+				item->paint(_graphics);
+			}
+			catch (const std::exception& e)
+			{
+				std::cout << e.what() << std::endl;
+			}
 		}
 	}
 
@@ -135,6 +142,7 @@ namespace GUI
 		std::vector<BaseTypes::LatchButton*> result;
 
 		result.push_back(&m_engageHeatButton);
+		result.push_back(&m_masterBypassButton);
 
 		return result;
 	}
@@ -144,18 +152,18 @@ namespace GUI
 	/// Returns a vector of pointers to all controls.
 	/// </summary>
 	/// <returns>Vector of Component*</returns>
-	const std::vector<BaseTypes::CustomControlBase*> ControlManager::GetAllCustomControls()
+	const std::vector<juce::Component*> ControlManager::GetAllCustomControls()
 	{
-		std::vector<BaseTypes::CustomControlBase*> result;
+		std::vector<juce::Component*> result;
 
 		for (BaseTypes::RotaryDial* rotaryDialPtr : GetAllRotaryDials())
 		{
-			result.push_back(dynamic_cast<BaseTypes::CustomControlBase*>(rotaryDialPtr));
+			result.push_back(dynamic_cast<juce::Component*>(rotaryDialPtr));
 		}
 
 		for (BaseTypes::LatchButton* latchButtonPtr : GetAllLatchButtons())
 		{
-			result.push_back(dynamic_cast<BaseTypes::CustomControlBase*>(latchButtonPtr));
+			result.push_back(dynamic_cast<juce::Component*>(latchButtonPtr));
 		}
 
 		return result;

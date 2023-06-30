@@ -44,7 +44,7 @@ namespace GUI
 
 		const std::vector<BaseTypes::RotaryDial*> GetAllRotaryDials();
 		const std::vector<BaseTypes::LatchButton*> GetAllLatchButtons();
-		const std::vector<BaseTypes::CustomControlBase*> GetAllCustomControls();
+		const std::vector<juce::Component*> GetAllCustomControls();
 
 	private: /////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial m_highFreqSlider;

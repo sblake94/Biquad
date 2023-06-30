@@ -32,6 +32,13 @@ void BiquadProcessing::ProcessReplacing
 	int _sampleFrames
 )
 {
+	// Bypass Logic
+	if (_params.GetBoolParams()[s_masterBypassParamID]->get() == true) 
+	{	
+		_outputBuffer = _inputBuffer;
+		return;
+	}
+
 	juce::AudioBuffer<float>& tempBuffer = _inputBuffer;
 	bool heatEngaged = _params.GetBoolParams()[s_engageHeatParamID]->get();
 

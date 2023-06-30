@@ -1,17 +1,17 @@
-#include "GainDial.h"
+#include "BandwidthDial.h"
 
 using namespace GUI::Controls;
 
 /////////////////////////////////////////////////////////////////////////////////////
 /// <summary>
-/// Constructor for the GainDial class.
+/// Constructor for the bandwidth dial.
 /// </summary>
 /// <param name="_labelText">The text that will appear in the slider's Label</param>
 /// <param name="_xPos">The X Position of the Dial on the Grid</param>
 /// <param name="_yPos">The Y Position of the Dial on the Grid</param>
 /// <param name="_parameterID">The ID linking the Dial to it's associated Parameter (See Parameters.h)</param>
 /// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
-GainDial::GainDial
+BandwidthDial::BandwidthDial
 (
 	const char* _labelText, 
 	const int _xPos, 
@@ -20,13 +20,13 @@ GainDial::GainDial
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider(_labelText)
-	, CustomSliderBase(_parameterID)
+	, CustomControlBase(_parameterID)
 	, m_labelText(_labelText)
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
 {
-	this->setRange(-24.0, 24.0, 0.0);
-	this->setValue(0.0);
+	this->setRange(0.0001, 4.0, 0.0);
+	this->setValue(1.0);
 	this->setNumDecimalPlacesToDisplay(1);
 	this->setTooltip(_labelText);
 	
@@ -39,18 +39,18 @@ GainDial::GainDial
 
 /////////////////////////////////////////////////////////////////////////////////////
 /// <summary>
-/// Destructor for the GainDial class.
+/// Destructor for the bandwidth dial.
 /// </summary>
-GainDial::~GainDial()
+BandwidthDial::~BandwidthDial()
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
 /// <summary>
-/// Sets the position of the GainDial on the Grid.
+/// Handles the drawing of the dial
 /// </summary>
 /// <param name="g">The Graphics unit to be used to draw the dial</param>
-void GainDial::paint(juce::Graphics& g)
+void BandwidthDial::paint(juce::Graphics& g)
 {
 	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
 	juce::LookAndFeel& lookAndFeel = getLookAndFeel();

@@ -5,7 +5,8 @@
 using namespace juce;
 using namespace std;
 
-using ParamDirectory = std::map<int, juce::AudioParameterFloat*>;
+using FloatParamDirectory = std::map<int, juce::AudioParameterFloat*>;
+using BoolParamDirectory = std::map<int, juce::AudioParameterBool*>;
 
 namespace Processing
 {
@@ -22,6 +23,7 @@ namespace Processing
 	static const int s_lowBandwidthParamID(6);
 	static const int s_midBandwidthParamID(7);
 	static const int s_highBandwidthParamID(8);
+	static const int s_engageHeatParamID(9);
 
 	//////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -33,10 +35,12 @@ namespace Processing
 		Parameters();
 		~Parameters();
 
-		ParamDirectory& GetSliderParams();
+		FloatParamDirectory& GetSliderParams();
+		BoolParamDirectory& GetBoolParams();
 
 	private: //////////////////////////////////////////////////////////////////////
-		ParamDirectory m_sliderParams;
+		FloatParamDirectory m_floatParams;
+		BoolParamDirectory m_boolParams;
 
 		AudioParameterFloat m_lowFreqCutoff;
 		AudioParameterFloat m_midFreqCutoff;
@@ -49,5 +53,7 @@ namespace Processing
 		AudioParameterFloat m_lowBandwidth;
 		AudioParameterFloat m_midBandwidth;
 		AudioParameterFloat m_highBandwidth;
+
+		AudioParameterBool m_engageHeat;
 	};
 }

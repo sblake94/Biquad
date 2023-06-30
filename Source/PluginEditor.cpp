@@ -9,7 +9,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "GUI/CustomLookAndFeel.h"
-#include "GUI/Controls/CustomSliderBase.h"
+#include "GUI/Controls/CustomControlBase.h"
 
 #include <stdlib.h>
 #include <map>
@@ -20,6 +20,7 @@ using namespace GUI;
 BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     : AudioProcessorEditor(&p)
     , Slider::Listener()
+    , Button::Listener()
     , m_controlManager(m_windowWidth, m_windowHeight, new CustomLookAndFeel())
     , m_audioProcessor(p)
     , m_background()
@@ -30,13 +31,16 @@ BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     setResizable(false, false);
     
     // Make all controls visible
-    for (juce::Component* controlPtr : m_controlManager.GetAllControls())
+    for (juce::Component* dialPtr : m_controlManager.GetAllSliders())
     {
-        // This is going to be a problem if we have any controls that aren't sliders
-        addAndMakeVisible(controlPtr);
-        dynamic_cast<juce::Slider*>(controlPtr)->addListener(this);
+        addAndMakeVisible(dialPtr);
+        dynamic_cast<juce::Slider*>(dialPtr)->addListener(this);
+    }
 
-        // register the control with the processor?
+    for (juce::Component* buttonPtr : m_controlManager.GetAllButtons())
+    {
+        addAndMakeVisible(buttonPtr);
+        dynamic_cast<juce::Button*>(buttonPtr)->addListener(this);
     }
 }
 
@@ -69,21 +73,44 @@ void BiquadAudioProcessorEditor::resized()
 void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 {
     // Get the slider's ID
-    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::CustomSliderBase*>(slider)->m_id;
+    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::CustomControlBase*>(slider)->m_id;
 
 	// Get the slider's value
-	double sliderValue = slider->getValue();
+	float sliderValue = slider->getValue();
 
 	// Update the processor
-    ParamDirectory& params = m_audioProcessor.GetParametersRef().GetSliderParams();
+    FloatParamDirectory& params = m_audioProcessor.GetParametersRef().GetSliderParams();
     for (std::pair<juce::ParameterID, juce::AudioParameterFloat*> param : params)
     {
         if (param.first.getParamID() == sliderID.getParamID())
 		{
-			*(param.second) = (sliderValue);
+            juce::AudioParameterFloat* paramFloat = param.second;
+			*paramFloat = (float)sliderValue;
             return;
 		}
     }
 
     throw new std::exception("Slider ID not found in processor");
+}
+
+void BiquadAudioProcessorEditor::buttonClicked(juce::Button* button)
+{
+    // Get the button's ID
+	juce::ParameterID buttonID = dynamic_cast<GUI::Controls::CustomControlBase*>(button)->m_id;
+
+	// Get the button's value
+	bool buttonValue = button->getToggleState();
+
+	// Update the processor
+	BoolParamDirectory& params = m_audioProcessor.GetParametersRef().GetBoolParams();
+	for (std::pair<juce::ParameterID, juce::AudioParameterBool*> param : params)
+	{
+		if (param.first.getParamID() == buttonID.getParamID())
+		{
+            param.second->setValueNotifyingHost(buttonValue);
+			return;
+		}
+	}
+
+	throw new std::exception("Button ID not found in processor");
 }

@@ -7,7 +7,8 @@ using namespace Processing;
 /// Constructor
 /// </summary>
 Parameters::Parameters()
-	: m_sliderParams()
+	: m_floatParams()
+	, m_boolParams()
 	, m_lowFreqCutoff(ParameterID(s_lowFreqCutoffParamID), juce::String("Low Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f)
 	, m_midFreqCutoff(ParameterID(s_midFreqCutoffParamID), juce::String("Mid Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f)
 	, m_highFreqCutoff(ParameterID(s_highFreqCutoffParamID), juce::String("High Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f)
@@ -17,8 +18,9 @@ Parameters::Parameters()
 	, m_lowBandwidth(ParameterID(s_lowBandwidthParamID), juce::String("Low Bandwidth"), 0.001f, 1.0f, 0.001f)
 	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 1.0f, 0.001f)
 	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 1.0f, 0.001f)
+	, m_engageHeat(ParameterID(s_engageHeatParamID), juce::String("Engage Heat"), false)
 {
-	m_sliderParams = ParamDirectory
+	m_floatParams = FloatParamDirectory
 	{
 		{ s_lowFreqCutoffParamID, &m_lowFreqCutoff },
 		{ s_midFreqCutoffParamID, &m_midFreqCutoff },
@@ -29,6 +31,11 @@ Parameters::Parameters()
 		{ s_lowBandwidthParamID, &m_lowBandwidth },
 		{ s_midBandwidthParamID, &m_midBandwidth },
 		{ s_highBandwidthParamID, &m_highBandwidth }
+	};
+
+	m_boolParams = BoolParamDirectory
+	{
+		{ s_engageHeatParamID, &m_engageHeat }
 	};
 }
 
@@ -44,7 +51,12 @@ Parameters::~Parameters()
 /// <summary>
 /// Returns the slider parameters as a Reference to a ParamDirectory
 /// </summary>
-ParamDirectory& Parameters::GetSliderParams()
+FloatParamDirectory& Parameters::GetSliderParams()
 {
-	return m_sliderParams;
+	return m_floatParams;
+}
+
+BoolParamDirectory& Processing::Parameters::GetBoolParams()
+{
+	return m_boolParams;
 }

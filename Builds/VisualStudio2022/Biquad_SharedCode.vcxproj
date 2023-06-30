@@ -138,9 +138,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\GUI\Background.cpp" />
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp" />
-    <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp" />
-    <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp" />
-    <ClCompile Include="..\..\Source\GUI\Controls\BandwidthDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Buttons\LatchButton.cpp" />
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
@@ -2458,10 +2459,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\GUI\Background.h" />
     <ClInclude Include="..\..\Source\GUI\ControlManager.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\BandwidthDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\CustomControlBase.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Buttons\LatchButton.h" />
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />

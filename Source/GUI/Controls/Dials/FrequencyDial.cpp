@@ -20,7 +20,7 @@ FrequencyDial::FrequencyDial
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider(_labelText)
-	, CustomSliderBase(_parameterID)
+	, CustomControlBase(_parameterID)
 	, m_labelText(_labelText)
 	, m_xPos(_xPos)
 	, m_yPos(_yPos)
@@ -33,7 +33,6 @@ FrequencyDial::FrequencyDial
 	
 	this->setComponentID(_labelText);
 	
-
 	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
 	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
 

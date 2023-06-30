@@ -49,7 +49,7 @@ void BiquadUnit::ApplyBiquad
 	float* outR = _outputBuffer.getWritePointer(1);
 
 	// Get the parameters
-	ParamDirectory sliderParams = _params.GetSliderParams();
+	FloatParamDirectory sliderParams = _params.GetSliderParams();
 
 	// Pick filter type
 	switch (_filterType) 
@@ -150,7 +150,7 @@ void BiquadUnit::SetShelfCoeffs
 /// 
 void BiquadUnit::SetHighShelfCoeffs
 (
-	ParamDirectory& _sliderParams, 
+	FloatParamDirectory& _sliderParams, 
 	int _sampleRate
 )
 {
@@ -174,7 +174,7 @@ void BiquadUnit::SetHighShelfCoeffs
 /// </summary>
 /// <param name="_sliderParams">The slider parameters</param>
 /// <param name="_sampleRate">The sample rate</param>
-void BiquadUnit::SetPeakShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate)
+void BiquadUnit::SetPeakShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate)
 {
 	float peakCutoff = *(_sliderParams[s_midFreqCutoffParamID]);
 	float peakGain = *(_sliderParams[s_midGainParamID]);
@@ -196,7 +196,7 @@ void BiquadUnit::SetPeakShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRa
 /// </summary>
 /// <param name="_sliderParams">The slider parameters</param>
 /// <param name="_sampleRate">The sample rate</param>
-void BiquadUnit::SetLowShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate)
+void BiquadUnit::SetLowShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate)
 {
 	float lfCutoff = *(_sliderParams[s_lowFreqCutoffParamID]);
 	float lfGain = *(_sliderParams[s_lowGainParamID]);

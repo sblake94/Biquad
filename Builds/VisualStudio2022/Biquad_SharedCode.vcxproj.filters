@@ -613,6 +613,12 @@
     <Filter Include="Biquad\Source\Processing">
       <UniqueIdentifier>{7de29664-706b-4922-9c6e-b9e216562129}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Biquad\Source\GUI\Controls\Buttons">
+      <UniqueIdentifier>{f41f956b-ad09-4845-adea-635e02adb299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Biquad\Source\GUI\Controls\Dials">
+      <UniqueIdentifier>{3f9b9abd-a6d3-4826-9c88-d6e308f3aca7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -2964,17 +2970,8 @@
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp">
       <Filter>Biquad\Source\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp">
       <Filter>Biquad\Source\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\BandwidthDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Processing\Parameters.cpp">
       <Filter>Biquad\Source\Processing</Filter>
@@ -2984,6 +2981,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Processing\BiquadUnit.cpp">
       <Filter>Biquad\Source\Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\BandwidthDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\FrequencyDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\GainDial.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\LatchButton.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5864,22 +5873,13 @@
     <ClInclude Include="..\..\Source\GUI\ControlManager.h">
       <Filter>Biquad\Source\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h">
       <Filter>Biquad\Source\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\BandwidthDial.h">
-      <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Processing\Parameters.h">
       <Filter>Biquad\Source\Processing</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\CustomSliderBase.h">
+    <ClInclude Include="..\..\Source\GUI\Controls\CustomControlBase.h">
       <Filter>Biquad\Source\GUI\Controls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Processing\BiquadProcessing.h">
@@ -5887,6 +5887,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Processing\BiquadUnit.h">
       <Filter>Biquad\Source\Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\BandwidthDial.h">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\FrequencyDial.h">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\GainDial.h">
+      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\LatchButton.h">
+      <Filter>Biquad\Source\GUI\Controls\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

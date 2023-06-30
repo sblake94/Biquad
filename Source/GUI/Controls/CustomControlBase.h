@@ -7,14 +7,14 @@ namespace GUI::Controls
 	/// <summary>
 	/// Base class for all custom sliders
 	/// </summary>
-	class CustomSliderBase
+	class CustomControlBase
 	{
 	public:
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="_paramID">The ID of the Slider</param>
-		CustomSliderBase(juce::ParameterID _paramID) 
+		CustomControlBase(juce::ParameterID _paramID) 
 			: m_id(_paramID)
 		{
 		};

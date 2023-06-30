@@ -9,11 +9,11 @@ namespace Processing
 	/// <summary>
 	/// Dedicated class for holding all DSP logic
 	/// </summary>
-	class BiquadProcessor
+	class BiquadProcessing
 	{
 	public: //////////////////////////////////////////////////////////////////
-		BiquadProcessor();
-		~BiquadProcessor();
+		BiquadProcessing();
+		~BiquadProcessing();
 
 		void ProcessReplacing
 		(
@@ -21,6 +21,17 @@ namespace Processing
 			juce::AudioBuffer<float>& _outputs,
 			Processing::Parameters& _params,
 			int _sampleRate,
+			int _sampleFrames
+		);
+
+		void ApplyCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames);
+		void RemoveCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames);
+
+		void Clip
+		(
+			juce::AudioSampleBuffer& tempBuffer,
+			float _min,
+			float _max,
 			int _sampleFrames
 		);
 

@@ -28,6 +28,7 @@ namespace GUI
 		, m_lowBandwidthSlider(BandwidthDial("LowBW", 1, 2, Processing::s_lowBandwidthParamID, _lookAndFeelPtr))
 		, m_midBandwidthSlider(BandwidthDial("MidBW", 2, 2, Processing::s_midBandwidthParamID, _lookAndFeelPtr))
 		, m_highBandwidthSlider(BandwidthDial("HighBW", 3, 2, Processing::s_highBandwidthParamID, _lookAndFeelPtr))
+		, m_engageHeatButton(LatchButton("EngageHeat", 4, 0, Processing::s_engageHeatParamID, _lookAndFeelPtr))
 	{
 		
 	}
@@ -131,6 +132,12 @@ namespace GUI
 			cellWidth,
 			cellHeight);
 
+		m_engageHeatButton.setBounds(
+			controlXPos(m_engageHeatButton.m_xPos),
+			controlYPos(m_engageHeatButton.m_yPos),
+			cellWidth,
+			cellHeight);
+
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -138,7 +145,7 @@ namespace GUI
 	/// Returns a vector of pointers to all controls.
 	/// </summary>
 	/// <returns>Vector of Component*</returns>
-	const std::vector<juce::Component*> ControlManager::GetAllControls()
+	const std::vector<juce::Component*> ControlManager::GetAllSliders()
 	{
 		std::vector<juce::Component*> result;
 
@@ -153,6 +160,20 @@ namespace GUI
 		result.push_back(&m_lowBandwidthSlider);
 		result.push_back(&m_midBandwidthSlider);
 		result.push_back(&m_highBandwidthSlider);
+
+		return result;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Returns a vector of pointers to all buttons.
+	/// </summary>
+	/// <returns>Vector of Component*</returns>
+	const std::vector<juce::Component*> ControlManager::GetAllButtons()
+	{
+		std::vector<juce::Component*> result;
+
+		result.push_back(&m_engageHeatButton);
 
 		return result;
 	}

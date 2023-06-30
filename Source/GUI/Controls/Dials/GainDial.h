@@ -1,25 +1,34 @@
+/*
+	==========================================================================================
+
+	@Author : SBlake
+	This class describes a Gain Slider with prebaked customizations for this project.
+
+	==========================================================================================
+*/
+
 #pragma once
 #include <JuceHeader.h>
-#include "CustomSliderBase.h"
+#include "../CustomControlBase.h"
 
 namespace GUI::Controls
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// A dial for controlling the bandwidth of a filter.
+	/// A custom dial for Gain-specific parameters.
 	/// </summary>
-	class BandwidthDial
+	class GainDial
 		: public juce::Slider
-		, public CustomSliderBase
+		, public CustomControlBase
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
-		BandwidthDial(
+		GainDial(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
 			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
-		~BandwidthDial();
+		~GainDial();
 
 		void paint(juce::Graphics& g) override;
 
@@ -31,6 +40,6 @@ namespace GUI::Controls
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;
 
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BandwidthDial)
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GainDial)
 	};
 }

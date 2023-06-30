@@ -31,9 +31,9 @@ namespace Processing
 			const int _sampleFrames
 		);
 
-		void SetHighShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate);
-		void SetPeakShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate);
-		void SetLowShelfCoeffs(ParamDirectory& _sliderParams, int _sampleRate);
+		void SetHighShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
+		void SetPeakShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
+		void SetLowShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
 
 	private://////////////////////////////////////////////////////////////////
 

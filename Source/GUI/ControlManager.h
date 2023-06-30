@@ -11,9 +11,10 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Controls/FrequencyDial.h"
-#include "Controls/GainDial.h"
-#include "Controls/BandwidthDial.h"
+#include "Controls/Dials/FrequencyDial.h"
+#include "Controls/Dials/GainDial.h"
+#include "Controls/Dials/BandwidthDial.h"
+#include "Controls/Buttons/LatchButton.h"
 
 using namespace GUI::Controls;
 
@@ -36,7 +37,8 @@ namespace GUI
 		void paint(juce::Graphics& _graphics);
 		void resized(const int _newWidth, const int _newHeight);
 
-		const std::vector<juce::Component*> GetAllControls();
+		const std::vector<juce::Component*> GetAllSliders();
+		const std::vector<juce::Component*> GetAllButtons();
 
 	private: /////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial m_highFreqSlider;
@@ -50,6 +52,8 @@ namespace GUI
 		BandwidthDial m_highBandwidthSlider;
 		BandwidthDial m_midBandwidthSlider;
 		BandwidthDial m_lowBandwidthSlider;
+
+		LatchButton m_engageHeatButton;
 
 		const int m_margin = 20;
 		const int m_controlGridSizeX = 6;

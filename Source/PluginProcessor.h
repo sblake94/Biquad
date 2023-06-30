@@ -68,6 +68,4 @@ private:
     Processing::BiquadProcessing m_biquadProc;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BiquadAudioProcessor)
-
-    Processing::Parameters m_parameters;
 };

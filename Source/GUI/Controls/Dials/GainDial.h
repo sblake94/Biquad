@@ -9,11 +9,7 @@
 
 #pragma once
 #include <JuceHeader.h>
-<<<<<<< HEAD:Source/GUI/Controls/Dials/GainDial.h
 #include "../BaseTypes/RotaryDial.h"
-=======
-#include "CustomSliderBase.h"
->>>>>>> master:Source/GUI/Controls/GainDial.h
 
 namespace GUI::Controls::Dials
 {
@@ -22,12 +18,7 @@ namespace GUI::Controls::Dials
 	/// A custom dial for Gain-specific parameters.
 	/// </summary>
 	class GainDial
-<<<<<<< HEAD:Source/GUI/Controls/Dials/GainDial.h
 		: public BaseTypes::RotaryDial
-=======
-		: public juce::Slider
-		, public CustomSliderBase
->>>>>>> master:Source/GUI/Controls/GainDial.h
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 		GainDial(
@@ -36,15 +27,11 @@ namespace GUI::Controls::Dials
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
-<<<<<<< HEAD:Source/GUI/Controls/Dials/GainDial.h
 			const float _defaultValue = 0.0f,
 			const float _rangeMin = -12.0f,
 			const float _rangeMax = 12.0f,
 			const float _rangeInterval = 0.0f);
-=======
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel = nullptr);
->>>>>>> master:Source/GUI/Controls/GainDial.h
+
 		~GainDial();
 
 		void paint(juce::Graphics& g) override;

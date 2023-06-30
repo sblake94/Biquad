@@ -2,44 +2,44 @@
 	==========================================================================================
 
 	@Author : SBlake
-	This class describes a Gain Slider with prebaked customizations for this project.
+	This class describes a binary state button that can be latched on or off
 
 	==========================================================================================
 */
 
 #pragma once
-#include <JuceHeader.h>
-#include "../BaseTypes/RotaryDial.h"
 
-namespace GUI::Controls::Dials
+#include <JuceHeader.h>
+#include "../BaseTypes/LatchButton.h"
+
+namespace GUI::Controls::Buttons
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// A custom dial for Gain-specific parameters.
+	/// A button that can be latched on or off
 	/// </summary>
-	class GainDial
-		: public BaseTypes::RotaryDial
+	class EngageButton
+		: public BaseTypes::LatchButton
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
-		GainDial(
+
+		EngageButton(
 			juce::ParameterID _parameterID,
 			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
-			const float _defaultValue = 0.0f,
-			const float _rangeMin = -12.0f,
-			const float _rangeMax = 12.0f,
-			const float _rangeInterval = 0.0f);
-		~GainDial();
+			bool _isEngaged = false
+		);
+		~EngageButton();
 
 		void paint(juce::Graphics& g) override;
 
-	private: /////////////////////////////////////////////////////////////////////////////////////////
-		const int m_textBoxHeight = 12;
-		const int m_textBoxWidth = 50;
-		const int m_labelFontSize = 18;
+		const char* m_labelText;
+		int m_xPos, m_yPos;
 
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GainDial)
+	private: /////////////////////////////////////////////////////////////////////////////////////////
+
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngageButton);
 	};
 }

@@ -14,9 +14,14 @@
 #include "Controls/Dials/FrequencyDial.h"
 #include "Controls/Dials/GainDial.h"
 #include "Controls/Dials/BandwidthDial.h"
-#include "Controls/Buttons/LatchButton.h"
+#include "Controls/Buttons/EngageButton.h"
+#include "Controls/BaseTypes/RotaryDial.h"
+#include "Controls/BaseTypes/LatchButton.h"
+#include "Controls/BaseTypes/CustomControlBase.h"
 
 using namespace GUI::Controls;
+using namespace GUI::Controls::Dials;
+using namespace GUI::Controls::Buttons;
 
 namespace GUI
 {
@@ -37,8 +42,9 @@ namespace GUI
 		void paint(juce::Graphics& _graphics);
 		void resized(const int _newWidth, const int _newHeight);
 
-		const std::vector<juce::Component*> GetAllSliders();
-		const std::vector<juce::Component*> GetAllButtons();
+		const std::vector<BaseTypes::RotaryDial*> GetAllRotaryDials();
+		const std::vector<BaseTypes::LatchButton*> GetAllLatchButtons();
+		const std::vector<BaseTypes::CustomControlBase*> GetAllCustomControls();
 
 	private: /////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial m_highFreqSlider;
@@ -53,7 +59,8 @@ namespace GUI
 		BandwidthDial m_midBandwidthSlider;
 		BandwidthDial m_lowBandwidthSlider;
 
-		LatchButton m_engageHeatButton;
+		EngageButton m_engageHeatButton;
+		EngageButton m_masterBypassButton;
 
 		const int m_margin = 20;
 		const int m_controlGridSizeX = 6;

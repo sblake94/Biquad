@@ -1,30 +1,31 @@
 #pragma once
 #include <JuceHeader.h>
-#include "../CustomControlBase.h"
+#include "../BaseTypes/RotaryDial.h"
 
-namespace GUI::Controls
+namespace GUI::Controls::Dials
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// A dial for controlling the bandwidth of a filter.
 	/// </summary>
 	class BandwidthDial
-		: public juce::Slider
-		, public CustomControlBase
+		: public BaseTypes::RotaryDial
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 		BandwidthDial(
+			juce::ParameterID _parameterID,
+			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel = nullptr);
+			const float _defaultValue = 1.0f,
+			const float _rangeMin = 0.001f,
+			const float _rangeMax = 8.0f,
+			const float _rangeInterval = 0.0f);
 		~BandwidthDial();
 
 		void paint(juce::Graphics& g) override;
 
-		const char* m_labelText;
-		int m_xPos, m_yPos;
 
 	private: /////////////////////////////////////////////////////////////////////////////////////////
 		const int m_textBoxHeight = 12;

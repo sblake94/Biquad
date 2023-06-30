@@ -19,16 +19,17 @@ namespace GUI
 	)
 		: m_controlAreaHeight(_windowHeight - 2 * m_margin)
 		, m_controlAreaWidth(_windowWidth - 2 * m_margin)
-		, m_lowFreqSlider(FrequencyDial("LowFreq", 1, 0, Processing::s_lowFreqCutoffParamID, _lookAndFeelPtr))
-		, m_midFreqSlider(FrequencyDial("MidFreq", 2, 0, Processing::s_midFreqCutoffParamID, _lookAndFeelPtr))
-		, m_highFreqSlider(FrequencyDial("HiFreq", 3, 0, Processing::s_highFreqCutoffParamID, _lookAndFeelPtr))
-		, m_lowGainSlider(GainDial("LowGain", 1, 1, Processing::s_lowGainParamID, _lookAndFeelPtr))
-		, m_midGainSlider(GainDial("MidGain", 2, 1, Processing::s_midGainParamID, _lookAndFeelPtr))
-		, m_highGainSlider(GainDial("HiGain", 3, 1, Processing::s_highGainParamID, _lookAndFeelPtr))
-		, m_lowBandwidthSlider(BandwidthDial("LowBW", 1, 2, Processing::s_lowBandwidthParamID, _lookAndFeelPtr))
-		, m_midBandwidthSlider(BandwidthDial("MidBW", 2, 2, Processing::s_midBandwidthParamID, _lookAndFeelPtr))
-		, m_highBandwidthSlider(BandwidthDial("HighBW", 3, 2, Processing::s_highBandwidthParamID, _lookAndFeelPtr))
-		, m_engageHeatButton(LatchButton("EngageHeat", 4, 0, Processing::s_engageHeatParamID, _lookAndFeelPtr))
+		, m_lowFreqSlider(FrequencyDial(Processing::s_lowFreqCutoffParamID, _lookAndFeelPtr, "LowFreq", 1, 0, 100.0f, 20.0f, 1000.0f))
+		, m_midFreqSlider(FrequencyDial(Processing::s_midFreqCutoffParamID, _lookAndFeelPtr, "MidFreq", 2, 0, 500.0f, 100.0f, 10000.0f))
+		, m_highFreqSlider(FrequencyDial(Processing::s_highFreqCutoffParamID, _lookAndFeelPtr, "HighFreq", 3, 0, 10000.0f, 500.0f, 20000.0f))
+		, m_lowGainSlider(GainDial(Processing::s_lowGainParamID, _lookAndFeelPtr, "LowGain", 1, 1, 0.0f, -24.0f, 24.0f, 0.0f))
+		, m_midGainSlider(GainDial(Processing::s_midGainParamID, _lookAndFeelPtr, "MidGain", 2, 1, 0.0f, -24.0f, 24.0f, 0.0f))
+		, m_highGainSlider(GainDial(Processing::s_highGainParamID, _lookAndFeelPtr, "HighGain", 3, 1, 0.0f, -24.0f, 24.0f, 0.0f))
+		, m_lowBandwidthSlider(BandwidthDial(Processing::s_lowBandwidthParamID, _lookAndFeelPtr, "LowBandWidth", 1, 2))
+		, m_midBandwidthSlider(BandwidthDial(Processing::s_midBandwidthParamID, _lookAndFeelPtr, "MidBandWidth", 2, 2))
+		, m_highBandwidthSlider(BandwidthDial(Processing::s_highBandwidthParamID, _lookAndFeelPtr, "HighBandWidth", 3, 2))
+		, m_engageHeatButton(EngageButton(Processing::s_engageHeatParamID, _lookAndFeelPtr, "Engage Heat", 4, 0))
+		, m_masterBypassButton(EngageButton(Processing::s_masterBypassParamID, _lookAndFeelPtr, "Bypass", 5, 0))
 	{
 		
 	}
@@ -47,7 +48,10 @@ namespace GUI
 	/// </summary>
 	void ControlManager::paint(juce::Graphics& _graphics)
 	{
-		m_highFreqSlider.paint(_graphics);
+		for (auto* item : this->GetAllCustomControls())
+		{
+			((juce::Component*)item)->paint(_graphics);
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -78,66 +82,23 @@ namespace GUI
 		};
 
 		// Iterate over your controls and set their positions
-		m_highFreqSlider.setBounds(
-			controlXPos(m_highFreqSlider.m_xPos),
-			controlYPos(m_highFreqSlider.m_yPos),
-			cellWidth,
-			cellHeight);
+		for (auto* rotaryDial : GetAllRotaryDials())
+		{
+			rotaryDial->setBounds(
+				controlXPos(rotaryDial->m_xPos),
+				controlYPos(rotaryDial->m_yPos),
+				cellWidth,
+				cellHeight);
+		}
 
-		m_midFreqSlider.setBounds(
-			controlXPos(m_midFreqSlider.m_xPos),
-			controlYPos(m_midFreqSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_lowFreqSlider.setBounds(
-			controlXPos(m_lowFreqSlider.m_xPos),
-			controlYPos(m_lowFreqSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_highGainSlider.setBounds(
-			controlXPos(m_highGainSlider.m_xPos),
-			controlYPos(m_highGainSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_midGainSlider.setBounds(
-			controlXPos(m_midGainSlider.m_xPos),
-			controlYPos(m_midGainSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_lowGainSlider.setBounds(
-			controlXPos(m_lowGainSlider.m_xPos),
-			controlYPos(m_lowGainSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_highBandwidthSlider.setBounds(
-			controlXPos(m_highBandwidthSlider.m_xPos),
-			controlYPos(m_highBandwidthSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_midBandwidthSlider.setBounds(
-			controlXPos(m_midBandwidthSlider.m_xPos),
-			controlYPos(m_midBandwidthSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_lowBandwidthSlider.setBounds(
-			controlXPos(m_lowBandwidthSlider.m_xPos),
-			controlYPos(m_lowBandwidthSlider.m_yPos),
-			cellWidth,
-			cellHeight);
-
-		m_engageHeatButton.setBounds(
-			controlXPos(m_engageHeatButton.m_xPos),
-			controlYPos(m_engageHeatButton.m_yPos),
-			cellWidth,
-			cellHeight);
-
+		for (auto* latchButton : GetAllLatchButtons())
+		{
+			latchButton->setBounds(
+				controlXPos(latchButton->m_xPos),
+				controlYPos(latchButton->m_yPos),
+				cellWidth,
+				cellHeight);
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -145,9 +106,9 @@ namespace GUI
 	/// Returns a vector of pointers to all controls.
 	/// </summary>
 	/// <returns>Vector of Component*</returns>
-	const std::vector<juce::Component*> ControlManager::GetAllSliders()
+	const std::vector<BaseTypes::RotaryDial*> ControlManager::GetAllRotaryDials()
 	{
-		std::vector<juce::Component*> result;
+		std::vector<BaseTypes::RotaryDial*> result;
 
 		result.push_back(&m_lowFreqSlider);
 		result.push_back(&m_midFreqSlider);
@@ -169,11 +130,19 @@ namespace GUI
 	/// Returns a vector of pointers to all buttons.
 	/// </summary>
 	/// <returns>Vector of Component*</returns>
-	const std::vector<juce::Component*> ControlManager::GetAllButtons()
+	const std::vector<BaseTypes::LatchButton*> ControlManager::GetAllLatchButtons()
 	{
-		std::vector<juce::Component*> result;
+		std::vector<BaseTypes::LatchButton*> result;
 
 		result.push_back(&m_engageHeatButton);
+
+		return result;
+	}
+	const std::vector<BaseTypes::CustomControlBase*> ControlManager::GetAllCustomControls()
+	{
+		std::vector<BaseTypes::CustomControlBase*> result;
+
+		
 
 		return result;
 	}

@@ -1,6 +1,6 @@
 #include "FrequencyDial.h"
 
-using namespace GUI::Controls;
+using namespace GUI::Controls::Dials;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /// <summary>
@@ -13,27 +13,29 @@ using namespace GUI::Controls;
 /// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 FrequencyDial::FrequencyDial
 (
+	juce::ParameterID _parameterID,
+	juce::LookAndFeel* _lookAndFeel,
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
-	juce::ParameterID _parameterID,
-	juce::LookAndFeel* _lookAndFeel
+	const float _defaultValue,
+	const float _rangeMin,
+	const float _rangeMax
 )
-	: juce::Slider(_labelText)
-	, CustomControlBase(_parameterID)
-	, m_labelText(_labelText)
-	, m_xPos(_xPos)
-	, m_yPos(_yPos)
+	: BaseTypes::RotaryDial(
+		_rangeMin,
+		_rangeMax,
+		0.0f,
+		_defaultValue,
+		_labelText,
+		_xPos,
+		_yPos,
+		_parameterID,
+		_lookAndFeel)
 {
-	this->setRange(20.0, 20000.0, 0.0);
-	this->setValue(20000.0);
-	this->setSkewFactorFromMidPoint(2000.0);
+	this->setSkewFactor(0.29f);
 	this->setNumDecimalPlacesToDisplay(0);
-	this->setTooltip(_labelText);
 	
-	this->setComponentID(_labelText);
-	
-	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
 	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
 
 	if(_lookAndFeel != nullptr)
@@ -55,18 +57,10 @@ FrequencyDial::~FrequencyDial()
 /// <param name="g">The Graphics unit to be used to draw the dial</param>
 void FrequencyDial::paint(juce::Graphics& g)
 {
-	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
-	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
-	
+	BaseTypes::RotaryDial::paint(g);
+
 	const int sliderTop = m_textBoxHeight;
 	const juce::Rectangle<int> sliderBounds(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
-	juce::Slider::paint(g);
-
-	const juce::String valueText(m_labelText);
-	juce::Font font(18);
-	g.setColour(lookAndFeel.findColour(juce::Slider::textBoxTextColourId));
-	g.setFont(font);
-	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

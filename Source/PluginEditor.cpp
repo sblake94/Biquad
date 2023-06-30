@@ -9,7 +9,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "GUI/CustomLookAndFeel.h"
-#include "GUI/Controls/CustomControlBase.h"
+#include "GUI/Controls/BaseTypes/CustomControlBase.h"
 
 #include <stdlib.h>
 #include <map>
@@ -31,16 +31,16 @@ BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     setResizable(false, false);
     
     // Make all controls visible
-    for (juce::Component* dialPtr : m_controlManager.GetAllSliders())
+    for (BaseTypes::RotaryDial* dialPtr : m_controlManager.GetAllRotaryDials())
     {
-        addAndMakeVisible(dialPtr);
-        dynamic_cast<juce::Slider*>(dialPtr)->addListener(this);
+        addAndMakeVisible(dynamic_cast<juce::Slider*>(dialPtr));
+        dialPtr->addListener(this);
     }
 
-    for (juce::Component* buttonPtr : m_controlManager.GetAllButtons())
+    for (BaseTypes::LatchButton* buttonPtr : m_controlManager.GetAllLatchButtons())
     {
-        addAndMakeVisible(buttonPtr);
-        dynamic_cast<juce::Button*>(buttonPtr)->addListener(this);
+        addAndMakeVisible(dynamic_cast<juce::ToggleButton*>(buttonPtr));
+        buttonPtr->addListener(this);
     }
 }
 
@@ -73,7 +73,7 @@ void BiquadAudioProcessorEditor::resized()
 void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 {
     // Get the slider's ID
-    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::CustomControlBase*>(slider)->m_id;
+    juce::ParameterID sliderID = dynamic_cast<Controls::BaseTypes::CustomControlBase*>(slider)->m_id;
 
 	// Get the slider's value
 	float sliderValue = slider->getValue();
@@ -96,7 +96,7 @@ void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 void BiquadAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     // Get the button's ID
-	juce::ParameterID buttonID = dynamic_cast<GUI::Controls::CustomControlBase*>(button)->m_id;
+	juce::ParameterID buttonID = dynamic_cast<GUI::Controls::BaseTypes::CustomControlBase*>(button)->m_id;
 
 	// Get the button's value
 	bool buttonValue = button->getToggleState();

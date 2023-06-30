@@ -10,26 +10,28 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "../CustomControlBase.h"
+#include "../BaseTypes/CustomControlBase.h"
+#include "../BaseTypes/RotaryDial.h"
 
-namespace GUI::Controls
+namespace GUI::Controls::Dials
 {	
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// A custom dial for frequency parameters.
 	/// </summary>
 	class FrequencyDial
-		: public juce::Slider
-		, public CustomControlBase
+		: public BaseTypes::RotaryDial
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial(
+			juce::ParameterID _parameterID,
+			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel = nullptr
-		);
+			const float _defaultValue,
+			const float _rangeMin = 20.0f,
+			const float _rangeMax = 20000.0f);
 		~FrequencyDial();
 		
 		void paint(juce::Graphics& g) override;

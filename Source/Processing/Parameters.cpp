@@ -15,9 +15,9 @@ Parameters::Parameters()
 	, m_lowGain(ParameterID(s_lowGainParamID), juce::String("Low Gain"), -24.0f, 24.0f, 0.0f)
 	, m_midGain(ParameterID(s_midGainParamID), juce::String("Mid Gain"), -24.0f, 24.0f, 0.0f)
 	, m_highGain(ParameterID(s_highGainParamID), juce::String("High Gain"), -24.0f, 24.0f, 0.0f)
-	, m_lowBandwidth(ParameterID(s_lowBandwidthParamID), juce::String("Low Bandwidth"), 0.001f, 1.0f, 0.001f)
-	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 1.0f, 0.001f)
-	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 1.0f, 0.001f)
+	, m_lowBandwidth(ParameterID(s_lowBandwidthParamID), juce::String("Low Bandwidth"), 0.001f, 8.0f, 0.001f)
+	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 8.0f, 0.001f)
+	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 8.0f, 0.001f)
 	, m_engageHeat(ParameterID(s_engageHeatParamID), juce::String("Engage Heat"), false)
 {
 	m_floatParams = FloatParamDirectory

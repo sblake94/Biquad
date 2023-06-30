@@ -24,6 +24,7 @@ namespace Processing
 	static const int s_midBandwidthParamID(7);
 	static const int s_highBandwidthParamID(8);
 	static const int s_engageHeatParamID(9);
+	static const int s_masterBypassParamID(10);
 
 	//////////////////////////////////////////////////////////////////////
 	/// <summary>

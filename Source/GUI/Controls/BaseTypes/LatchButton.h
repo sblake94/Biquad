@@ -1,47 +1,31 @@
-/*
-	==========================================================================================
-
-	@Author : SBlake
-	This class describes a binary state button that can be latched on or off
-
-	==========================================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
-#include "../CustomControlBase.h"
+#include "../BaseTypes/CustomControlBase.h"
 
-namespace GUI::Controls 
+namespace GUI::Controls::BaseTypes
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// A button that can be latched on or off
+	/// A base class for a button that can be latched on or off. Can also be instantiated itself
 	/// </summary>
 	class LatchButton
 		: public juce::ToggleButton
 		, public CustomControlBase
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
-
 		LatchButton(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			const bool _isLatched,
 			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel = nullptr
-		);
+			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~LatchButton();
 
 		void paint(juce::Graphics& g) override;
 
-		const char* m_labelText;
-		int m_xPos, m_yPos;
-
-	private: /////////////////////////////////////////////////////////////////////////////////////////
-		void SetParameterID(const juce::ParameterID _parameterID);
-		juce::ParameterID m_parameterID;
-
+	private://///////////////////////////////////////////////////////////////////////////////////////
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;

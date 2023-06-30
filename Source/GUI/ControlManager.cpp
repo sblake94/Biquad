@@ -138,11 +138,25 @@ namespace GUI
 
 		return result;
 	}
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Returns a vector of pointers to all controls.
+	/// </summary>
+	/// <returns>Vector of Component*</returns>
 	const std::vector<BaseTypes::CustomControlBase*> ControlManager::GetAllCustomControls()
 	{
 		std::vector<BaseTypes::CustomControlBase*> result;
 
-		
+		for (BaseTypes::RotaryDial* rotaryDialPtr : GetAllRotaryDials())
+		{
+			result.push_back(dynamic_cast<BaseTypes::CustomControlBase*>(rotaryDialPtr));
+		}
+
+		for (BaseTypes::LatchButton* latchButtonPtr : GetAllLatchButtons())
+		{
+			result.push_back(dynamic_cast<BaseTypes::CustomControlBase*>(latchButtonPtr));
+		}
 
 		return result;
 	}

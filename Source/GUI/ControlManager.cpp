@@ -44,21 +44,11 @@ namespace GUI
 
 	/////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// Distributes the paint call to all components.
+	/// Paint the ControlManager.
 	/// </summary>
 	void ControlManager::paint(juce::Graphics& _graphics)
 	{
-		for (juce::Component* item : this->GetAllCustomControls())
-		{
-			try
-			{
-				item->paint(_graphics);
-			}
-			catch (const std::exception& e)
-			{
-				std::cout << e.what() << std::endl;
-			}
-		}
+		
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////

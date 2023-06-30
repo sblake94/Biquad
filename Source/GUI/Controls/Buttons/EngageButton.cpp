@@ -46,6 +46,4 @@ EngageButton::~EngageButton()
 void EngageButton::paint(juce::Graphics& g)
 {
 	BaseTypes::LatchButton::paint(g);
-
-
 }

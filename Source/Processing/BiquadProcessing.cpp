@@ -91,8 +91,8 @@ void BiquadProcessing::ProcessReplacing
 	// Remove Heat Curve
 	if (heatEngaged)
 	{ 
-		/*RemoveCurve(tempBuffer, _sampleFrames);
-		ApplyGain(tempBuffer, 2.0f - (_params.GetSliderParams()[s_heatGainParamID]->get()), _sampleFrames);*/
+		RemoveCurve(tempBuffer);
+		ApplyGainDB(tempBuffer, -(_params.GetSliderParams()[s_heatGainParamID]->get()));
 	}
 	
 	Clip(tempBuffer, -1.0, 1.0);
@@ -114,11 +114,11 @@ void BiquadProcessing::ApplyCurve(juce::AudioSampleBuffer& _buffer)
 	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
 		// Get the sample
-		float sampleL = _buffer.getSample(0, sampleIdx);
-		float sampleR = _buffer.getSample(1, sampleIdx);
+		double sampleL = _buffer.getSample(0, sampleIdx);
+		double sampleR = _buffer.getSample(1, sampleIdx);
 				
-		sampleL = sinf(sampleL * 0.5f * MathConstants<float>::pi);
-		sampleR = sinf(sampleR * 0.5f * MathConstants<float>::pi);
+		sampleL = sin(sampleL);
+		sampleR = sin(sampleR);
 
 		_buffer.setSample(0, sampleIdx, sampleL);
 		_buffer.setSample(1, sampleIdx, sampleR);
@@ -138,11 +138,11 @@ void BiquadProcessing::RemoveCurve(juce::AudioSampleBuffer& _buffer)
 	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
 		// Get the sample
-		float sampleL = _buffer.getSample(0, sampleIdx);
-		float sampleR = _buffer.getSample(1, sampleIdx);
+		double sampleL = _buffer.getSample(0, sampleIdx);
+		double sampleR = _buffer.getSample(1, sampleIdx);
 
-		sampleL = asinf(sampleL) / (0.5f * MathConstants<float>::pi);
-		sampleR = asinf(sampleR) / (0.5f * MathConstants<float>::pi);
+		sampleL = asin(sampleL);
+		sampleR = asin(sampleR);
 
 		_buffer.setSample(0, sampleIdx, sampleL);
 		_buffer.setSample(1, sampleIdx, sampleR);

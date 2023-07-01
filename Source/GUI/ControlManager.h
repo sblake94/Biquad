@@ -71,6 +71,9 @@ namespace GUI
 		EngageButton m_engageHeatButton;
 		EngageButton m_masterBypassButton;
 
+		GainDial m_masterGainSlider;
+		GainDial m_heatGainSlider;
+
 		const int m_margin = 20;
 		const int m_controlGridSizeX = 16;
 		const int m_controlGridSizeY = 9;

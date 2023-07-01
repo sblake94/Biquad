@@ -37,10 +37,11 @@ namespace GUI
 		, m_midBandwidthSlider(BandwidthDial(Processing::s_midBandwidthParamID, _lookAndFeelPtr, "BW", 2, 5, 2, 2))
 		, m_highBandwidthSlider(BandwidthDial(Processing::s_highBandwidthParamID, _lookAndFeelPtr, "BW", 4, 5, 2, 2))
 		
-		, m_engageHeatButton(EngageButton(Processing::s_engageHeatParamID, _lookAndFeelPtr, "Heat", 10, 1, 2, 1))
-		, m_masterBypassButton(EngageButton(Processing::s_masterBypassParamID, _lookAndFeelPtr, "Bypass", 10, 0, 2, 1))
+		, m_engageHeatButton(EngageButton(Processing::s_engageHeatParamID, _lookAndFeelPtr, "Heat",			7, 4, 2, 1))
+		, m_heatGainSlider(GainDial(Processing::s_heatGainParamID, _lookAndFeelPtr, "Heat Gain",			7, 5, 2, 2, 0.0f, -12.0f, 12.0f, 0.0f))
+		, m_masterBypassButton(EngageButton(Processing::s_masterBypassParamID, _lookAndFeelPtr, "Bypass",	9, 4, 2, 1))
+		, m_masterGainSlider(GainDial(Processing::s_masterGainParamID, _lookAndFeelPtr, "Output Gain",		9, 5, 2, 2, 0.0f, -12.0f, 12.0f, 0.0f))
 	{
-		
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -163,6 +164,9 @@ namespace GUI
 		result.push_back(&m_midBandwidthSlider);
 		result.push_back(&m_highBandwidthSlider);
 
+		result.push_back(&m_masterGainSlider);
+		// result.push_back(&m_heatGainSlider);
+
 		return result;
 	}
 
@@ -175,7 +179,7 @@ namespace GUI
 	{
 		std::vector<BaseTypes::LatchButton*> result;
 
-		result.push_back(&m_engageHeatButton);
+		// result.push_back(&m_engageHeatButton);
 		result.push_back(&m_masterBypassButton);
 
 		result.push_back(&m_lowShelfBypass);
@@ -259,7 +263,10 @@ namespace GUI
 		result.push_back(std::vector<juce::Component*>
 		{
 			dynamic_cast<juce::Component*>(&m_masterBypassButton),
-			dynamic_cast<juce::Component*>(&m_engageHeatButton)
+			dynamic_cast<juce::Component*>(&m_masterGainSlider),
+
+			//dynamic_cast<juce::Component*>(&m_engageHeatButton),
+			//dynamic_cast<juce::Component*>(&m_heatGainSlider)
 		});
 
 		return result;

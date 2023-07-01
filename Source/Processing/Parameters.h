@@ -28,6 +28,8 @@ namespace Processing
 	static const int s_highBandBypassParamID(11);
 	static const int s_midBandBypassParamID(12);
 	static const int s_lowBandBypassParamID(13);
+	static const int s_masterGainParamID(14);
+	static const int s_heatGainParamID(15);
 
 	//////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -62,7 +64,10 @@ namespace Processing
 		AudioParameterFloat m_midBandwidth;
 		AudioParameterFloat m_highBandwidth;
 
-		AudioParameterBool m_engageHeat;
 		AudioParameterBool m_masterBypass;
+		AudioParameterFloat m_masterGain;
+
+		AudioParameterBool m_engageHeat;
+		AudioParameterFloat m_heatGain;
 	};
 }

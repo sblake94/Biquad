@@ -26,8 +26,11 @@ Parameters::Parameters()
 	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 8.0f, 0.001f)
 	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 8.0f, 0.001f)
 	
-	, m_engageHeat(ParameterID(s_engageHeatParamID), juce::String("Engage Heat"), false)
 	, m_masterBypass(ParameterID(s_masterBypassParamID), juce::String("Master Bypass"), false)
+	, m_masterGain(ParameterID(s_masterGainParamID), juce::String("Master Gain"), -24.0f, 24.0f, 0.0f)
+
+	, m_engageHeat(ParameterID(s_engageHeatParamID), juce::String("Engage Heat"), false)
+	, m_heatGain(ParameterID(s_heatGainParamID), juce::String("Heat Gain"), -6.0f, 6.0f, 0.0f)
 {
 	m_floatParams = FloatParamDirectory
 	{
@@ -41,7 +44,10 @@ Parameters::Parameters()
 
 		{ s_lowBandwidthParamID, &m_lowBandwidth },
 		{ s_midBandwidthParamID, &m_midBandwidth },
-		{ s_highBandwidthParamID, &m_highBandwidth }
+		{ s_highBandwidthParamID, &m_highBandwidth },
+
+		{ s_masterGainParamID, &m_masterGain },
+		{ s_heatGainParamID, &m_heatGain }
 	};
 
 	m_boolParams = BoolParamDirectory

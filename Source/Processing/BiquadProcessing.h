@@ -20,8 +20,8 @@ namespace Processing
 			juce::AudioBuffer<float>& _inputs,
 			juce::AudioBuffer<float>& _outputs,
 			Processing::Parameters& _params,
-			int _sampleRate,
-			int _sampleFrames
+			const int _sampleRate,
+			const int _sampleFrames
 		);
 
 		void ApplyCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames);
@@ -32,6 +32,13 @@ namespace Processing
 			juce::AudioSampleBuffer& tempBuffer,
 			float _min,
 			float _max,
+			int _sampleFrames
+		);
+
+		void ApplyGain
+		(
+			juce::AudioSampleBuffer& tempBuffer,
+			const float const& _gainDB,
 			int _sampleFrames
 		);
 

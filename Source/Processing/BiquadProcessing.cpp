@@ -28,8 +28,8 @@ void BiquadProcessing::ProcessReplacing
 	juce::AudioBuffer<float>& _inputBuffer,
 	juce::AudioBuffer<float>& _outputBuffer,
 	Parameters& _params, 
-	int _sampleRate, 
-	int _sampleFrames
+	const int _sampleRate, 
+	const int _sampleFrames
 )
 {
 	// Bypass Logic
@@ -40,47 +40,66 @@ void BiquadProcessing::ProcessReplacing
 	}
 
 	juce::AudioBuffer<float>& tempBuffer = _inputBuffer;
-	bool heatEngaged = _params.GetBoolParams()[s_engageHeatParamID]->get();
 
+	const bool heatEngaged = _params.GetBoolParams()[s_engageHeatParamID]->get();
+	const bool lowShelfEngaged = _params.GetBoolParams()[s_lowBandBypassParamID]->get();
+	const bool midPeakEngaged = _params.GetBoolParams()[s_midBandBypassParamID]->get();
+	const bool highShelfEngaged = _params.GetBoolParams()[s_highBandBypassParamID]->get();
+
+	// Apply Heat Curve
 	if (heatEngaged)
 	{
-		ApplyCurve(tempBuffer, _sampleFrames);
+		/*ApplyGain(tempBuffer, _params.GetSliderParams()[s_heatGainParamID]->get(), _sampleFrames);
+		ApplyCurve(tempBuffer, _sampleFrames);*/
 	}
 
 	// Apply High Shelf
-	m_biquadA.ApplyBiquad(
-		tempBuffer, 
-		tempBuffer, 
-		_params, 
-		BiquadUnit::FilterType::HighShelf, 
-		_sampleRate, 
-		_sampleFrames);
+	if (highShelfEngaged)
+	{
+		m_biquadA.ApplyBiquad(
+			tempBuffer, 
+			tempBuffer, 
+			_params, 
+			BiquadUnit::FilterType::HighShelf, 
+			_sampleRate, 
+			_sampleFrames);
+	}
 
 	// Apply Peak
-	m_biquadB.ApplyBiquad(
-		tempBuffer,
-		tempBuffer,
-		_params,
-		BiquadUnit::FilterType::PeakShelf,
-		_sampleRate,
-		_sampleFrames);
+	if (midPeakEngaged)
+	{
+		m_biquadB.ApplyBiquad(
+			tempBuffer,
+			tempBuffer,
+			_params,
+			BiquadUnit::FilterType::PeakShelf,
+			_sampleRate,
+			_sampleFrames);
+	}
 
 	// Apply Low Shelf
-	m_biquadC.ApplyBiquad(
-		tempBuffer,
-		tempBuffer,
-		_params,
-		BiquadUnit::FilterType::LowShelf,
-		_sampleRate,
-		_sampleFrames);
+	if (lowShelfEngaged)
+	{
+		m_biquadC.ApplyBiquad(
+			tempBuffer,
+			tempBuffer,
+			_params,
+			BiquadUnit::FilterType::LowShelf,
+			_sampleRate,
+			_sampleFrames);
+	}
 
-	// Remove Curve
+	// Remove Heat Curve
 	if (heatEngaged)
 	{ 
-		RemoveCurve(tempBuffer, _sampleFrames);
+		/*RemoveCurve(tempBuffer, _sampleFrames);
+		ApplyGain(tempBuffer, 2.0f - (_params.GetSliderParams()[s_heatGainParamID]->get()), _sampleFrames);*/
 	}
 	
 	Clip(tempBuffer, -1.0, 1.0, _sampleFrames);
+
+	// Output Gain
+	ApplyGain(tempBuffer, _params.GetSliderParams()[s_masterGainParamID]->get(), _sampleFrames);
 
 	_outputBuffer = tempBuffer;
 }
@@ -155,5 +174,35 @@ void BiquadProcessing::Clip
 		{
 			tempBuffer.setSample(0, _sampleFrames, -1.0f);
 		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Apply Gain to the buffer
+/// </summary>
+/// <param name="_buffer"></param>
+/// <param name="_gain"></param>
+/// <param name="_sampleFrames"></param>
+void BiquadProcessing::ApplyGain
+(
+	juce::AudioSampleBuffer& _buffer,
+	const float const& _gainDB,
+	int _sampleFrames
+)
+{
+	const float gain = Decibels::decibelsToGain(_gainDB);
+
+	while (--_sampleFrames > 0)
+	{
+		// Get the sample
+		float sampleL = _buffer.getSample(0, _sampleFrames);
+		float sampleR = _buffer.getSample(1, _sampleFrames);
+
+		sampleL *= gain;
+		sampleR *= gain;
+
+		_buffer.setSample(0, _sampleFrames, sampleL);
+		_buffer.setSample(1, _sampleFrames, sampleR);
 	}
 }

@@ -34,20 +34,12 @@ BiquadUnit::~BiquadUnit()
 /// <param name="_sampleFrames">The number of sample frames</param>
 void BiquadUnit::ApplyBiquad
 (
-	juce::AudioBuffer<float>& _inputBuffer,
-	juce::AudioBuffer<float>& _outputBuffer,
+	juce::AudioBuffer<float>& _buffer,
 	Processing::Parameters& _params,
 	FilterType _filterType,
-	int _sampleRate,
-	int _sampleFrames
+	int _sampleRate
 )
 {
-	// Get the pointers to the buffers
-	const float* inL = _inputBuffer.getReadPointer(0);
-	const float* inR = _inputBuffer.getReadPointer(1);
-	float* outL = _outputBuffer.getWritePointer(0);
-	float* outR = _outputBuffer.getWritePointer(1);
-
 	// Get the parameters
 	FloatParamDirectory sliderParams = _params.GetSliderParams();
 
@@ -73,10 +65,10 @@ void BiquadUnit::ApplyBiquad
 	}
 
 	// Process the samples
-	while (--_sampleFrames >= 0)
+	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
-		double inputSampleL = *inL;
-		double inputSampleR = *inR;
+		double inputSampleL = _buffer.getSample(0, sampleIdx);
+		double inputSampleR = _buffer.getSample(1, sampleIdx);
 
 		double tempSampleL =
 			(m_b0 / m_a0) * inputSampleL +
@@ -108,13 +100,8 @@ void BiquadUnit::ApplyBiquad
 		m_out2R = m_out1R;
 		m_out1R = tempSampleR;
 
-		*outL = (float)tempSampleL;
-		*outR = (float)tempSampleR;
-
-		++inL;
-		++inR;
-		++outL;
-		++outR;
+		_buffer.setSample(0, sampleIdx, tempSampleL);
+		_buffer.setSample(1, sampleIdx, tempSampleR);
 	}
 }
 

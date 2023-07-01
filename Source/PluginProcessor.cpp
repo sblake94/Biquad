@@ -160,7 +160,7 @@ void BiquadAudioProcessor::processBlock
 
     // Begin applying effects
     juce::AudioBuffer<float> tempBuffer = buffer;
-    m_biquadProc.ProcessReplacing(buffer, tempBuffer, m_parameters, getSampleRate(), buffer.getNumSamples());
+    m_biquadProc.ProcessReplacing(buffer, tempBuffer, m_parameters, getSampleRate());
     buffer = tempBuffer;
 }
 

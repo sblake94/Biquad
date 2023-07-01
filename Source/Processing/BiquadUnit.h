@@ -23,12 +23,10 @@ namespace Processing
 		};
 
 		void ApplyBiquad(
-			juce::AudioBuffer<float>& _inputBuffer,
-			juce::AudioBuffer<float>& _outputBuffer,
+			juce::AudioBuffer<float>& _buffer,
 			Processing::Parameters& _params,
 			FilterType _filterType,
-			const int _sampleRate,
-			const int _sampleFrames
+			const int _sampleRate
 		);
 
 		void SetHighShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);

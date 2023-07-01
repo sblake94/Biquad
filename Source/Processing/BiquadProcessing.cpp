@@ -9,6 +9,8 @@ using namespace Processing;
 /// </summary>
 BiquadProcessing::BiquadProcessing()
 {
+	floatingPointDitherL = 1.0; while (floatingPointDitherL < 16386) floatingPointDitherL = rand() * UINT32_MAX;
+	floatingPointDitherR = 1.0; while (floatingPointDitherR < 16386) floatingPointDitherR = rand() * UINT32_MAX;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -23,13 +25,16 @@ BiquadProcessing::~BiquadProcessing()
 /// <summary>
 /// Process the audio buffer
 /// </summary>
+/// <param name="_inputBuffer"></param>
+/// <param name="_outputBuffer"></param>
+/// <param name="_params"></param>
+/// <param name="_sampleRate"></param>
 void BiquadProcessing::ProcessReplacing
 (
 	juce::AudioBuffer<float>& _inputBuffer,
 	juce::AudioBuffer<float>& _outputBuffer,
 	Parameters& _params, 
-	const int _sampleRate, 
-	const int _sampleFrames
+	const int _sampleRate
 )
 {
 	// Bypass Logic
@@ -49,20 +54,18 @@ void BiquadProcessing::ProcessReplacing
 	// Apply Heat Curve
 	if (heatEngaged)
 	{
-		/*ApplyGain(tempBuffer, _params.GetSliderParams()[s_heatGainParamID]->get(), _sampleFrames);
-		ApplyCurve(tempBuffer, _sampleFrames);*/
+		ApplyGainDB(tempBuffer, _params.GetSliderParams()[s_heatGainParamID]->get());
+		ApplyCurve(tempBuffer);
 	}
 
 	// Apply High Shelf
 	if (highShelfEngaged)
 	{
 		m_biquadA.ApplyBiquad(
-			tempBuffer, 
-			tempBuffer, 
+			tempBuffer,
 			_params, 
 			BiquadUnit::FilterType::HighShelf, 
-			_sampleRate, 
-			_sampleFrames);
+			_sampleRate);
 	}
 
 	// Apply Peak
@@ -70,11 +73,9 @@ void BiquadProcessing::ProcessReplacing
 	{
 		m_biquadB.ApplyBiquad(
 			tempBuffer,
-			tempBuffer,
 			_params,
 			BiquadUnit::FilterType::PeakShelf,
-			_sampleRate,
-			_sampleFrames);
+			_sampleRate);
 	}
 
 	// Apply Low Shelf
@@ -82,11 +83,9 @@ void BiquadProcessing::ProcessReplacing
 	{
 		m_biquadC.ApplyBiquad(
 			tempBuffer,
-			tempBuffer,
 			_params,
 			BiquadUnit::FilterType::LowShelf,
-			_sampleRate,
-			_sampleFrames);
+			_sampleRate);
 	}
 
 	// Remove Heat Curve
@@ -96,10 +95,10 @@ void BiquadProcessing::ProcessReplacing
 		ApplyGain(tempBuffer, 2.0f - (_params.GetSliderParams()[s_heatGainParamID]->get()), _sampleFrames);*/
 	}
 	
-	Clip(tempBuffer, -1.0, 1.0, _sampleFrames);
+	Clip(tempBuffer, -1.0, 1.0);
 
 	// Output Gain
-	ApplyGain(tempBuffer, _params.GetSliderParams()[s_masterGainParamID]->get(), _sampleFrames);
+	ApplyGainDB(tempBuffer, _params.GetSliderParams()[s_masterGainParamID]->get());
 
 	_outputBuffer = tempBuffer;
 }
@@ -110,19 +109,19 @@ void BiquadProcessing::ProcessReplacing
 /// </summary>
 /// <param name="_buffer"></param>
 /// <param name="_sampleFrames"></param>
-void BiquadProcessing::ApplyCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames)
+void BiquadProcessing::ApplyCurve(juce::AudioSampleBuffer& _buffer)
 {
-	while (--_sampleFrames > 0)
+	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
 		// Get the sample
-		float sampleL = _buffer.getSample(0, _sampleFrames);
-		float sampleR = _buffer.getSample(1, _sampleFrames);
+		float sampleL = _buffer.getSample(0, sampleIdx);
+		float sampleR = _buffer.getSample(1, sampleIdx);
 				
 		sampleL = sinf(sampleL * 0.5f * MathConstants<float>::pi);
 		sampleR = sinf(sampleR * 0.5f * MathConstants<float>::pi);
 
-		_buffer.setSample(0, _sampleFrames, sampleL);
-		_buffer.setSample(1, _sampleFrames, sampleR);
+		_buffer.setSample(0, sampleIdx, sampleL);
+		_buffer.setSample(1, sampleIdx, sampleR);
 	}
 }
 
@@ -132,21 +131,21 @@ void BiquadProcessing::ApplyCurve(juce::AudioSampleBuffer& _buffer, int _sampleF
 /// </summary>
 /// <param name="_buffer"></param>
 /// <param name="_sampleFrames"></param>
-void BiquadProcessing::RemoveCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames)
+void BiquadProcessing::RemoveCurve(juce::AudioSampleBuffer& _buffer)
 {
-	Clip(_buffer, -1.0, 1.0, _sampleFrames);
+	Clip(_buffer, -1.0, 1.0);
 
-	while (--_sampleFrames > 0)
+	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
 		// Get the sample
-		float sampleL = _buffer.getSample(0, _sampleFrames);
-		float sampleR = _buffer.getSample(1, _sampleFrames);
+		float sampleL = _buffer.getSample(0, sampleIdx);
+		float sampleR = _buffer.getSample(1, sampleIdx);
 
 		sampleL = asinf(sampleL) / (0.5f * MathConstants<float>::pi);
 		sampleR = asinf(sampleR) / (0.5f * MathConstants<float>::pi);
 
-		_buffer.setSample(0, _sampleFrames, sampleL);
-		_buffer.setSample(1, _sampleFrames, sampleR);
+		_buffer.setSample(0, sampleIdx, sampleL);
+		_buffer.setSample(1, sampleIdx, sampleR);
 	}
 }
 
@@ -154,26 +153,29 @@ void BiquadProcessing::RemoveCurve(juce::AudioSampleBuffer& _buffer, int _sample
 /// <summary>
 /// Clip the output to prevent amplitude spikes
 /// </summary>
-/// <param name="_sampleFrames"></param>
-/// <param name="tempBuffer"></param>
+/// <param name="_buffer"></param>
+/// <param name="_min"></param>
+/// <param name="_max"></param>
 void BiquadProcessing::Clip
 (
-	juce::AudioSampleBuffer& tempBuffer, 
-	float _min,
-	float _max,
-	int _sampleFrames
+	juce::AudioSampleBuffer& _buffer,
+	double _min,
+	double _max
 )
 {
-	while (--_sampleFrames > 0)
+	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
-		if (tempBuffer.getSample(0, _sampleFrames) > 1.0f)
-		{
-			tempBuffer.setSample(0, _sampleFrames, 1.0f);
-		}
-		else if (tempBuffer.getSample(0, _sampleFrames) < -1.0f)
-		{
-			tempBuffer.setSample(0, _sampleFrames, -1.0f);
-		}
+		// Get the sample
+		double sampleL = _buffer.getSample(0, sampleIdx);
+		double sampleR = _buffer.getSample(1, sampleIdx);
+
+		if (sampleL > _max) sampleL = _max;
+		if (sampleL < _min) sampleL = _min;
+		if (sampleR > _max) sampleR = _max;
+		if (sampleR < _min) sampleR = _min;
+
+		_buffer.setSample(0, sampleIdx, sampleL);
+		_buffer.setSample(1, sampleIdx, sampleR);
 	}
 }
 
@@ -182,27 +184,57 @@ void BiquadProcessing::Clip
 /// Apply Gain to the buffer
 /// </summary>
 /// <param name="_buffer"></param>
-/// <param name="_gain"></param>
-/// <param name="_sampleFrames"></param>
-void BiquadProcessing::ApplyGain
+/// <param name="_gainDB"></param>
+void BiquadProcessing::ApplyGainDB
 (
 	juce::AudioSampleBuffer& _buffer,
-	const float const& _gainDB,
-	int _sampleFrames
+	const float const& _gainDB
 )
 {
-	const float gain = Decibels::decibelsToGain(_gainDB);
+	const double gain = Decibels::decibelsToGain(_gainDB);
 
-	while (--_sampleFrames > 0)
+	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
 		// Get the sample
-		float sampleL = _buffer.getSample(0, _sampleFrames);
-		float sampleR = _buffer.getSample(1, _sampleFrames);
+		double sampleL = _buffer.getSample(0, sampleIdx);
+		double sampleR = _buffer.getSample(1, sampleIdx);
+
+		if(fabs(sampleL) < 1.018e-23) sampleL = floatingPointDitherL * 1.18e-17;
+		if(fabs(sampleR) < 1.018e-23) sampleR = floatingPointDitherR * 1.18e-17;
 
 		sampleL *= gain;
 		sampleR *= gain;
 
-		_buffer.setSample(0, _sampleFrames, sampleL);
-		_buffer.setSample(1, _sampleFrames, sampleR);
+		DitherStereoSample(sampleL, sampleR);
+
+		_buffer.setSample(0, sampleIdx, sampleL);
+		_buffer.setSample(1, sampleIdx, sampleR);
 	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// The following Dither function is based on a technique designbed by Chris from Airwindows, 
+/// many thanks @Chris for his open-source wonder-code!
+/// This dither technique is applied in most, if not all, of his plugins.
+/// Please check out his work at: https://www.airwindows.com/
+/// Or his github at: https://github.com/airwindows/airwindows
+/// </summary>
+/// <param name="sampleL"></param>
+/// <param name="sampleR"></param>
+void BiquadProcessing::DitherStereoSample(double& sampleL, double& sampleR)
+{
+	int exponent;
+
+	frexpf((float)sampleL, &exponent);
+	floatingPointDitherL ^= floatingPointDitherL << 13;
+	floatingPointDitherL ^= floatingPointDitherL >> 17;
+	floatingPointDitherL ^= floatingPointDitherL << 5;
+	sampleL += ((double(floatingPointDitherL) - uint32_t(0x7fffffff)) * 5.5e-361 * pow(2, exponent + 62));
+
+	frexpf((float)sampleR, &exponent);
+	floatingPointDitherR ^= floatingPointDitherR << 13;
+	floatingPointDitherR ^= floatingPointDitherR >> 17;
+	floatingPointDitherR ^= floatingPointDitherR << 5;
+	sampleR += ((double(floatingPointDitherR) - uint32_t(0x7fffffff)) * 5.5e-361 * pow(2, exponent + 62));
 }

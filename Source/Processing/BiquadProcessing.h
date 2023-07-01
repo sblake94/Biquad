@@ -8,10 +8,18 @@ namespace Processing
 	///////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// Dedicated class for holding all DSP logic
+	/// In this class we use a dithering tecnique designed by Chris from Airwindows.
+	/// Credit for the technique goes to him.
+	/// 
+	/// Please check his website and github for more info:
+	/// https://www.airwindows.com/
+	/// https://github.com/airwindows/airwindows
+	/// 
 	/// </summary>
 	class BiquadProcessing
 	{
 	public: //////////////////////////////////////////////////////////////////
+
 		BiquadProcessing();
 		~BiquadProcessing();
 
@@ -20,31 +28,34 @@ namespace Processing
 			juce::AudioBuffer<float>& _inputs,
 			juce::AudioBuffer<float>& _outputs,
 			Processing::Parameters& _params,
-			const int _sampleRate,
-			const int _sampleFrames
+			const int _sampleRate
 		);
 
-		void ApplyCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames);
-		void RemoveCurve(juce::AudioSampleBuffer& _buffer, int _sampleFrames);
+		void ApplyCurve(juce::AudioSampleBuffer& _buffer);
+		void RemoveCurve(juce::AudioSampleBuffer& _buffer);
 
 		void Clip
 		(
-			juce::AudioSampleBuffer& tempBuffer,
-			float _min,
-			float _max,
-			int _sampleFrames
+			juce::AudioSampleBuffer& _buffer,
+			double _min,
+			double _max
 		);
 
-		void ApplyGain
+		void ApplyGainDB
 		(
-			juce::AudioSampleBuffer& tempBuffer,
-			const float const& _gainDB,
-			int _sampleFrames
+			juce::AudioSampleBuffer& _buffer,
+			const float const& _gainDB
 		);
+
+		void DitherStereoSample(double& sampleL, double& sampleR);
 
 	private://////////////////////////////////////////////////////////////////
+
 		BiquadUnit m_biquadA;
 		BiquadUnit m_biquadB;
 		BiquadUnit m_biquadC;
+
+		uint32_t floatingPointDitherL;
+		uint32_t floatingPointDitherR;
 	};
 }

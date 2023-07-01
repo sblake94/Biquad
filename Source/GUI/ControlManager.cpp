@@ -165,7 +165,7 @@ namespace GUI
 		result.push_back(&m_highBandwidthSlider);
 
 		result.push_back(&m_masterGainSlider);
-		// result.push_back(&m_heatGainSlider);
+		result.push_back(&m_heatGainSlider);
 
 		return result;
 	}
@@ -179,7 +179,7 @@ namespace GUI
 	{
 		std::vector<BaseTypes::LatchButton*> result;
 
-		// result.push_back(&m_engageHeatButton);
+		result.push_back(&m_engageHeatButton);
 		result.push_back(&m_masterBypassButton);
 
 		result.push_back(&m_lowShelfBypass);
@@ -265,8 +265,8 @@ namespace GUI
 			dynamic_cast<juce::Component*>(&m_masterBypassButton),
 			dynamic_cast<juce::Component*>(&m_masterGainSlider),
 
-			//dynamic_cast<juce::Component*>(&m_engageHeatButton),
-			//dynamic_cast<juce::Component*>(&m_heatGainSlider)
+			dynamic_cast<juce::Component*>(&m_engageHeatButton),
+			dynamic_cast<juce::Component*>(&m_heatGainSlider)
 		});
 
 		return result;

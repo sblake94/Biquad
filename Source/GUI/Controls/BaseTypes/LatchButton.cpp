@@ -55,9 +55,9 @@ void LatchButton::paint(juce::Graphics& g)
 	const int buttonTop = m_textBoxHeight;
 	const juce::Rectangle<int> buttonBounce(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
 
-	const juce::String valueText(m_labelText);
+	/*const juce::String valueText(m_labelText);
 	juce::Font font(18);
 	g.setColour(lookAndFeel.findColour(juce::ToggleButton::textColourId));
 	g.setFont(font);
-	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);
+	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);*/
 }

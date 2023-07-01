@@ -25,5 +25,8 @@ GUI::Background::~Background()
 /// <param name="height">: The height of the background.</param>
 void GUI::Background::paint(juce::Graphics& g, int width, int height)
 {
-	g.fillAll(m_backgroundColour);
+	juce::ColourGradient gradient(m_backgroundColourA, 0, 0, m_backgroundColourB, 0, height, true);
+
+	g.setGradientFill(gradient);
+	g.fillRect(0, 0, width, height);
 }

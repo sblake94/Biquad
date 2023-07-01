@@ -70,3 +70,49 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	g.setColour(m_dialIndicatorColour);
 	g.fillPath(p);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+void GUI::CustomLookAndFeel::drawToggleButton
+(
+	juce::Graphics& g, 
+	juce::ToggleButton& button, 
+	bool shouldDrawButtonAsHighlighted, 
+	bool shouldDrawButtonAsDown
+)
+{
+	const bool buttonState = button.getToggleState();
+
+	const juce::Colour inactiveColour = juce::Colour::fromRGBA(17u, 17u, 17u, 255u);
+	const juce::Colour shadowColour = juce::Colour::fromRGBA(17u, 17u, 17u, 125u);
+	const juce::Colour activeColour = juce::Colour::fromRGBA(153u, 51u, 0u, 255u);
+	const juce::Colour textColour = juce::Colour::fromRGBA(255u, 255u, 255u, 255u);
+	const juce::Colour backgroundColorA = juce::Colour::fromRGBA(51u, 51u, 51u, 255u);
+	const juce::Colour backgroundColorB = juce::Colour::fromRGBA(34u, 34u, 34u, 255u);
+
+	const juce::Rectangle<int> buttonArea = button.getLocalBounds();
+
+	const juce::String buttonText = button.getButtonText();
+	const float cornerRadius = 5.0f;
+	const float inactiveBorderThickness = 2.5f;
+
+	
+
+	// draw the background behind the button text
+	auto gradFill = juce::ColourGradient(
+		backgroundColorA, 
+		buttonArea.getTopLeft().toFloat(), 
+		backgroundColorB,
+		buttonArea.getBottomRight().toFloat(), 
+		true);
+	g.setGradientFill(gradFill);
+	g.fillRoundedRectangle(buttonArea.toFloat(), cornerRadius);
+	
+	// draw the border around the button
+	g.setColour(buttonState ? activeColour : shadowColour);
+	g.drawRoundedRectangle(buttonArea.toFloat().reduced(inactiveBorderThickness / 3.3333f), cornerRadius, inactiveBorderThickness);
+
+	// Draw the text in the button
+	g.setColour(textColour);
+	g.setFont(15.0f);
+	g.drawFittedText(buttonText, buttonArea, juce::Justification::centred, 2);
+}

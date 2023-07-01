@@ -30,6 +30,7 @@ namespace GUI
 		void paint(juce::Graphics& g, int width, int height);
 
 	private: ////////////////////////////////////////////////////////////////////////////////////////////
-		const juce::Colour m_backgroundColour = juce::Colour::fromRGB(34, 34, 34);
+		const juce::Colour m_backgroundColourA = juce::Colour::fromRGB(51, 51, 51);
+		const juce::Colour m_backgroundColourB = juce::Colour::fromRGB(34, 34, 34);
 	};
 }

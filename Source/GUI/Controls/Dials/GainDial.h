@@ -27,6 +27,8 @@ namespace GUI::Controls::Dials
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			const int _width,
+			const int _height,
 			const float _defaultValue = 0.0f,
 			const float _rangeMin = -12.0f,
 			const float _rangeMax = 12.0f,

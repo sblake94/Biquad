@@ -16,21 +16,34 @@ namespace GUI
 		CustomLookAndFeel();
 		~CustomLookAndFeel();
 
-		void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
-			const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider&) override;
+		void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, 
+			float sliderPos, const float rotaryStartAngle, const float rotaryEndAngle, 
+			juce::Slider&) override;
 
 		void drawToggleButton(juce::Graphics& g, juce::ToggleButton& button, 
 			bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override;
 
+		static const juce::Colour s_shadowColour;
+		static const juce::Colour s_highlightColour;
+		static const juce::Colour s_textColourBright;
+		static const juce::Colour s_textColourBrightT;
+		static const juce::Colour s_textColourDark;
+		static const juce::Colour s_textColourDarkT;
+		static const juce::Colour s_fillColorA;
+		static const juce::Colour s_fillColorB;
+
+		static const juce::Font s_font;
+
+		static const float s_cornerRadius;
+		static const float s_dialIndicatorThickness;
+		static const float s_outlineThickness;
+		static const float s_controlBoundsMargin;
+
+		static const juce::ColourGradient BackgroundGradient(
+			juce::Point<float> _innerPoint, juce::Point<float> _outerPoint);
+
 	private:////////////////////////////////////////////////////////////////////////////////////////////////
-
-		juce::Colour m_dialFillColour = juce::Colour(17u,17u,17u);
-		juce::Colour m_dialOutlineColour = juce::Colour(17u, 17u, 17u);
-		juce::Colour m_dialTextColour = juce::Colour(255u, 255u, 255u);
-		juce::Colour m_dialIndicatorColour = juce::Colour(153u, 51u, 0u);
-
-
-		float m_dialOutlineThickness = 3.0f;
-		float m_dialIndicatorThickness = 10.0f;
 	};
 }
+
+

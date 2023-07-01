@@ -1,5 +1,5 @@
 #include "BandwidthDial.h"
-
+#include "../../CustomLookAndFeel.h"
 using namespace GUI::Controls::Dials;
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -18,6 +18,8 @@ BandwidthDial::BandwidthDial
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
+	const int _width,
+	const int _height,
 	const float _defaultValue,
 	const float _rangeMin,
 	const float _rangeMax,
@@ -29,13 +31,16 @@ BandwidthDial::BandwidthDial
 		_rangeInterval,
 		_defaultValue,
 		_labelText,
+		" 8ve",
 		_xPos,
 		_yPos,
+		_width,
+		_height,
 		_parameterID,
 		_lookAndFeel)
 {
+	// Only specific settings for BandwidthDial controls go here
 	this->setNumDecimalPlacesToDisplay(1);
-	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +60,4 @@ void BandwidthDial::paint(juce::Graphics& g)
 {
 	BaseTypes::RotaryDial::paint(g);
 
-	const int sliderTop = m_textBoxHeight;
-	const juce::Rectangle<int> sliderBounds(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
 }

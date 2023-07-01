@@ -1,4 +1,5 @@
 #include "RotaryDial.h"
+#include "../../CustomLookAndFeel.h"
 
 using namespace GUI::Controls::BaseTypes;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -21,20 +22,36 @@ RotaryDial::RotaryDial
 	const float _rangeInterval,
 	const float _defaultValue,
 	const char* _labelText,
+	const char* _unitSuffix,
 	const int _xPos,
 	const int _yPos,
+	const int _width,
+	const int _height,
 	juce::ParameterID _paramID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider()
-	, CustomControlBase(_labelText, _xPos, _yPos, _paramID)
+	, CustomControlBase(
+		_labelText, 
+		_xPos, 
+		_yPos, 
+		_width, 
+		_height, 
+		_paramID)
 {
+	// Slider Properties
+	this->setComponentID(_labelText);
 	this->setRange(_rangeMin, _rangeMax, _rangeInterval);
 	this->setValue(_defaultValue);
 
+	// Text box
 	this->setTooltip(_labelText);
-	this->setComponentID(_labelText);
+	this->setTextBoxIsEditable(true);
+	this->setTextValueSuffix(_unitSuffix);
+	this->setTextBoxStyle(NoTextBox, false, 0, 0);
 
+	// Interactions
+	this->setDoubleClickReturnValue(true, _defaultValue);
 	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
 
 	if(_lookAndFeel != nullptr)
@@ -56,14 +73,26 @@ RotaryDial::~RotaryDial()
 /// <param name="g">The Graphics unit to be used to draw the dial</param>
 void RotaryDial::paint(juce::Graphics& g)
 {
-	juce::Slider::paint(g);
+	// draw the background
+	if (false)
+	{
+		g.setColour(GUI::CustomLookAndFeel::s_shadowColour);
+		g.fillRoundedRectangle(
+			getLocalBounds().toFloat()
+			.reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin, 0.0f), GUI::CustomLookAndFeel::s_cornerRadius);
+	}
 
-	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
-	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
-		
-	const juce::String valueText(m_labelText);
-	juce::Font font(18);
-	g.setColour(lookAndFeel.findColour(juce::Slider::textBoxTextColourId));
-	g.setFont(font);
-	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);
+	// draw a Label at the top of the dial
+	g.setColour(GUI::CustomLookAndFeel::s_textColourBrightT);
+	g.setFont(GUI::CustomLookAndFeel::s_font);
+	g.drawText(m_labelText, 0, 0, getWidth(), m_textBoxHeight, juce::Justification::centred, true);
+
+	// Value text
+	g.setColour(GUI::CustomLookAndFeel::s_textColourBrightT);
+	static char buffer[16];
+	std::snprintf(buffer, sizeof(buffer), "%.2f", this->getValue());
+	const juce::String text = juce::String(buffer);
+	g.drawText(text, getLocalBounds().reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin), juce::Justification::centredBottom, true);
+
+	juce::Slider::paint(g);
 }

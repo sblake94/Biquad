@@ -25,6 +25,9 @@ namespace Processing
 	static const int s_highBandwidthParamID(8);
 	static const int s_engageHeatParamID(9);
 	static const int s_masterBypassParamID(10);
+	static const int s_highBandBypassParamID(11);
+	static const int s_midBandBypassParamID(12);
+	static const int s_lowBandBypassParamID(13);
 
 	//////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -43,6 +46,10 @@ namespace Processing
 		FloatParamDirectory m_floatParams;
 		BoolParamDirectory m_boolParams;
 
+		AudioParameterBool m_lowBandBypass;
+		AudioParameterBool m_midBandBypass;
+		AudioParameterBool m_highBandBypass;
+
 		AudioParameterFloat m_lowFreqCutoff;
 		AudioParameterFloat m_midFreqCutoff;
 		AudioParameterFloat m_highFreqCutoff;
@@ -57,6 +64,5 @@ namespace Processing
 
 		AudioParameterBool m_engageHeat;
 		AudioParameterBool m_masterBypass;
-
 	};
 }

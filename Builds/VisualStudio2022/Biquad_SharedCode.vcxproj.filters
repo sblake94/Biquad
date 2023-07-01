@@ -622,6 +622,9 @@
     <Filter Include="Biquad\Source\GUI\Controls\BaseTypes">
       <UniqueIdentifier>{b258c7f1-1660-4a9d-b97e-6f5037be596f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Biquad\Source\GUI\Controls\Labels">
+      <UniqueIdentifier>{cd31ff73-f510-456d-825f-40b541c0ebe0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -3002,6 +3005,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp">
       <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\Labels\StaticLabel.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp">
+      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5914,6 +5923,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h">
       <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h">
+      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.h">
+      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

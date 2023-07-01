@@ -18,6 +18,8 @@ GainDial::GainDial
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
+	const int _width,
+	const int _height,
 	const float _defaultValue,
 	const float _rangeMin,
 	const float _rangeMax,
@@ -29,13 +31,16 @@ GainDial::GainDial
 		_rangeInterval,
 		_defaultValue,
 		_labelText,
+		" dB",
 		_xPos,
 		_yPos,
+		_width,
+		_height,
 		_parameterID,
 		_lookAndFeel)
 {
+	// Only specific settings for GainDial controls go here
 	this->setNumDecimalPlacesToDisplay(2);
-	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

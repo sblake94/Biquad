@@ -138,12 +138,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\GUI\Background.cpp" />
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Buttons\EngageButton.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Labels\StaticLabel.cpp" />
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
@@ -2462,12 +2464,14 @@
     <ClInclude Include="..\..\Source\GUI\Background.h" />
     <ClInclude Include="..\..\Source\GUI\ControlManager.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomControlBase.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Buttons\EngageButton.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h" />
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />

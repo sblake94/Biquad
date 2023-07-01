@@ -17,12 +17,20 @@ LatchButton::LatchButton
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
+	const int _width,
+	const int _height,
 	const bool _isLatched,
 	juce::ParameterID _parameterID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::ToggleButton()
-	, CustomControlBase(_labelText, _xPos, _yPos, _parameterID)
+	, CustomControlBase(
+		_labelText, 
+		_xPos, 
+		_yPos,
+		_width,
+		_height,
+		_parameterID)
 {
 	this->setButtonText(_labelText);
 	this->setComponentID(_labelText);
@@ -48,16 +56,4 @@ LatchButton::~LatchButton()
 void LatchButton::paint(juce::Graphics& g)
 {
 	juce::ToggleButton::paint(g);
-
-	const juce::Rectangle<int> textBoxBounds(getLocalBounds().removeFromTop(10));
-	juce::LookAndFeel& lookAndFeel = getLookAndFeel();
-
-	const int buttonTop = m_textBoxHeight;
-	const juce::Rectangle<int> buttonBounce(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
-
-	/*const juce::String valueText(m_labelText);
-	juce::Font font(18);
-	g.setColour(lookAndFeel.findColour(juce::ToggleButton::textColourId));
-	g.setFont(font);
-	g.drawFittedText(valueText, textBoxBounds, juce::Justification::centred, 1);*/
 }

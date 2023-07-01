@@ -19,11 +19,15 @@ namespace GUI::Controls::BaseTypes
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			const int _width,
+			const int _height,
 			juce::ParameterID _paramID)
 			: m_id(_paramID)
 			, m_labelText(_labelText)
 			, m_xPos(_xPos)
 			, m_yPos(_yPos)
+			, m_width(_width)
+			, m_height(_height)
 		{
 		};
 
@@ -35,6 +39,7 @@ namespace GUI::Controls::BaseTypes
 
 		const char* m_labelText;
 		int m_xPos, m_yPos;
+		int m_width, m_height;
 
 	private://///////////////////////////////////////////////////////////////////////////////////////
 		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CustomControlBase);

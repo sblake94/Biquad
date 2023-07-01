@@ -42,6 +42,11 @@ BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
         addAndMakeVisible(dynamic_cast<juce::ToggleButton*>(buttonPtr));
         buttonPtr->addListener(this);
     }
+
+    for (BaseTypes::CustomLabel* labelPtr : m_controlManager.GetAllCustomLabels())
+    {
+        addAndMakeVisible(dynamic_cast<juce::Label*>(labelPtr));
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

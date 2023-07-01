@@ -18,6 +18,8 @@ FrequencyDial::FrequencyDial
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
+	const int _width,
+	const int _height,
 	const float _defaultValue,
 	const float _rangeMin,
 	const float _rangeMax
@@ -28,18 +30,17 @@ FrequencyDial::FrequencyDial
 		0.0f,
 		_defaultValue,
 		_labelText,
+		" hz",
 		_xPos,
 		_yPos,
+		_width,
+		_height,
 		_parameterID,
 		_lookAndFeel)
 {
+	// Only specific settings for FrequencyDial controls go here
 	this->setSkewFactor(0.29f);
 	this->setNumDecimalPlacesToDisplay(0);
-	
-	this->setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
-
-	if(_lookAndFeel != nullptr)
-		this->setLookAndFeel(_lookAndFeel);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +62,7 @@ void FrequencyDial::paint(juce::Graphics& g)
 
 	const int sliderTop = m_textBoxHeight;
 	const juce::Rectangle<int> sliderBounds(getLocalBounds().removeFromTop(getHeight() - 2 * m_textBoxHeight));
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -29,6 +29,8 @@ namespace GUI::Controls::Buttons
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
+			const int _width,
+			const int _height,
 			bool _isEngaged = false
 		);
 		~EngageButton();

@@ -19,12 +19,16 @@ EngageButton::EngageButton
 	const char* _labelText, 
 	const int _xPos, 
 	const int _yPos,
+	const int _width,
+	const int _height,
 	bool _isEngaged
 )
 	: BaseTypes::LatchButton(
 		_labelText,
 		_xPos,
 		_yPos,
+		_width,
+		_height,
 		_isEngaged,
 		_parameterID,
 		_lookAndFeel)

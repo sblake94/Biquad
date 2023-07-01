@@ -1,5 +1,22 @@
 #include "CustomLookAndFeel.h"
 
+// There is probably an inbuilt way to do this in JUCE, but I haven't found it yet.
+const juce::Colour GUI::CustomLookAndFeel::s_shadowColour		= juce::Colour::fromRGBA(0u,	0u,		0u,		88u);
+const juce::Colour GUI::CustomLookAndFeel::s_highlightColour	= juce::Colour::fromRGBA(153u,	51u,	0u,		255u);
+const juce::Colour GUI::CustomLookAndFeel::s_fillColorA			= juce::Colour::fromRGBA(51u,	51u,	51u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_fillColorB			= juce::Colour::fromRGBA(34u,	34u,	34u,	255u);
+
+const juce::Colour GUI::CustomLookAndFeel::s_textColourBright	= juce::Colour::fromRGBA(255u,	255u,	255u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourBrightT	= juce::Colour::fromRGBA(255u,	255u,	255u,	125u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourDark		= juce::Colour::fromRGBA(0u,	0u,		0u,		255u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourDarkT	= juce::Colour::fromRGBA(0u,	9u,		9u,		125u);
+const juce::Font   GUI::CustomLookAndFeel::s_font				= juce::Font("Arial", 12.0f, juce::Font::bold);
+
+const float GUI::CustomLookAndFeel::s_cornerRadius = 7.0f;
+const float GUI::CustomLookAndFeel::s_dialIndicatorThickness = 10.0f;
+const float GUI::CustomLookAndFeel::s_outlineThickness = 2.0f;
+const float GUI::CustomLookAndFeel::s_controlBoundsMargin = 5.0f;
+
 
 /////////////////////////////////////////////////
 /// <summary>
@@ -43,7 +60,8 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	juce::Slider& slider
 )
 {
-	auto bounds = juce::Rectangle<float>(x, y, width, height);
+	auto bounds = juce::Rectangle<float>(x, y, width, height)
+		.reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin);
 
 	auto radius = juce::jmin(bounds.getWidth(), bounds.getHeight()) / 3.5f;
 	auto centreX = bounds.getCentreX();
@@ -54,20 +72,22 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
 	// fill
-	g.setColour(m_dialFillColour);
+	juce::ColourGradient gradFill = BackgroundGradient(juce::Point<float>(rx, ry), bounds.getBottomRight().toFloat());
+	g.setGradientFill(gradFill);	
 	g.fillEllipse(rx, ry, rw, rw);
 
 	// outline
-	g.setColour(m_dialOutlineColour);
-	g.drawEllipse(rx, ry, rw, rw, m_dialOutlineThickness);
+	g.setColour(s_shadowColour);
+	g.drawEllipse(rx, ry, rw, rw, s_outlineThickness);
 
+	// indicator
 	juce::Path p;
 	auto pointerLength = radius * 0.33f;
-	p.addEllipse(-m_dialIndicatorThickness * 0.5f, -radius, m_dialIndicatorThickness, m_dialIndicatorThickness);
+	p.addEllipse(-s_dialIndicatorThickness * 0.5f, -radius, s_dialIndicatorThickness, s_dialIndicatorThickness);
 	p.applyTransform(juce::AffineTransform::rotation(angle).translated(centreX, centreY));
 
 	// pointer
-	g.setColour(m_dialIndicatorColour);
+	g.setColour(s_highlightColour);
 	g.fillPath(p);
 }
 
@@ -80,39 +100,40 @@ void GUI::CustomLookAndFeel::drawToggleButton
 	bool shouldDrawButtonAsDown
 )
 {
-	const bool buttonState = button.getToggleState();
-
-	const juce::Colour inactiveColour = juce::Colour::fromRGBA(17u, 17u, 17u, 255u);
-	const juce::Colour shadowColour = juce::Colour::fromRGBA(17u, 17u, 17u, 125u);
-	const juce::Colour activeColour = juce::Colour::fromRGBA(153u, 51u, 0u, 255u);
-	const juce::Colour textColour = juce::Colour::fromRGBA(255u, 255u, 255u, 255u);
-	const juce::Colour backgroundColorA = juce::Colour::fromRGBA(51u, 51u, 51u, 255u);
-	const juce::Colour backgroundColorB = juce::Colour::fromRGBA(34u, 34u, 34u, 255u);
-
-	const juce::Rectangle<int> buttonArea = button.getLocalBounds();
-
-	const juce::String buttonText = button.getButtonText();
-	const float cornerRadius = 5.0f;
-	const float inactiveBorderThickness = 2.5f;
-
-	
-
 	// draw the background behind the button text
-	auto gradFill = juce::ColourGradient(
-		backgroundColorA, 
-		buttonArea.getTopLeft().toFloat(), 
-		backgroundColorB,
-		buttonArea.getBottomRight().toFloat(), 
-		true);
+	const juce::Rectangle<int> buttonArea = button.getLocalBounds().reduced(s_controlBoundsMargin);
+	const juce::ColourGradient gradFill = BackgroundGradient(buttonArea.getTopLeft().toFloat(), buttonArea.getBottomRight().toFloat());
 	g.setGradientFill(gradFill);
-	g.fillRoundedRectangle(buttonArea.toFloat(), cornerRadius);
+	g.fillRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
 	
 	// draw the border around the button
-	g.setColour(buttonState ? activeColour : shadowColour);
-	g.drawRoundedRectangle(buttonArea.toFloat().reduced(inactiveBorderThickness / 3.3333f), cornerRadius, inactiveBorderThickness);
+	const bool buttonState = button.getToggleState();
+	g.setColour(buttonState ? s_highlightColour : s_shadowColour);
+	g.drawRoundedRectangle(buttonArea.toFloat().reduced(s_outlineThickness / 3.33f), s_cornerRadius, s_outlineThickness * 1.33f);
 
 	// Draw the text in the button
-	g.setColour(textColour);
-	g.setFont(15.0f);
+	const juce::String buttonText = button.getButtonText();
+	g.setColour(s_textColourBright);
+	g.setFont(s_font);
 	g.drawFittedText(buttonText, buttonArea, juce::Justification::centred, 2);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Draws the background of all Components
+/// </summary>
+/// <param name="_innerPoint">The point where the gradient starts</param>
+/// <param name="_outerPoint">The point where the gradient ends</param>
+const juce::ColourGradient GUI::CustomLookAndFeel::BackgroundGradient
+(
+	juce::Point<float> _innerPoint, 
+	juce::Point<float> _outerPoint
+)
+{
+	return juce::ColourGradient(
+		s_fillColorA,
+		_innerPoint,
+		s_fillColorB,
+		_outerPoint,
+		true);
 }

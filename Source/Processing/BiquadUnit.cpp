@@ -3,7 +3,6 @@
 
 using namespace Processing;
 
-#define E_PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062
 
 //////////////////////////////////////////////////////////////////
 /// <summary>
@@ -35,27 +34,26 @@ BiquadUnit::~BiquadUnit()
 void BiquadUnit::ApplyBiquad
 (
 	juce::AudioBuffer<float>& _buffer,
-	Processing::Parameters& _params,
-	FilterType _filterType,
-	int _sampleRate
+	const FilterType _filterType,
+	const int _sampleRate
 )
 {
 	// Get the parameters
-	FloatParamDirectory sliderParams = _params.GetSliderParams();
+	FloatParamDirectory sliderParams = Processing::Parameters::GetSliderParams();
 
 	// Pick filter type
 	switch (_filterType) 
 	{
 		case FilterType::HighShelf:
-			SetHighShelfCoeffs(sliderParams, _sampleRate);
+			SetHighShelfCoeffs(_sampleRate);
 			break;
 
 		case FilterType::PeakShelf:
-			SetPeakShelfCoeffs(sliderParams, _sampleRate);
+			SetPeakShelfCoeffs(_sampleRate);
 			break;
 
 		case FilterType::LowShelf:
-			SetLowShelfCoeffs(sliderParams, _sampleRate);
+			SetLowShelfCoeffs(_sampleRate);
 			break;
 
 		// ... other filter types go here ...
@@ -67,8 +65,8 @@ void BiquadUnit::ApplyBiquad
 	// Process the samples
 	for (int sampleIdx = 0; sampleIdx < _buffer.getNumSamples(); sampleIdx++)
 	{
-		double inputSampleL = _buffer.getSample(0, sampleIdx);
-		double inputSampleR = _buffer.getSample(1, sampleIdx);
+		const double inputSampleL = _buffer.getSample(0, sampleIdx);
+		const double inputSampleR = _buffer.getSample(1, sampleIdx);
 
 		double tempSampleL =
 			(m_b0 / m_a0) * inputSampleL +
@@ -115,14 +113,14 @@ void BiquadUnit::ApplyBiquad
 /// <param name="_sampleRate">The sample rate</param>
 void BiquadUnit::SetShelfCoeffs
 (
-	float _gain, 
-	float _cutoff, 
-	float _bandwidth, 
-	int _sampleRate
+	const float _gain, 
+	const float _cutoff,
+	const float _bandwidth,
+	const int _sampleRate
 )
 {
 	A = pow(10.0, _gain / 40.0);
-	w0 = 2.0 * E_PI * _cutoff / _sampleRate;
+	w0 = juce::MathConstants<double>::twoPi * _cutoff / _sampleRate;
 	cosw0 = cos(w0);
 	sinw0 = sin(w0);
 	alpha = sinw0 * sinh((log10(2) / 2) * _bandwidth * (w0 / sinw0));
@@ -137,13 +135,12 @@ void BiquadUnit::SetShelfCoeffs
 /// 
 void BiquadUnit::SetHighShelfCoeffs
 (
-	FloatParamDirectory& _sliderParams, 
-	int _sampleRate
+	const int _sampleRate
 )
 {
-	float hfCutoff = *(_sliderParams[s_highFreqCutoffParamID]);
-	float hfGain = *(_sliderParams[s_highGainParamID]);
-	float hfBW = *(_sliderParams[s_highBandwidthParamID]);
+	const float hfCutoff = *(Processing::Parameters::GetSliderParams().at(s_highFreqCutoffParamID));
+	const float hfGain = *(Processing::Parameters::GetSliderParams().at(s_highGainParamID));
+	const float hfBW = *(Processing::Parameters::GetSliderParams().at(s_highBandwidthParamID));
 
 	SetShelfCoeffs(hfGain, hfCutoff, hfBW, _sampleRate);
 
@@ -161,11 +158,14 @@ void BiquadUnit::SetHighShelfCoeffs
 /// </summary>
 /// <param name="_sliderParams">The slider parameters</param>
 /// <param name="_sampleRate">The sample rate</param>
-void BiquadUnit::SetPeakShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate)
+void BiquadUnit::SetPeakShelfCoeffs
+(
+	const int _sampleRate
+)
 {
-	float peakCutoff = *(_sliderParams[s_midFreqCutoffParamID]);
-	float peakGain = *(_sliderParams[s_midGainParamID]);
-	float peakBW = *(_sliderParams[s_midBandwidthParamID]);
+	const float peakCutoff = *(Processing::Parameters::GetSliderParams().at(s_midFreqCutoffParamID));
+	const float peakGain = *(Processing::Parameters::GetSliderParams().at(s_midGainParamID));
+	const float peakBW = *(Processing::Parameters::GetSliderParams().at(s_midBandwidthParamID));
 
 	SetShelfCoeffs(peakGain, peakCutoff, peakBW, _sampleRate);
 
@@ -183,11 +183,14 @@ void BiquadUnit::SetPeakShelfCoeffs(FloatParamDirectory& _sliderParams, int _sam
 /// </summary>
 /// <param name="_sliderParams">The slider parameters</param>
 /// <param name="_sampleRate">The sample rate</param>
-void BiquadUnit::SetLowShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate)
+void BiquadUnit::SetLowShelfCoeffs
+(
+	const int _sampleRate
+)
 {
-	float lfCutoff = *(_sliderParams[s_lowFreqCutoffParamID]);
-	float lfGain = *(_sliderParams[s_lowGainParamID]);
-	float lfBW = *(_sliderParams[s_lowBandwidthParamID]);
+	const float lfCutoff = *(Processing::Parameters::GetSliderParams().at(s_lowFreqCutoffParamID));
+	const float lfGain = *(Processing::Parameters::GetSliderParams().at(s_lowGainParamID));
+	const float lfBW = *(Processing::Parameters::GetSliderParams().at(s_lowBandwidthParamID));
 
 	SetShelfCoeffs(lfGain, lfCutoff, lfBW, _sampleRate);
 

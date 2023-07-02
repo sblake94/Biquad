@@ -1,5 +1,6 @@
 #include "RotaryDial.h"
 #include "../../CustomLookAndFeel.h"
+#include "../../../Processing/Parameters.h"
 
 using namespace GUI::Controls::BaseTypes;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +28,7 @@ RotaryDial::RotaryDial
 	const int _yPos,
 	const int _width,
 	const int _height,
-	juce::ParameterID _paramID,
+	const int _paramID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::Slider()
@@ -39,10 +40,20 @@ RotaryDial::RotaryDial
 		_height, 
 		_paramID)
 {
+	try
+	{
+		// Get the value of the parameter from the processor
+		float value = Processing::Parameters::GetSliderParams().at(_paramID)->get();
+		this->setValue(value);
+	}
+	catch (const std::exception& e)
+	{
+		DBG(e.what());
+	}
+
 	// Slider Properties
 	this->setComponentID(_labelText);
 	this->setRange(_rangeMin, _rangeMax, _rangeInterval);
-	this->setValue(_defaultValue);
 
 	// Text box
 	this->setTooltip(_labelText);

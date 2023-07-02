@@ -1,4 +1,5 @@
 #include "LatchButton.h"
+#include "../../../Processing/Parameters.h"
 
 using namespace GUI::Controls::BaseTypes;
 
@@ -20,7 +21,7 @@ LatchButton::LatchButton
 	const int _width,
 	const int _height,
 	const bool _isLatched,
-	juce::ParameterID _parameterID,
+	const int _paramID,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: juce::ToggleButton()
@@ -30,8 +31,19 @@ LatchButton::LatchButton
 		_yPos,
 		_width,
 		_height,
-		_parameterID)
+		_paramID)
 {
+	// Get the value of the parameter from the processor
+	try
+	{
+		const bool state = Processing::Parameters::GetBoolParams().at(_paramID)->get();
+		this->setState(state ? juce::Button::buttonDown : juce::Button::buttonNormal);
+	}
+	catch (const std::exception& e)
+	{
+		DBG(e.what());
+	}
+
 	this->setButtonText(_labelText);
 	this->setComponentID(_labelText);
 	this->setToggleState(_isLatched, juce::sendNotification);

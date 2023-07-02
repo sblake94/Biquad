@@ -14,14 +14,14 @@ using namespace GUI::Controls::Buttons;
 /// <param name="_isEngaged"></param>
 EngageButton::EngageButton
 (
-	juce::ParameterID _parameterID, 
-	juce::LookAndFeel* _lookAndFeel,
-	const char* _labelText, 
-	const int _xPos, 
+	const char* _labelText,
+	const int _xPos,
 	const int _yPos,
 	const int _width,
 	const int _height,
-	bool _isEngaged
+	const int _parameterID,
+	bool _isEngaged,
+	juce::LookAndFeel* _lookAndFeel
 )
 	: BaseTypes::LatchButton(
 		_labelText,

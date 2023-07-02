@@ -25,9 +25,8 @@ namespace Processing
 
 		void ProcessReplacing
 		(
-			juce::AudioBuffer<float>& _inputs,
-			juce::AudioBuffer<float>& _outputs,
-			Processing::Parameters& _params,
+			juce::AudioBuffer<float>& _inputBuffer,
+			juce::AudioBuffer<float>& _outputBuffer,
 			const int _sampleRate
 		);
 

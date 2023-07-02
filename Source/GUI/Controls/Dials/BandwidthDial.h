@@ -14,17 +14,17 @@ namespace GUI::Controls::Dials
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 
 		BandwidthDial(
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
 			const int _height,
+			const int _parameterID,
 			const float _defaultValue = 1.0f,
-			const float _rangeMin = 0.001f,
-			const float _rangeMax = 8.0f,
-			const float _rangeInterval = 0.0f);
+			const float _rangeMin = 0.01f,
+			const float _rangeMax = 4.0f,
+			const float _rangeInterval = 0.01f,
+			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~BandwidthDial();
 
 		void paint(juce::Graphics& g) override;

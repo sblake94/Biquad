@@ -13,17 +13,17 @@ using namespace GUI::Controls::Dials;
 /// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 BandwidthDial::BandwidthDial
 (
-	juce::ParameterID _parameterID,
-	juce::LookAndFeel* _lookAndFeel,
 	const char* _labelText,
 	const int _xPos,
 	const int _yPos,
 	const int _width,
 	const int _height,
+	const int _parameterID,
 	const float _defaultValue,
 	const float _rangeMin,
 	const float _rangeMax,
-	const float _rangeInterval
+	const float _rangeInterval,
+	juce::LookAndFeel* _lookAndFeel
 )
 	: BaseTypes::RotaryDial(
 		_rangeMin,

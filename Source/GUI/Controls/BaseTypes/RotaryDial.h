@@ -26,7 +26,7 @@ namespace GUI::Controls::BaseTypes
 			const int _yPos,
 			const int _width,
 			const int _height,
-			juce::ParameterID _paramID,
+			const int _paramID,
 			juce::LookAndFeel* _lookAndFeel);
 		~RotaryDial();
 

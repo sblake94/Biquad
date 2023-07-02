@@ -16,7 +16,7 @@ namespace GUI::Controls::Labels
 			const int _yPos,
 			const int _width,
 			const int _height,
-			juce::ParameterID _parameterID,
+			const int _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~StaticLabel();
 

@@ -21,7 +21,7 @@ namespace GUI::Controls::BaseTypes
 			const int _width,
 			const int _height,
 			const bool _isLatched,
-			juce::ParameterID _parameterID,
+			const int _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~LatchButton();
 

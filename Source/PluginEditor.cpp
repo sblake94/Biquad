@@ -33,14 +33,16 @@ BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     // Make all controls visible
     for (BaseTypes::RotaryDial* dialPtr : m_controlManager.GetAllRotaryDials())
     {
-        addAndMakeVisible(dynamic_cast<juce::Slider*>(dialPtr));
+        dialPtr->setValue(Processing::Parameters::GetSliderParams().at(dialPtr->m_id)->get(), juce::dontSendNotification);
         dialPtr->addListener(this);
+        addAndMakeVisible(dynamic_cast<juce::Slider*>(dialPtr));
     }
 
     for (BaseTypes::LatchButton* buttonPtr : m_controlManager.GetAllLatchButtons())
     {
-        addAndMakeVisible(dynamic_cast<juce::ToggleButton*>(buttonPtr));
+        buttonPtr->setToggleState(Processing::Parameters::GetBoolParams().at(buttonPtr->m_id)->get(), juce::dontSendNotification);
         buttonPtr->addListener(this);
+        addAndMakeVisible(dynamic_cast<juce::ToggleButton*>(buttonPtr));
     }
 
     for (BaseTypes::CustomLabel* labelPtr : m_controlManager.GetAllCustomLabels())
@@ -84,8 +86,7 @@ void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 	float sliderValue = slider->getValue();
 
 	// Update the processor
-    FloatParamDirectory& params = m_audioProcessor.GetParametersRef().GetSliderParams();
-    for (std::pair<juce::ParameterID, juce::AudioParameterFloat*> param : params)
+    for (std::pair<juce::ParameterID, juce::AudioParameterFloat*> param : Processing::Parameters::GetSliderParams())
     {
         if (param.first.getParamID() == sliderID.getParamID())
 		{
@@ -107,8 +108,7 @@ void BiquadAudioProcessorEditor::buttonClicked(juce::Button* button)
 	bool buttonValue = button->getToggleState();
 
 	// Update the processor
-	BoolParamDirectory& params = m_audioProcessor.GetParametersRef().GetBoolParams();
-	for (std::pair<juce::ParameterID, juce::AudioParameterBool*> param : params)
+	for (std::pair<juce::ParameterID, juce::AudioParameterBool*> param : Processing::Parameters::GetBoolParams())
 	{
 		if (param.first.getParamID() == buttonID.getParamID())
 		{

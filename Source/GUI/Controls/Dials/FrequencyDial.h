@@ -24,16 +24,17 @@ namespace GUI::Controls::Dials
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial(
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
 			const int _height,
-			const float _defaultValue,
+			const int _parameterID,
+			const float _defaultValue = 2000.0f,
 			const float _rangeMin = 20.0f,
-			const float _rangeMax = 20000.0f);
+			const float _rangeMax = 20000.0f,
+			const float _rangeInterval = 1.0f,
+			juce::LookAndFeel* _lookAndFeel = nullptr);
 		~FrequencyDial();
 		
 		void paint(juce::Graphics& g) override;

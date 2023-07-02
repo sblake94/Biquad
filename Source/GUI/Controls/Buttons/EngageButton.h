@@ -24,14 +24,14 @@ namespace GUI::Controls::Buttons
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 
 		EngageButton(
-			juce::ParameterID _parameterID,
-			juce::LookAndFeel* _lookAndFeel,
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
 			const int _height,
-			bool _isEngaged = false
+			const int _parameterID,
+			bool _isEngaged = false,
+			juce::LookAndFeel* _lookAndFeel = nullptr
 		);
 		~EngageButton();
 

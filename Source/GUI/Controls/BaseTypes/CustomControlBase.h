@@ -21,7 +21,7 @@ namespace GUI::Controls::BaseTypes
 			const int _yPos,
 			const int _width,
 			const int _height,
-			juce::ParameterID _paramID)
+			const int _paramID)
 			: m_id(_paramID)
 			, m_labelText(_labelText)
 			, m_xPos(_xPos)
@@ -35,7 +35,7 @@ namespace GUI::Controls::BaseTypes
 		/// <summary>
 		/// The ID of the Slider
 		/// </summary>
-		juce::ParameterID m_id;
+		const int m_id;
 
 		const char* m_labelText;
 		int m_xPos, m_yPos;

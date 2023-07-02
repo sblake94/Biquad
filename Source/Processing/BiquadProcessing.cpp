@@ -33,12 +33,11 @@ void BiquadProcessing::ProcessReplacing
 (
 	juce::AudioBuffer<float>& _inputBuffer,
 	juce::AudioBuffer<float>& _outputBuffer,
-	Parameters& _params, 
 	const int _sampleRate
 )
 {
 	// Bypass Logic
-	if (_params.GetBoolParams()[s_masterBypassParamID]->get() == true) 
+	if (Parameters::GetBoolParams().at(s_masterBypassParamID)->get() == true) 
 	{	
 		_outputBuffer = _inputBuffer;
 		return;
@@ -46,15 +45,15 @@ void BiquadProcessing::ProcessReplacing
 
 	juce::AudioBuffer<float>& tempBuffer = _inputBuffer;
 
-	const bool heatEngaged = _params.GetBoolParams()[s_engageHeatParamID]->get();
-	const bool lowShelfEngaged = _params.GetBoolParams()[s_lowBandBypassParamID]->get();
-	const bool midPeakEngaged = _params.GetBoolParams()[s_midBandBypassParamID]->get();
-	const bool highShelfEngaged = _params.GetBoolParams()[s_highBandBypassParamID]->get();
+	const bool heatEngaged = Parameters::GetBoolParams().at(s_engageHeatParamID)->get();
+	const bool lowShelfEngaged = Parameters::GetBoolParams().at(s_lowBandBypassParamID)->get();
+	const bool midPeakEngaged = Parameters::GetBoolParams().at(s_midBandBypassParamID)->get();
+	const bool highShelfEngaged = Parameters::GetBoolParams().at(s_highBandBypassParamID)->get();
 
 	// Apply Heat Curve
 	if (heatEngaged)
 	{
-		ApplyGainDB(tempBuffer, _params.GetSliderParams()[s_heatGainParamID]->get());
+		ApplyGainDB(tempBuffer, Parameters::GetSliderParams().at(s_heatGainParamID)->get());
 		ApplyCurve(tempBuffer);
 	}
 
@@ -63,7 +62,6 @@ void BiquadProcessing::ProcessReplacing
 	{
 		m_biquadA.ApplyBiquad(
 			tempBuffer,
-			_params, 
 			BiquadUnit::FilterType::HighShelf, 
 			_sampleRate);
 	}
@@ -73,7 +71,6 @@ void BiquadProcessing::ProcessReplacing
 	{
 		m_biquadB.ApplyBiquad(
 			tempBuffer,
-			_params,
 			BiquadUnit::FilterType::PeakShelf,
 			_sampleRate);
 	}
@@ -83,7 +80,6 @@ void BiquadProcessing::ProcessReplacing
 	{
 		m_biquadC.ApplyBiquad(
 			tempBuffer,
-			_params,
 			BiquadUnit::FilterType::LowShelf,
 			_sampleRate);
 	}
@@ -92,13 +88,13 @@ void BiquadProcessing::ProcessReplacing
 	if (heatEngaged)
 	{ 
 		RemoveCurve(tempBuffer);
-		ApplyGainDB(tempBuffer, -(_params.GetSliderParams()[s_heatGainParamID]->get()));
+		ApplyGainDB(tempBuffer, -(Parameters::GetSliderParams().at(s_heatGainParamID)->get()));
 	}
 	
 	Clip(tempBuffer, -1.0, 1.0);
 
 	// Output Gain
-	ApplyGainDB(tempBuffer, _params.GetSliderParams()[s_masterGainParamID]->get());
+	ApplyGainDB(tempBuffer, Parameters::GetSliderParams().at(s_masterGainParamID)->get());
 
 	_outputBuffer = tempBuffer;
 }
@@ -222,7 +218,11 @@ void BiquadProcessing::ApplyGainDB
 /// </summary>
 /// <param name="sampleL"></param>
 /// <param name="sampleR"></param>
-void BiquadProcessing::DitherStereoSample(double& sampleL, double& sampleR)
+void BiquadProcessing::DitherStereoSample
+(
+	double& sampleL, 
+	double& sampleR
+)
 {
 	int exponent;
 

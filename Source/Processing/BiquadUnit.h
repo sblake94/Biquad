@@ -24,18 +24,21 @@ namespace Processing
 
 		void ApplyBiquad(
 			juce::AudioBuffer<float>& _buffer,
-			Processing::Parameters& _params,
-			FilterType _filterType,
+			const FilterType _filterType,
 			const int _sampleRate
 		);
 
-		void SetHighShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
-		void SetPeakShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
-		void SetLowShelfCoeffs(FloatParamDirectory& _sliderParams, int _sampleRate);
+		void SetHighShelfCoeffs(const int _sampleRate);
+		void SetPeakShelfCoeffs(const int _sampleRate);
+		void SetLowShelfCoeffs(const int _sampleRate);
 
 	private://////////////////////////////////////////////////////////////////
 
-		void SetShelfCoeffs(float _gain, float _cutoff, float _bandwidth, int _sampleRate);
+		void SetShelfCoeffs(
+			const float _gain,
+			const float _cutoff,
+			const float _bandwidth,
+			const int _sampleRate);
 
 		// Biquad Coefficients
 		double m_b0, m_b1, m_b2, m_a0, m_a1, m_a2;

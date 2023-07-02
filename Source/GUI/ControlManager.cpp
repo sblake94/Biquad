@@ -21,26 +21,26 @@ namespace GUI
 		: m_controlAreaHeight(_windowHeight - 2 * m_margin)
 		, m_controlAreaWidth(_windowWidth - 2 * m_margin)
 
-		, m_lowShelfBypass(EngageButton(Processing::s_lowBandBypassParamID, _lookAndFeelPtr, "Low Shelf", 0, 0, 2, 1))
-		, m_midShelfBypass(EngageButton(Processing::s_midBandBypassParamID, _lookAndFeelPtr, "Mid Shelf", 2, 0, 2, 1))
-		, m_highShelfBypass(EngageButton(Processing::s_highBandBypassParamID, _lookAndFeelPtr, "High Shelf", 4, 0, 2, 1))
+		, m_lowShelfBypass(EngageButton("Low Shelf", 0, 0, 2, 1, Processing::s_lowBandBypassParamID, true, _lookAndFeelPtr))
+		, m_midShelfBypass(EngageButton("Mid Shelf", 2, 0, 2, 1, Processing::s_midBandBypassParamID, true, _lookAndFeelPtr))
+		, m_highShelfBypass(EngageButton("High Shelf", 4, 0, 2, 1, Processing::s_highBandBypassParamID, true, _lookAndFeelPtr))
 		
-		, m_lowFreqSlider(FrequencyDial(Processing::s_lowFreqCutoffParamID, _lookAndFeelPtr, "Freq", 0, 1, 2, 2, 100.0f, 20.0f, 1000.0f))
-		, m_midFreqSlider(FrequencyDial(Processing::s_midFreqCutoffParamID, _lookAndFeelPtr, "Freq", 2, 1, 2, 2, 500.0f, 100.0f, 10000.0f))
-		, m_highFreqSlider(FrequencyDial(Processing::s_highFreqCutoffParamID, _lookAndFeelPtr, "Freq", 4, 1, 2, 2, 10000.0f, 500.0f, 20000.0f))
+		, m_lowFreqSlider(FrequencyDial("Freq", 0, 1, 2, 2, Processing::s_lowFreqCutoffParamID, 100.0f, 20.0f, 1000.0f, 0.01f, _lookAndFeelPtr))
+		, m_midFreqSlider(FrequencyDial("Freq", 2, 1, 2, 2, Processing::s_midFreqCutoffParamID, 500.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr))
+		, m_highFreqSlider(FrequencyDial("Freq", 4, 1, 2, 2, Processing::s_highFreqCutoffParamID, 10000.0f, 500.0f, 20000.0f, 0.01f, _lookAndFeelPtr))
 
-		, m_lowGainSlider(GainDial(Processing::s_lowGainParamID, _lookAndFeelPtr, "Gain", 0, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
-		, m_midGainSlider(GainDial(Processing::s_midGainParamID, _lookAndFeelPtr, "Gain", 2, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
-		, m_highGainSlider(GainDial(Processing::s_highGainParamID, _lookAndFeelPtr, "Gain", 4, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
+		, m_lowGainSlider(GainDial("Gain", 0, 3, 2, 2, Processing::s_lowGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
+		, m_midGainSlider(GainDial("Gain", 2, 3, 2, 2, Processing::s_midGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
+		, m_highGainSlider(GainDial("Gain", 4, 3, 2, 2, Processing::s_highGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
 		
-		, m_lowBandwidthSlider(BandwidthDial(Processing::s_lowBandwidthParamID, _lookAndFeelPtr, "BW", 0, 5, 2, 2))
-		, m_midBandwidthSlider(BandwidthDial(Processing::s_midBandwidthParamID, _lookAndFeelPtr, "BW", 2, 5, 2, 2))
-		, m_highBandwidthSlider(BandwidthDial(Processing::s_highBandwidthParamID, _lookAndFeelPtr, "BW", 4, 5, 2, 2))
+		, m_lowBandwidthSlider(BandwidthDial("BW", 0, 5, 2, 2, Processing::s_lowBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
+		, m_midBandwidthSlider(BandwidthDial("BW", 2, 5, 2, 2, Processing::s_midBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
+		, m_highBandwidthSlider(BandwidthDial("BW", 4, 5, 2, 2, Processing::s_highBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
 		
-		, m_engageHeatButton(EngageButton(Processing::s_engageHeatParamID, _lookAndFeelPtr, "Heat",			7, 4, 2, 1))
-		, m_heatGainSlider(GainDial(Processing::s_heatGainParamID, _lookAndFeelPtr, "Heat Gain",			7, 5, 2, 2, 0.0f, -12.0f, 12.0f, 0.0f))
-		, m_masterBypassButton(EngageButton(Processing::s_masterBypassParamID, _lookAndFeelPtr, "Bypass",	9, 4, 2, 1))
-		, m_masterGainSlider(GainDial(Processing::s_masterGainParamID, _lookAndFeelPtr, "Output Gain",		9, 5, 2, 2, 0.0f, -12.0f, 12.0f, 0.0f))
+		, m_engageHeatButton(EngageButton("Heat", 7, 4, 2, 1, Processing::s_engageHeatParamID, false, _lookAndFeelPtr))
+		, m_heatGainSlider(GainDial("Heat Gain", 7, 5, 2, 2, Processing::s_heatGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr))
+		, m_masterBypassButton(EngageButton("Bypass", 9, 4, 2, 1, Processing::s_masterBypassParamID, false, _lookAndFeelPtr))
+		, m_masterGainSlider(GainDial("Output Gain", 9, 5, 2, 2, Processing::s_masterGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr))
 	{
 	}
 

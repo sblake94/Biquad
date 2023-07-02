@@ -78,6 +78,10 @@ FloatParamDirectory& Parameters::GetSliderParams()
 	return m_floatParams;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// Returns the toggle parameters as a Reference to a ParamDirectory
+/// </summary>
 BoolParamDirectory& Processing::Parameters::GetBoolParams()
 {
 	return m_boolParams;

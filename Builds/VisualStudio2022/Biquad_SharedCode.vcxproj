@@ -146,6 +146,7 @@
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Labels\StaticLabel.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\Labels\TitleLabel.cpp" />
     <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
@@ -2472,6 +2473,7 @@
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\Labels\TitleLabel.h" />
     <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />

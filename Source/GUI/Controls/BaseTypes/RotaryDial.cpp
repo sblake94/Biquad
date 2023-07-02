@@ -65,6 +65,7 @@ RotaryDial::RotaryDial
 	this->setDoubleClickReturnValue(true, _defaultValue);
 	this->setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
 
+	// Look and Feel
 	if(_lookAndFeel != nullptr)
 		this->setLookAndFeel(_lookAndFeel);
 }
@@ -95,7 +96,7 @@ void RotaryDial::paint(juce::Graphics& g)
 
 	// draw a Label at the top of the dial
 	g.setColour(GUI::CustomLookAndFeel::s_textColourBrightT);
-	g.setFont(GUI::CustomLookAndFeel::s_font);
+	g.setFont(GUI::CustomLookAndFeel::s_labelFont);
 	g.drawText(m_labelText, 0, 0, getWidth(), m_textBoxHeight, juce::Justification::centred, true);
 
 	// Value text
@@ -106,4 +107,6 @@ void RotaryDial::paint(juce::Graphics& g)
 	g.drawText(text, getLocalBounds().reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin), juce::Justification::centredBottom, true);
 
 	juce::Slider::paint(g);
+
+	// draw the drop shadow
 }

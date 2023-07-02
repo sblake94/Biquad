@@ -24,7 +24,7 @@ namespace GUI
 		, m_lowShelfBypass(EngageButton("Low Shelf", 0, 0, 2, 1, Processing::s_lowBandBypassParamID, true, _lookAndFeelPtr))
 		, m_midShelfBypass(EngageButton("Mid Shelf", 2, 0, 2, 1, Processing::s_midBandBypassParamID, true, _lookAndFeelPtr))
 		, m_highShelfBypass(EngageButton("High Shelf", 4, 0, 2, 1, Processing::s_highBandBypassParamID, true, _lookAndFeelPtr))
-		
+
 		, m_lowFreqSlider(FrequencyDial("Freq", 0, 1, 2, 2, Processing::s_lowFreqCutoffParamID, 100.0f, 20.0f, 1000.0f, 0.01f, _lookAndFeelPtr))
 		, m_midFreqSlider(FrequencyDial("Freq", 2, 1, 2, 2, Processing::s_midFreqCutoffParamID, 500.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr))
 		, m_highFreqSlider(FrequencyDial("Freq", 4, 1, 2, 2, Processing::s_highFreqCutoffParamID, 10000.0f, 500.0f, 20000.0f, 0.01f, _lookAndFeelPtr))
@@ -32,15 +32,17 @@ namespace GUI
 		, m_lowGainSlider(GainDial("Gain", 0, 3, 2, 2, Processing::s_lowGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
 		, m_midGainSlider(GainDial("Gain", 2, 3, 2, 2, Processing::s_midGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
 		, m_highGainSlider(GainDial("Gain", 4, 3, 2, 2, Processing::s_highGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
-		
+
 		, m_lowBandwidthSlider(BandwidthDial("BW", 0, 5, 2, 2, Processing::s_lowBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
 		, m_midBandwidthSlider(BandwidthDial("BW", 2, 5, 2, 2, Processing::s_midBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
 		, m_highBandwidthSlider(BandwidthDial("BW", 4, 5, 2, 2, Processing::s_highBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr))
-		
+
 		, m_engageHeatButton(EngageButton("Heat", 7, 4, 2, 1, Processing::s_engageHeatParamID, false, _lookAndFeelPtr))
 		, m_heatGainSlider(GainDial("Heat Gain", 7, 5, 2, 2, Processing::s_heatGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr))
 		, m_masterBypassButton(EngageButton("Bypass", 9, 4, 2, 1, Processing::s_masterBypassParamID, false, _lookAndFeelPtr))
 		, m_masterGainSlider(GainDial("Output Gain", 9, 5, 2, 2, Processing::s_masterGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr))
+
+		, m_titleLabel("HOT\nSHELF", 7, 0, 4, 3, Processing::s_NULL_PARAM_ID, _lookAndFeelPtr)
 	{
 	}
 
@@ -68,6 +70,10 @@ namespace GUI
 				const juce::Rectangle<int> componentBounds = component->getBounds();
 				ctrlGroupBounds = ctrlGroupBounds.getUnion(componentBounds);
 			}
+
+			ctrlGroupBounds.expand(
+				GUI::CustomLookAndFeel::s_controlBoundsMargin, 
+				GUI::CustomLookAndFeel::s_controlBoundsMargin);
 
 			_graphics.setGradientFill(
 				GUI::CustomLookAndFeel::BackgroundGradient(
@@ -193,6 +199,8 @@ namespace GUI
 	{
 		std::vector<BaseTypes::CustomLabel*> result;
 
+		result.push_back(&m_titleLabel);
+
 		return result;
 	}
 
@@ -266,7 +274,9 @@ namespace GUI
 			dynamic_cast<juce::Component*>(&m_masterGainSlider),
 
 			dynamic_cast<juce::Component*>(&m_engageHeatButton),
-			dynamic_cast<juce::Component*>(&m_heatGainSlider)
+			dynamic_cast<juce::Component*>(&m_heatGainSlider),
+
+			dynamic_cast<juce::Component*>(&m_titleLabel)
 		});
 
 		return result;

@@ -17,7 +17,7 @@
 #include "Controls/Buttons/EngageButton.h"
 #include "Controls/BaseTypes/RotaryDial.h"
 #include "Controls/BaseTypes/LatchButton.h"
-#include "Controls/Labels/StaticLabel.h"
+#include "Controls/Labels/TitleLabel.h"
 #include "Controls/BaseTypes/CustomControlBase.h"
 
 using namespace GUI::Controls;
@@ -74,11 +74,13 @@ namespace GUI
 		GainDial m_masterGainSlider;
 		GainDial m_heatGainSlider;
 
+		TitleLabel m_titleLabel;
+
 		const int m_margin = 20;
-		const int m_controlGridSizeX = 16;
-		const int m_controlGridSizeY = 9;
-		const int m_gridSpacingX = 10;
-		const int m_gridSpacingY = 10;
+		const int m_controlGridSizeX = 12;
+		const int m_controlGridSizeY = 8;
+		const int m_gridSpacingX = 20;
+		const int m_gridSpacingY = 20;
 
 		int m_controlAreaWidth;
 		int m_controlAreaHeight;

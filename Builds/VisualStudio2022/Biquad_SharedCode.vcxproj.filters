@@ -3012,6 +3012,9 @@
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp">
       <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\Labels\TitleLabel.cpp">
+      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
@@ -5929,6 +5932,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.h">
       <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Labels\TitleLabel.h">
+      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

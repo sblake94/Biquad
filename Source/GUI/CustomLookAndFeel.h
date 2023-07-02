@@ -32,7 +32,8 @@ namespace GUI
 		static const juce::Colour s_fillColorA;
 		static const juce::Colour s_fillColorB;
 
-		static const juce::Font s_font;
+		static const juce::Font s_labelFont;
+		static const juce::Font s_titleFont;
 
 		static const float s_cornerRadius;
 		static const float s_dialIndicatorThickness;

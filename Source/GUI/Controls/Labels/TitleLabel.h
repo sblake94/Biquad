@@ -5,12 +5,16 @@
 
 namespace GUI::Controls::Labels
 {
-	// a class that inherits from juce::Label
-	class StaticLabel
+	/////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// A label for displaying large text
+	/// </summary>
+	class TitleLabel
 		: public GUI::Controls::BaseTypes::CustomLabel
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
-		StaticLabel(
+
+		TitleLabel(
 			const char* _labelText,
 			const int _xPos,
 			const int _yPos,
@@ -18,12 +22,10 @@ namespace GUI::Controls::Labels
 			const int _height,
 			const int _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
-		~StaticLabel();
+		~TitleLabel();
 
 		void paint(juce::Graphics& g) override;
 
-	private ://///////////////////////////////////////////////////////////////////////////////////////
-		
-		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StaticLabel);
+	private: /////////////////////////////////////////////////////////////////////////////////////////
 	};
 }

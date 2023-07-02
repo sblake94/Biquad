@@ -18,6 +18,8 @@ GUI::Controls::Labels::StaticLabel::StaticLabel
 		_yPos,
 		_width,
 		_height,
+		juce::Font(12.0f),
+		1,
 		_paramID,
 		_lookAndFeel
 	)

@@ -10,7 +10,8 @@ const juce::Colour GUI::CustomLookAndFeel::s_textColourBright	= juce::Colour::fr
 const juce::Colour GUI::CustomLookAndFeel::s_textColourBrightT	= juce::Colour::fromRGBA(255u,	255u,	255u,	125u);
 const juce::Colour GUI::CustomLookAndFeel::s_textColourDark		= juce::Colour::fromRGBA(0u,	0u,		0u,		255u);
 const juce::Colour GUI::CustomLookAndFeel::s_textColourDarkT	= juce::Colour::fromRGBA(0u,	9u,		9u,		125u);
-const juce::Font   GUI::CustomLookAndFeel::s_font				= juce::Font("Arial", 12.0f, juce::Font::bold);
+const juce::Font   GUI::CustomLookAndFeel::s_labelFont			= juce::Font(12, juce::Font::plain);
+const juce::Font   GUI::CustomLookAndFeel::s_titleFont			= juce::Font(48, juce::Font::bold);
 
 const float GUI::CustomLookAndFeel::s_cornerRadius = 7.0f;
 const float GUI::CustomLookAndFeel::s_dialIndicatorThickness = 10.0f;
@@ -114,7 +115,7 @@ void GUI::CustomLookAndFeel::drawToggleButton
 	// Draw the text in the button
 	const juce::String buttonText = button.getButtonText();
 	g.setColour(s_textColourBright);
-	g.setFont(s_font);
+	g.setFont(s_labelFont);
 	g.drawFittedText(buttonText, buttonArea, juce::Justification::centred, 2);
 }
 

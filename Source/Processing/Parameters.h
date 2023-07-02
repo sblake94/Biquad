@@ -31,6 +31,7 @@ namespace Processing
 	static const int s_lowBandBypassParamID(13);
 	static const int s_masterGainParamID(14);
 	static const int s_heatGainParamID(15);
+	static const int s_NULL_PARAM_ID(INT_MAX);
 }
 
 namespace Processing

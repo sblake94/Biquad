@@ -44,6 +44,8 @@ namespace GUI
 		static const juce::DropShadow s_buttonShadow;
 		static const juce::DropShadow s_panelShadow;
 
+		static const bool s_useDropShadows;
+
 		static const juce::ColourGradient BackgroundGradient(
 			juce::Point<float> _innerPoint, juce::Point<float> _outerPoint);
 

@@ -25,9 +25,9 @@ namespace GUI
 		, m_midShelfBypass(EngageButton("Mid Shelf", 2, 0, 2, 1, Processing::s_midBandBypassParamID, true, _lookAndFeelPtr))
 		, m_highShelfBypass(EngageButton("High Shelf", 4, 0, 2, 1, Processing::s_highBandBypassParamID, true, _lookAndFeelPtr))
 
-		, m_lowFreqSlider(FrequencyDial("Freq", 0, 1, 2, 2, Processing::s_lowFreqCutoffParamID, 100.0f, 20.0f, 1000.0f, 0.01f, _lookAndFeelPtr))
-		, m_midFreqSlider(FrequencyDial("Freq", 2, 1, 2, 2, Processing::s_midFreqCutoffParamID, 500.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr))
-		, m_highFreqSlider(FrequencyDial("Freq", 4, 1, 2, 2, Processing::s_highFreqCutoffParamID, 10000.0f, 500.0f, 20000.0f, 0.01f, _lookAndFeelPtr))
+		, m_lowFreqSlider(FrequencyDial("Freq", 0, 1, 2, 2, Processing::s_lowFreqCutoffParamID, 50.0f, 5.0f, 500.0f, 0.01f, _lookAndFeelPtr))
+		, m_midFreqSlider(FrequencyDial("Freq", 2, 1, 2, 2, Processing::s_midFreqCutoffParamID, 1000.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr))
+		, m_highFreqSlider(FrequencyDial("Freq", 4, 1, 2, 2, Processing::s_highFreqCutoffParamID, 2000.0f, 200.0f, 20000.0f, 0.01f, _lookAndFeelPtr))
 
 		, m_lowGainSlider(GainDial("Gain", 0, 3, 2, 2, Processing::s_lowGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
 		, m_midGainSlider(GainDial("Gain", 2, 3, 2, 2, Processing::s_midGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr))
@@ -76,9 +76,12 @@ namespace GUI
 				GUI::CustomLookAndFeel::s_controlBoundsMargin);
 
 			// Draw the shadow
-			juce::Path shadowPath;
-			shadowPath.addRoundedRectangle(ctrlGroupBounds.toFloat(), GUI::CustomLookAndFeel::s_cornerRadius);
-			GUI::CustomLookAndFeel::s_panelShadow.drawForPath(_graphics, shadowPath);
+			if (GUI::CustomLookAndFeel::s_useDropShadows)
+			{
+				juce::Path shadowPath;
+				shadowPath.addRoundedRectangle(ctrlGroupBounds.toFloat(), GUI::CustomLookAndFeel::s_cornerRadius);
+				GUI::CustomLookAndFeel::s_panelShadow.drawForPath(_graphics, shadowPath);
+			}
 
 			// Draw the control group
 			_graphics.setGradientFill(

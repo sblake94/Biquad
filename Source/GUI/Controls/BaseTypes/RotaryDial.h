@@ -38,6 +38,7 @@ namespace GUI::Controls::BaseTypes
 		const int m_textBoxWidth = 50;
 		const int m_labelFontSize = 18;
 
+
 		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(RotaryDial);
 	};
 }

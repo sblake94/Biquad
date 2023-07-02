@@ -41,6 +41,9 @@ BandwidthDial::BandwidthDial
 {
 	// Only specific settings for BandwidthDial controls go here
 	this->setNumDecimalPlacesToDisplay(1);
+	this->setSkewFactorFromMidPoint(1.0f);
+
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

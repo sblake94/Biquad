@@ -27,6 +27,8 @@ const juce::DropShadow GUI::CustomLookAndFeel::s_buttonShadow = juce::DropShadow
 const juce::DropShadow GUI::CustomLookAndFeel::s_panelShadow = juce::DropShadow(
 	GUI::CustomLookAndFeel::s_shadowColour, 2, juce::Point<int>(2, 2));
 
+const bool GUI::CustomLookAndFeel::s_useDropShadows = true;
+
 /////////////////////////////////////////////////
 /// <summary>
 /// Constructor for the custom look and feel
@@ -69,8 +71,32 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	juce::Slider& slider
 )
 {
-	auto bounds = juce::Rectangle<float>(x, y, width, height)
-		.reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin);
+	auto bounds = slider.getLocalBounds().reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin);
+
+	float sliderDefaultPos = 0;
+
+	auto currentAngle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
+	auto restingPointAngle = rotaryStartAngle + sliderDefaultPos * (rotaryEndAngle - rotaryStartAngle);
+
+	// draw the pie
+	juce::Path piePath;
+
+	// get a perfect square that fits in bounds
+	auto pieBounds = bounds.withSizeKeepingCentre(
+		juce::jmin(bounds.getWidth(), bounds.getHeight()), 
+		juce::jmin(bounds.getWidth(), bounds.getHeight()))
+		.reduced(15.0f);
+		
+	piePath.addPieSegment(pieBounds.toFloat(), rotaryStartAngle, currentAngle, 0.0f);
+	g.setColour(GUI::CustomLookAndFeel::s_highlightColour);
+	g.fillPath(piePath);
+
+	piePath.clear();
+	g.setColour(GUI::CustomLookAndFeel::s_shadowColour);
+	piePath.addPieSegment(pieBounds.toFloat(), currentAngle, rotaryEndAngle, 0.0f);
+	g.fillPath(piePath);
+
+	bounds.reduce(GUI::CustomLookAndFeel::s_controlBoundsMargin, GUI::CustomLookAndFeel::s_controlBoundsMargin);
 
 	auto radius = juce::jmin(bounds.getWidth(), bounds.getHeight()) / 3.5f;
 	auto centreX = bounds.getCentreX();
@@ -78,13 +104,15 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	auto rx = centreX - radius;
 	auto ry = centreY - radius;
 	auto rw = radius * 2.0f;
-	auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
 	juce::Path dialPath;
 	dialPath.addEllipse(rx, ry, rw, rw);
 
-	// draw a drop shadow for the dial, originating from the top left corner
-	s_dialShadow.drawForPath(g, dialPath);
+	if (s_useDropShadows)
+	{
+		// draw a drop shadow for the dial, originating from the top left corner
+		s_dialShadow.drawForPath(g, dialPath);
+	}
 
 	// fill
 	juce::ColourGradient gradFill = BackgroundGradient(juce::Point<float>(rx, ry), bounds.getBottomRight().toFloat());
@@ -95,7 +123,7 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	juce::Path p;
 	auto pointerLength = radius * 0.33f;
 	p.addEllipse(-s_dialIndicatorThickness * 0.5f, -radius, s_dialIndicatorThickness, s_dialIndicatorThickness);
-	p.applyTransform(juce::AffineTransform::rotation(angle).translated(centreX, centreY));
+	p.applyTransform(juce::AffineTransform::rotation(currentAngle).translated(centreX, centreY));
 
 	g.setColour(s_highlightColour);
 	g.fillPath(p);
@@ -116,12 +144,16 @@ void GUI::CustomLookAndFeel::drawToggleButton
 {
 	// draw the background behind the button text
 	const juce::Rectangle<int> buttonArea = button.getLocalBounds().reduced(s_controlBoundsMargin);
-	
-	// Shadow for the button
 	juce::Path buttonPath;
-	buttonPath.addRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
-	s_buttonShadow.drawForPath(g, buttonPath);
 	
+
+	// Shadow for the button
+	if (s_useDropShadows)
+	{
+		buttonPath.addRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
+		s_buttonShadow.drawForPath(g, buttonPath);
+	}
+
 	// Draw the button itself
 	const juce::ColourGradient gradFill = BackgroundGradient(buttonArea.getTopLeft().toFloat(), buttonArea.getBottomRight().toFloat());
 	g.setGradientFill(gradFill);

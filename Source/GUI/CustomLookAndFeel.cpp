@@ -80,17 +80,13 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	auto rw = radius * 2.0f;
 	auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
-	// outline
-	g.setColour(s_shadowColour);
-	g.drawEllipse(rx, ry, rw, rw, s_outlineThickness);
-
-	// fill
 	juce::Path dialPath;
 	dialPath.addEllipse(rx, ry, rw, rw);
 
 	// draw a drop shadow for the dial, originating from the top left corner
 	s_dialShadow.drawForPath(g, dialPath);
 
+	// fill
 	juce::ColourGradient gradFill = BackgroundGradient(juce::Point<float>(rx, ry), bounds.getBottomRight().toFloat());
 	g.setGradientFill(gradFill);
 	g.fillEllipse(rx, ry, rw, rw);
@@ -103,6 +99,10 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 
 	g.setColour(s_highlightColour);
 	g.fillPath(p);
+
+	// outline
+	g.setColour(s_shadowColour);
+	g.drawEllipse(rx, ry, rw, rw, s_outlineThickness);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,12 +125,12 @@ void GUI::CustomLookAndFeel::drawToggleButton
 	// Draw the button itself
 	const juce::ColourGradient gradFill = BackgroundGradient(buttonArea.getTopLeft().toFloat(), buttonArea.getBottomRight().toFloat());
 	g.setGradientFill(gradFill);
-	g.fillRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
+	g.fillPath(buttonPath);
 	
 	// draw the border around the button
 	const bool buttonState = button.getToggleState();
 	g.setColour(buttonState ? s_highlightColour : s_shadowColour);
-	g.drawRoundedRectangle(buttonArea.toFloat().reduced(s_outlineThickness / 3.33f), s_cornerRadius, s_outlineThickness * 1.33f);
+	g.drawRoundedRectangle(buttonArea.toFloat().reduced(s_outlineThickness / 3.33f), s_cornerRadius, s_outlineThickness);
 
 	// Draw the text in the button
 	const juce::String buttonText = button.getButtonText();

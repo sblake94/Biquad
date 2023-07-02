@@ -92,7 +92,6 @@ namespace GUI
 			_graphics.drawRoundedRectangle(ctrlGroupBounds.toFloat()
 				, GUI::CustomLookAndFeel::s_cornerRadius
 				, GUI::CustomLookAndFeel::s_outlineThickness);
-
 		}
 	}
 

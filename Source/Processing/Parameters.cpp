@@ -18,19 +18,19 @@ Parameters::Parameters()
 	, m_midFreqCutoff(ParameterID(s_midFreqCutoffParamID), juce::String("Mid Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f)
 	, m_highFreqCutoff(ParameterID(s_highFreqCutoffParamID), juce::String("High Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f)
 	
-	, m_lowGain(ParameterID(s_lowGainParamID), juce::String("Low Gain"), -24.0f, 24.0f, 0.0f)
-	, m_midGain(ParameterID(s_midGainParamID), juce::String("Mid Gain"), -24.0f, 24.0f, 0.0f)
-	, m_highGain(ParameterID(s_highGainParamID), juce::String("High Gain"), -24.0f, 24.0f, 0.0f)
+	, m_lowGain(ParameterID(s_lowGainParamID), juce::String("Low Gain"), -6.0f, 6.0f, 0.0f)
+	, m_midGain(ParameterID(s_midGainParamID), juce::String("Mid Gain"), -6.0f, 6.0f, 0.0f)
+	, m_highGain(ParameterID(s_highGainParamID), juce::String("High Gain"), -6.0f, 6.0f, 0.0f)
 	
 	, m_lowBandwidth(ParameterID(s_lowBandwidthParamID), juce::String("Low Bandwidth"), 0.001f, 8.0f, 0.001f)
 	, m_midBandwidth(ParameterID(s_midBandwidthParamID), juce::String("Mid Bandwidth"), 0.001f, 8.0f, 0.001f)
 	, m_highBandwidth(ParameterID(s_highBandwidthParamID), juce::String("High Bandwidth"), 0.001f, 8.0f, 0.001f)
 	
 	, m_masterBypass(ParameterID(s_masterBypassParamID), juce::String("Master Bypass"), false)
-	, m_masterGain(ParameterID(s_masterGainParamID), juce::String("Master Gain"), -24.0f, 24.0f, 0.0f)
+	, m_masterGain(ParameterID(s_masterGainParamID), juce::String("Master Gain"), -12.0f, 12.0f, 0.0f)
 
 	, m_engageHeat(ParameterID(s_engageHeatParamID), juce::String("Engage Heat"), false)
-	, m_heatGain(ParameterID(s_heatGainParamID), juce::String("Heat Gain"), -6.0f, 6.0f, 0.0f)
+	, m_heatGain(ParameterID(s_heatGainParamID), juce::String("Heat Gain"), -12.0f, 12.0f, 0.0f)
 {
 	m_floatParams = FloatParamDirectory
 	{

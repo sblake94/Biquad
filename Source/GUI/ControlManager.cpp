@@ -29,9 +29,9 @@ namespace GUI
 		, m_midFreqSlider(FrequencyDial(Processing::s_midFreqCutoffParamID, _lookAndFeelPtr, "Freq", 2, 1, 2, 2, 500.0f, 100.0f, 10000.0f))
 		, m_highFreqSlider(FrequencyDial(Processing::s_highFreqCutoffParamID, _lookAndFeelPtr, "Freq", 4, 1, 2, 2, 10000.0f, 500.0f, 20000.0f))
 
-		, m_lowGainSlider(GainDial(Processing::s_lowGainParamID, _lookAndFeelPtr, "Gain", 0, 3, 2, 2, 0.0f, -24.0f, 24.0f, 0.0f))
-		, m_midGainSlider(GainDial(Processing::s_midGainParamID, _lookAndFeelPtr, "Gain", 2, 3, 2, 2, 0.0f, -24.0f, 24.0f, 0.0f))
-		, m_highGainSlider(GainDial(Processing::s_highGainParamID, _lookAndFeelPtr, "Gain", 4, 3, 2, 2, 0.0f, -24.0f, 24.0f, 0.0f))
+		, m_lowGainSlider(GainDial(Processing::s_lowGainParamID, _lookAndFeelPtr, "Gain", 0, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
+		, m_midGainSlider(GainDial(Processing::s_midGainParamID, _lookAndFeelPtr, "Gain", 2, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
+		, m_highGainSlider(GainDial(Processing::s_highGainParamID, _lookAndFeelPtr, "Gain", 4, 3, 2, 2, 0.0f, -6.0f, 6.0f, 0.0f))
 		
 		, m_lowBandwidthSlider(BandwidthDial(Processing::s_lowBandwidthParamID, _lookAndFeelPtr, "BW", 0, 5, 2, 2))
 		, m_midBandwidthSlider(BandwidthDial(Processing::s_midBandwidthParamID, _lookAndFeelPtr, "BW", 2, 5, 2, 2))

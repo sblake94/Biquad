@@ -107,6 +107,4 @@ void RotaryDial::paint(juce::Graphics& g)
 	g.drawText(text, getLocalBounds().reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin), juce::Justification::centredBottom, true);
 
 	juce::Slider::paint(g);
-
-	// draw the drop shadow
 }

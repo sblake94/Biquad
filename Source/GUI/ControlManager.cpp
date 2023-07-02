@@ -63,7 +63,7 @@ namespace GUI
 		// Draw control groups
 		for (std::vector<juce::Component*> ctrlGroup : GetControlGroups())
 		{
-			// get the bounds of each control in the group
+			// Get the collective bounds of each control in the group
 			juce::Rectangle<int> ctrlGroupBounds = juce::Rectangle<int>(0,0,0,0);
 			for (juce::Component* component : ctrlGroup)
 			{
@@ -75,6 +75,12 @@ namespace GUI
 				GUI::CustomLookAndFeel::s_controlBoundsMargin, 
 				GUI::CustomLookAndFeel::s_controlBoundsMargin);
 
+			// Draw the shadow
+			juce::Path shadowPath;
+			shadowPath.addRoundedRectangle(ctrlGroupBounds.toFloat(), GUI::CustomLookAndFeel::s_cornerRadius);
+			GUI::CustomLookAndFeel::s_panelShadow.drawForPath(_graphics, shadowPath);
+
+			// Draw the control group
 			_graphics.setGradientFill(
 				GUI::CustomLookAndFeel::BackgroundGradient(
 					ctrlGroupBounds.getTopLeft().toFloat(),
@@ -86,6 +92,7 @@ namespace GUI
 			_graphics.drawRoundedRectangle(ctrlGroupBounds.toFloat()
 				, GUI::CustomLookAndFeel::s_cornerRadius
 				, GUI::CustomLookAndFeel::s_outlineThickness);
+
 		}
 	}
 

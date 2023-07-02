@@ -40,6 +40,10 @@ namespace GUI
 		static const float s_outlineThickness;
 		static const float s_controlBoundsMargin;
 
+		static const juce::DropShadow s_dialShadow;
+		static const juce::DropShadow s_buttonShadow;
+		static const juce::DropShadow s_panelShadow;
+
 		static const juce::ColourGradient BackgroundGradient(
 			juce::Point<float> _innerPoint, juce::Point<float> _outerPoint);
 

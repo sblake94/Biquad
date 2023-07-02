@@ -18,6 +18,14 @@ const float GUI::CustomLookAndFeel::s_dialIndicatorThickness = 10.0f;
 const float GUI::CustomLookAndFeel::s_outlineThickness = 2.0f;
 const float GUI::CustomLookAndFeel::s_controlBoundsMargin = 5.0f;
 
+const juce::DropShadow GUI::CustomLookAndFeel::s_dialShadow = juce::DropShadow(
+	GUI::CustomLookAndFeel::s_shadowColour, 5, juce::Point<int>(5, 5));
+
+const juce::DropShadow GUI::CustomLookAndFeel::s_buttonShadow = juce::DropShadow(
+	GUI::CustomLookAndFeel::s_shadowColour, 1, juce::Point<int>(0, 0));
+
+const juce::DropShadow GUI::CustomLookAndFeel::s_panelShadow = juce::DropShadow(
+	GUI::CustomLookAndFeel::s_shadowColour, 2, juce::Point<int>(2, 2));
 
 /////////////////////////////////////////////////
 /// <summary>
@@ -72,14 +80,20 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	auto rw = radius * 2.0f;
 	auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
-	// fill
-	juce::ColourGradient gradFill = BackgroundGradient(juce::Point<float>(rx, ry), bounds.getBottomRight().toFloat());
-	g.setGradientFill(gradFill);	
-	g.fillEllipse(rx, ry, rw, rw);
-
 	// outline
 	g.setColour(s_shadowColour);
 	g.drawEllipse(rx, ry, rw, rw, s_outlineThickness);
+
+	// fill
+	juce::Path dialPath;
+	dialPath.addEllipse(rx, ry, rw, rw);
+
+	// draw a drop shadow for the dial, originating from the top left corner
+	s_dialShadow.drawForPath(g, dialPath);
+
+	juce::ColourGradient gradFill = BackgroundGradient(juce::Point<float>(rx, ry), bounds.getBottomRight().toFloat());
+	g.setGradientFill(gradFill);
+	g.fillEllipse(rx, ry, rw, rw);
 
 	// indicator
 	juce::Path p;
@@ -87,7 +101,6 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	p.addEllipse(-s_dialIndicatorThickness * 0.5f, -radius, s_dialIndicatorThickness, s_dialIndicatorThickness);
 	p.applyTransform(juce::AffineTransform::rotation(angle).translated(centreX, centreY));
 
-	// pointer
 	g.setColour(s_highlightColour);
 	g.fillPath(p);
 }
@@ -103,6 +116,13 @@ void GUI::CustomLookAndFeel::drawToggleButton
 {
 	// draw the background behind the button text
 	const juce::Rectangle<int> buttonArea = button.getLocalBounds().reduced(s_controlBoundsMargin);
+	
+	// Shadow for the button
+	juce::Path buttonPath;
+	buttonPath.addRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
+	s_buttonShadow.drawForPath(g, buttonPath);
+	
+	// Draw the button itself
 	const juce::ColourGradient gradFill = BackgroundGradient(buttonArea.getTopLeft().toFloat(), buttonArea.getBottomRight().toFloat());
 	g.setGradientFill(gradFill);
 	g.fillRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);

@@ -47,8 +47,7 @@ GUI::CustomLookAndFeel::CustomLookAndFeel()
 /// </summary>
 GUI::CustomLookAndFeel::~CustomLookAndFeel()
 {
-	s_titleFont;
-	s_labelFont;
+
 }
 
 /////////////////////////////////////////////////

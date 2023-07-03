@@ -1,7 +1,7 @@
 #include "ControlManager.h"
 
-#include "../Processing/Parameters.h"
-#include "../GUI/CustomLookAndFeel.h"
+#include "../DSP/Parameters.h"
+#include "../GUI/LookAndFeels/CustomLookAndFeel.h"
 
 namespace GUI
 {
@@ -21,29 +21,29 @@ namespace GUI
 		: m_controlAreaHeight(_windowHeight - 2 * m_margin)
 		, m_controlAreaWidth(_windowWidth - 2 * m_margin)
 
-		, m_lowShelfBypass("Low Shelf", 0, 0, 2, 1, Processing::s_lowBandBypassParamID, true, _lookAndFeelPtr)
-		, m_midShelfBypass("Mid Shelf", 2, 0, 2, 1, Processing::s_midBandBypassParamID, true, _lookAndFeelPtr)
-		, m_highShelfBypass("High Shelf", 4, 0, 2, 1, Processing::s_highBandBypassParamID, true, _lookAndFeelPtr)
+		, m_lowShelfBypass("Low Shelf", 0, 0, 2, 1, DSP::s_lowBandBypassParamID, true, _lookAndFeelPtr)
+		, m_midShelfBypass("Mid Shelf", 2, 0, 2, 1, DSP::s_midBandBypassParamID, true, _lookAndFeelPtr)
+		, m_highShelfBypass("High Shelf", 4, 0, 2, 1, DSP::s_highBandBypassParamID, true, _lookAndFeelPtr)
 
-		, m_lowFreqSlider("Freq", 0, 1, 2, 2, Processing::s_lowFreqCutoffParamID, 50.0f, 5.0f, 500.0f, 0.01f, _lookAndFeelPtr)
-		, m_midFreqSlider("Freq", 2, 1, 2, 2, Processing::s_midFreqCutoffParamID, 1000.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr)
-		, m_highFreqSlider("Freq", 4, 1, 2, 2, Processing::s_highFreqCutoffParamID, 2000.0f, 200.0f, 20000.0f, 0.01f, _lookAndFeelPtr)
+		, m_lowFreqSlider("Freq", 0, 1, 2, 2, DSP::s_lowFreqCutoffParamID, 50.0f, 5.0f, 500.0f, 0.01f, _lookAndFeelPtr)
+		, m_midFreqSlider("Freq", 2, 1, 2, 2, DSP::s_midFreqCutoffParamID, 1000.0f, 100.0f, 10000.0f, 0.01f, _lookAndFeelPtr)
+		, m_highFreqSlider("Freq", 4, 1, 2, 2, DSP::s_highFreqCutoffParamID, 2000.0f, 200.0f, 20000.0f, 0.01f, _lookAndFeelPtr)
 
-		, m_lowGainSlider("Gain", 0, 3, 2, 2, Processing::s_lowGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
-		, m_midGainSlider("Gain", 2, 3, 2, 2, Processing::s_midGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
-		, m_highGainSlider("Gain", 4, 3, 2, 2, Processing::s_highGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
+		, m_lowGainSlider("Gain", 0, 3, 2, 2, DSP::s_lowGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
+		, m_midGainSlider("Gain", 2, 3, 2, 2, DSP::s_midGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
+		, m_highGainSlider("Gain", 4, 3, 2, 2, DSP::s_highGainParamID, 0.0f, -6.0f, 6.0f, 0.0f, _lookAndFeelPtr)
 
-		, m_lowBandwidthSlider("BW", 0, 5, 2, 2, Processing::s_lowBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
-		, m_midBandwidthSlider("BW", 2, 5, 2, 2, Processing::s_midBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
-		, m_highBandwidthSlider("BW", 4, 5, 2, 2, Processing::s_highBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
+		, m_lowBandwidthSlider("BW", 0, 5, 2, 2, DSP::s_lowBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
+		, m_midBandwidthSlider("BW", 2, 5, 2, 2, DSP::s_midBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
+		, m_highBandwidthSlider("BW", 4, 5, 2, 2, DSP::s_highBandwidthParamID, 1.0f, 0.01f, 4.0f, 0.01f, _lookAndFeelPtr)
 
-		, m_engageHeatButton("Heat", 6, 4, 2, 1, Processing::s_engageHeatParamID, false, _lookAndFeelPtr)
-		, m_heatGainSlider("Heat Gain", 6, 5, 2, 2, Processing::s_heatGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr)
-		, m_masterBypassButton("Bypass", 8, 4, 2, 1, Processing::s_masterBypassParamID, false, _lookAndFeelPtr)
-		, m_masterGainSlider("Output Gain", 8, 5, 2, 2, Processing::s_masterGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr)
+		, m_engageHeatButton("Heat", 6, 4, 2, 1, DSP::s_engageHeatParamID, false, _lookAndFeelPtr)
+		, m_heatGainSlider("Heat Gain", 6, 5, 2, 2, DSP::s_heatGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr)
+		, m_masterBypassButton("Bypass", 8, 4, 2, 1, DSP::s_masterBypassParamID, false, _lookAndFeelPtr)
+		, m_masterGainSlider("Output Gain", 8, 5, 2, 2, DSP::s_masterGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr)
 
-		, m_hotTitleLabel("HOT", 6, 0, 4, 2, Processing::s_NULL_PARAM_ID, CustomLookAndFeel::s_colour_burningOrange, _lookAndFeelPtr)
-		, m_shelfTitleLabel("SHELF", 6, 1, 4, 3, Processing::s_NULL_PARAM_ID, juce::Colours::white, _lookAndFeelPtr)
+		, m_hotTitleLabel("HOT", 6, 0, 4, 2, DSP::s_NULL_PARAM_ID, CustomLookAndFeel::s_colour_burningOrange, _lookAndFeelPtr)
+		, m_shelfTitleLabel("SHELF", 6, 1, 4, 3, DSP::s_NULL_PARAM_ID, juce::Colours::white, _lookAndFeelPtr)
 	{
 	}
 

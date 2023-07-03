@@ -1,7 +1,7 @@
 #include "BiquadUnit.h"
 #include "Parameters.h"
 
-using namespace Processing;
+using namespace DSP;
 
 
 //////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ void BiquadUnit::ApplyBiquad
 )
 {
 	// Get the parameters
-	FloatParamDirectory sliderParams = Processing::Parameters::GetSliderParams();
+	FloatParamDirectory sliderParams = DSP::Parameters::GetSliderParams();
 
 	// Pick filter type
 	switch (_filterType) 
@@ -138,9 +138,9 @@ void BiquadUnit::SetHighShelfCoeffs
 	const int _sampleRate
 )
 {
-	const float hfCutoff = *(Processing::Parameters::GetSliderParams().at(s_highFreqCutoffParamID));
-	const float hfGain = *(Processing::Parameters::GetSliderParams().at(s_highGainParamID));
-	const float hfBW = *(Processing::Parameters::GetSliderParams().at(s_highBandwidthParamID));
+	const float hfCutoff = *(DSP::Parameters::GetSliderParams().at(s_highFreqCutoffParamID));
+	const float hfGain = *(DSP::Parameters::GetSliderParams().at(s_highGainParamID));
+	const float hfBW = *(DSP::Parameters::GetSliderParams().at(s_highBandwidthParamID));
 
 	SetShelfCoeffs(hfGain, hfCutoff, hfBW, _sampleRate);
 
@@ -163,9 +163,9 @@ void BiquadUnit::SetPeakShelfCoeffs
 	const int _sampleRate
 )
 {
-	const float peakCutoff = *(Processing::Parameters::GetSliderParams().at(s_midFreqCutoffParamID));
-	const float peakGain = *(Processing::Parameters::GetSliderParams().at(s_midGainParamID));
-	const float peakBW = *(Processing::Parameters::GetSliderParams().at(s_midBandwidthParamID));
+	const float peakCutoff = *(DSP::Parameters::GetSliderParams().at(s_midFreqCutoffParamID));
+	const float peakGain = *(DSP::Parameters::GetSliderParams().at(s_midGainParamID));
+	const float peakBW = *(DSP::Parameters::GetSliderParams().at(s_midBandwidthParamID));
 
 	SetShelfCoeffs(peakGain, peakCutoff, peakBW, _sampleRate);
 
@@ -188,9 +188,9 @@ void BiquadUnit::SetLowShelfCoeffs
 	const int _sampleRate
 )
 {
-	const float lfCutoff = *(Processing::Parameters::GetSliderParams().at(s_lowFreqCutoffParamID));
-	const float lfGain = *(Processing::Parameters::GetSliderParams().at(s_lowGainParamID));
-	const float lfBW = *(Processing::Parameters::GetSliderParams().at(s_lowBandwidthParamID));
+	const float lfCutoff = *(DSP::Parameters::GetSliderParams().at(s_lowFreqCutoffParamID));
+	const float lfGain = *(DSP::Parameters::GetSliderParams().at(s_lowGainParamID));
+	const float lfBW = *(DSP::Parameters::GetSliderParams().at(s_lowBandwidthParamID));
 
 	SetShelfCoeffs(lfGain, lfCutoff, lfBW, _sampleRate);
 

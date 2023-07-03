@@ -1,8 +1,8 @@
 #include "Parameters.h"
 
-using namespace Processing;
+using namespace DSP;
 
-namespace Processing 
+namespace DSP 
 {
 	// NOTE: I'm dubious about these being static, but I don't think we're doing any multi-threaded access to them, so it should be fine.
 
@@ -80,7 +80,7 @@ Parameters::~Parameters()
 /// </summary>
 /// <param name="_paramID"></param>
 /// <returns></returns>
-const juce::AudioProcessorParameter* Processing::Parameters::GetParameter(int _paramID)
+const juce::AudioProcessorParameter* DSP::Parameters::GetParameter(int _paramID)
 {
 	try{
 		return dynamic_cast<AudioProcessorParameter*>(GetSliderParams().at(_paramID));
@@ -98,7 +98,7 @@ const juce::AudioProcessorParameter* Processing::Parameters::GetParameter(int _p
 /// <summary>
 /// Returns the slider parameters as a Reference to a ParamDirectory
 /// </summary>
-const FloatParamDirectory& Processing::Parameters::GetSliderParams()
+const FloatParamDirectory& DSP::Parameters::GetSliderParams()
 {
 	return s_floatParams;
 }
@@ -107,7 +107,7 @@ const FloatParamDirectory& Processing::Parameters::GetSliderParams()
 /// <summary>
 /// Returns the toggle parameters as a Reference to a ParamDirectory
 /// </summary>
-const BoolParamDirectory& Processing::Parameters::GetBoolParams()
+const BoolParamDirectory& DSP::Parameters::GetBoolParams()
 {
 	return s_boolParams;
 }

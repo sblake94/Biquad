@@ -26,7 +26,6 @@
 #include <juce_graphics/juce_graphics.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_gui_extra/juce_gui_extra.h>
-#include <juce_osc/juce_osc.h>
 
 
 #if defined (JUCE_PROJUCER_VERSION) && JUCE_PROJUCER_VERSION < JUCE_VERSION
@@ -42,7 +41,7 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "Biquad";
+    const char* const  projectName    = "HotShelf";
     const char* const  companyName    = "";
     const char* const  versionString  = "1.0.0";
     const int          versionNumber  = 0x10000;

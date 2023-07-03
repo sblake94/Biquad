@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BE10895C-7F37-A895-BD96-CC6D1E0A7149}</ProjectGuid>
+    <ProjectGuid>{7268B9FD-ACA9-DB4F-86DA-3C51543C70FC}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -38,11 +38,11 @@
     <TargetExt>.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\Shared Code\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Shared Code\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Biquad</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">HotShelf</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Platform)\$(Configuration)\Shared Code\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Shared Code\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Biquad</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">HotShelf</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -57,13 +57,13 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>D:\Dev\Visual Studio Projects\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;..\..\JuceLibraryCode;D:\Dev\Visual Studio Projects\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_osc=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name="Biquad";JucePlugin_Desc="Biquad";JucePlugin_Manufacturer="yourcompany";JucePlugin_ManufacturerWebsite="www.yourcompany.com";JucePlugin_ManufacturerEmail="";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x5a767576;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString="1.0.0";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=BiquadAU;JucePlugin_AUExportPrefixQuoted="BiquadAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.Biquad;JucePlugin_AAXIdentifier=com.yourcompany.Biquad;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName="yourcompany: Biquad";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID="com.yourcompany.Biquad.factory";JucePlugin_ARADocumentArchiveID="com.yourcompany.Biquad.aradocumentarchive.1.0.0";JucePlugin_ARACompatibleArchiveIDs="";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name="HotShelf";JucePlugin_Desc="HotShelf";JucePlugin_Manufacturer="yourcompany";JucePlugin_ManufacturerWebsite="www.yourcompany.com";JucePlugin_ManufacturerEmail="";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x47636f38;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString="1.0.0";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=HotShelfAU;JucePlugin_AUExportPrefixQuoted="HotShelfAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName="yourcompany: HotShelf";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID="com.yourcompany.HotShelf.factory";JucePlugin_ARADocumentArchiveID="com.yourcompany.HotShelf.aradocumentarchive.1.0.0";JucePlugin_ARACompatibleArchiveIDs="";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)\Biquad.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(IntDir)\HotShelf.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -71,25 +71,21 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>D:\Dev\Visual Studio Projects\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;..\..\JuceLibraryCode;D:\Dev\Visual Studio Projects\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_osc=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name=\"Biquad\";JucePlugin_Desc=\"Biquad\";JucePlugin_Manufacturer=\"yourcompany\";JucePlugin_ManufacturerWebsite=\"www.yourcompany.com\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x5a767576;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString=\"1.0.0\";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=BiquadAU;JucePlugin_AUExportPrefixQuoted=\"BiquadAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.Biquad;JucePlugin_AAXIdentifier=com.yourcompany.Biquad;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName=\"yourcompany: Biquad\";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID=\"com.yourcompany.Biquad.factory\";JucePlugin_ARADocumentArchiveID=\"com.yourcompany.Biquad.aradocumentarchive.1.0.0\";JucePlugin_ARACompatibleArchiveIDs=\"\";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name=\"HotShelf\";JucePlugin_Desc=\"HotShelf\";JucePlugin_Manufacturer=\"yourcompany\";JucePlugin_ManufacturerWebsite=\"www.yourcompany.com\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x47636f38;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString=\"1.0.0\";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=HotShelfAU;JucePlugin_AUExportPrefixQuoted=\"HotShelfAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName=\"yourcompany: HotShelf\";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID=\"com.yourcompany.HotShelf.factory\";JucePlugin_ARADocumentArchiveID=\"com.yourcompany.HotShelf.aradocumentarchive.1.0.0\";JucePlugin_ARACompatibleArchiveIDs=\"\";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\Biquad.lib</OutputFile>
+      <OutputFile>$(OutDir)\HotShelf.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\Biquad.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\HotShelf.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\Biquad.bsc</OutputFile>
+      <OutputFile>$(IntDir)\HotShelf.bsc</OutputFile>
     </Bscmake>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -102,13 +98,13 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>D:\Dev\Visual Studio Projects\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;..\..\JuceLibraryCode;D:\Dev\Visual Studio Projects\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_osc=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name="Biquad";JucePlugin_Desc="Biquad";JucePlugin_Manufacturer="yourcompany";JucePlugin_ManufacturerWebsite="www.yourcompany.com";JucePlugin_ManufacturerEmail="";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x5a767576;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString="1.0.0";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=BiquadAU;JucePlugin_AUExportPrefixQuoted="BiquadAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.Biquad;JucePlugin_AAXIdentifier=com.yourcompany.Biquad;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName="yourcompany: Biquad";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID="com.yourcompany.Biquad.factory";JucePlugin_ARADocumentArchiveID="com.yourcompany.Biquad.aradocumentarchive.1.0.0";JucePlugin_ARACompatibleArchiveIDs="";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name="HotShelf";JucePlugin_Desc="HotShelf";JucePlugin_Manufacturer="yourcompany";JucePlugin_ManufacturerWebsite="www.yourcompany.com";JucePlugin_ManufacturerEmail="";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x47636f38;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString="1.0.0";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=HotShelfAU;JucePlugin_AUExportPrefixQuoted="HotShelfAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName="yourcompany: HotShelf";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID="com.yourcompany.HotShelf.factory";JucePlugin_ARADocumentArchiveID="com.yourcompany.HotShelf.aradocumentarchive.1.0.0";JucePlugin_ARACompatibleArchiveIDs="";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)\Biquad.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(IntDir)\HotShelf.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -116,14 +112,14 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>D:\Dev\Visual Studio Projects\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;..\..\JuceLibraryCode;D:\Dev\Visual Studio Projects\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_osc=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name=\"Biquad\";JucePlugin_Desc=\"Biquad\";JucePlugin_Manufacturer=\"yourcompany\";JucePlugin_ManufacturerWebsite=\"www.yourcompany.com\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x5a767576;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString=\"1.0.0\";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=BiquadAU;JucePlugin_AUExportPrefixQuoted=\"BiquadAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.Biquad;JucePlugin_AAXIdentifier=com.yourcompany.Biquad;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName=\"yourcompany: Biquad\";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID=\"com.yourcompany.Biquad.factory\";JucePlugin_ARADocumentArchiveID=\"com.yourcompany.Biquad.aradocumentarchive.1.0.0\";JucePlugin_ARACompatibleArchiveIDs=\"\";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCE_DISPLAY_SPLASH_SCREEN=1;JUCE_USE_DARK_SPLASH_SCREEN=1;JUCE_PROJUCER_VERSION=0x70005;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_STRICT_REFCOUNTEDPOINTER=1;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JucePlugin_Build_LV2=0;JucePlugin_Enable_IAA=0;JucePlugin_Enable_ARA=0;JucePlugin_Name=\"HotShelf\";JucePlugin_Desc=\"HotShelf\";JucePlugin_Manufacturer=\"yourcompany\";JucePlugin_ManufacturerWebsite=\"www.yourcompany.com\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_ManufacturerCode=0x4d616e75;JucePlugin_PluginCode=0x47636f38;JucePlugin_IsSynth=0;JucePlugin_WantsMidiInput=0;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Version=1.0.0;JucePlugin_VersionCode=0x10000;JucePlugin_VersionString=\"1.0.0\";JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=HotShelfAU;JucePlugin_AUExportPrefixQuoted=\"HotShelfAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXIdentifier=com.yourcompany.HotShelf;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_IAAType=0x61757278;JucePlugin_IAASubType=JucePlugin_PluginCode;JucePlugin_IAAName=\"yourcompany: HotShelf\";JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JucePlugin_ARAFactoryID=\"com.yourcompany.HotShelf.factory\";JucePlugin_ARADocumentArchiveID=\"com.yourcompany.HotShelf.aradocumentarchive.1.0.0\";JucePlugin_ARACompatibleArchiveIDs=\"\";JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JUCER_VS2022_78A503E=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\Biquad.lib</OutputFile>
+      <OutputFile>$(OutDir)\HotShelf.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\Biquad.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\HotShelf.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -132,22 +128,25 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\Biquad.bsc</OutputFile>
+      <OutputFile>$(IntDir)\HotShelf.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\DSP\BiquadProcessing.cpp" />
+    <ClCompile Include="..\..\Source\DSP\BiquadUnit.cpp" />
+    <ClCompile Include="..\..\Source\DSP\Parameters.cpp" />
     <ClCompile Include="..\..\Source\GUI\Background.cpp" />
     <ClCompile Include="..\..\Source\GUI\ControlManager.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp" />
-    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Buttons\EngageButton.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Labels\StaticLabel.cpp" />
     <ClCompile Include="..\..\Source\GUI\Controls\Labels\TitleLabel.cpp" />
-    <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp" />
+    <ClCompile Include="..\..\Source\GUI\LookAndFeels\CustomLookAndFeel.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -2409,33 +2408,6 @@
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp" />
@@ -2456,25 +2428,24 @@
       <AdditionalOptions> /bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp" />
-    <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp" />
-    <ClCompile Include="..\..\Source\Processing\BiquadProcessing.cpp" />
-    <ClCompile Include="..\..\Source\Processing\BiquadUnit.cpp" />
-    <ClCompile Include="..\..\Source\Processing\Parameters.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DSP\BiquadProcessing.h" />
+    <ClInclude Include="..\..\Source\DSP\BiquadUnit.h" />
+    <ClInclude Include="..\..\Source\DSP\Parameters.h" />
     <ClInclude Include="..\..\Source\GUI\Background.h" />
     <ClInclude Include="..\..\Source\GUI\ControlManager.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomControlBase.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.h" />
-    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.h" />
+    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Buttons\EngageButton.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h" />
     <ClInclude Include="..\..\Source\GUI\Controls\Labels\TitleLabel.h" />
-    <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h" />
+    <ClInclude Include="..\..\Source\GUI\LookAndFeels\CustomLookAndFeel.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h" />
@@ -3421,20 +3392,8 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\misc\juce_WebBrowserComponent.h" />
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\native\juce_mac_NSViewFrameWatcher.h" />
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.h" />
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h" />
-    <ClInclude Include="..\..\Source\Processing\BiquadProcessing.h" />
-    <ClInclude Include="..\..\Source\Processing\BiquadUnit.h" />
-    <ClInclude Include="..\..\Source\Processing\Parameters.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt" />

@@ -1,6 +1,6 @@
 #include "TitleLabel.h"
 
-#include "../../CustomLookAndFeel.h"
+#include "../../LookAndFeels/CustomLookAndFeel.h"
 
 GUI::Controls::Labels::TitleLabel::TitleLabel
 (

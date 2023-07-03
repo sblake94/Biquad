@@ -1,7 +1,7 @@
 #include "CustomLabel.h"
 
 #include "CustomControlBase.h"
-#include "../../CustomLookAndFeel.h"
+#include "../../LookAndFeels/CustomLookAndFeel.h"
 
 GUI::Controls::BaseTypes::CustomLabel::CustomLabel
 (

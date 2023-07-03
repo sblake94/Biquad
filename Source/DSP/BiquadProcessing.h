@@ -3,7 +3,7 @@
 #include "Parameters.h"
 #include "BiquadUnit.h"
 
-namespace Processing
+namespace DSP
 {
 	///////////////////////////////////////////////////////////////////////////
 	/// <summary>

@@ -9,23 +9,19 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Processing/BiquadProcessing.h"
-#include "Processing/Parameters.h"
-
-using namespace Processing;
 
 //==============================================================================
 /**
 */
-class BiquadAudioProcessor  : public juce::AudioProcessor
+class HotShelfAudioProcessor  : public juce::AudioProcessor
                             #if JucePlugin_Enable_ARA
                              , public juce::AudioProcessorARAExtension
                             #endif
 {
 public:
     //==============================================================================
-    BiquadAudioProcessor();
-    ~BiquadAudioProcessor() override;
+    HotShelfAudioProcessor();
+    ~HotShelfAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -60,12 +56,7 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    Processing::Parameters& GetParametersRef() { return m_parameters; }
-
 private:
     //==============================================================================
-    Processing::Parameters m_parameters;
-    Processing::BiquadProcessing m_biquadProc;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BiquadAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HotShelfAudioProcessor)
 };

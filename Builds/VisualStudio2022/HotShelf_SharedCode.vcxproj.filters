@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Biquad\Source">
-      <UniqueIdentifier>{44ED9408-0FF7-A9D3-1A68-12F6E5BCEA3F}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source">
+      <UniqueIdentifier>{80B11332-D8D2-4819-8C44-C98523DC71EF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad">
-      <UniqueIdentifier>{280F2793-EB65-379E-49A8-AED50CB84373}</UniqueIdentifier>
+    <Filter Include="HotShelf">
+      <UniqueIdentifier>{97FFD846-54F1-EF6F-5A59-ECD338991F0A}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_audio_basics\audio_play_head">
       <UniqueIdentifier>{EB58F05A-A968-CEBE-40C4-107CDD8F240F}</UniqueIdentifier>
@@ -592,49 +592,43 @@
     <Filter Include="JUCE Modules\juce_gui_extra">
       <UniqueIdentifier>{A4D76113-9EDC-DA60-D89B-5BACF7F1C426}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JUCE Modules\juce_osc\osc">
-      <UniqueIdentifier>{EEE9B92C-AD26-4BEA-4D95-3F859090EA9F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_osc">
-      <UniqueIdentifier>{B1DE8DB1-C00A-12C0-D690-8B3C9504A60A}</UniqueIdentifier>
-    </Filter>
     <Filter Include="JUCE Modules">
       <UniqueIdentifier>{FE955B6B-68AC-AA07-70D8-2413F6DB65C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Library Code">
       <UniqueIdentifier>{7ED5A90E-41AF-A1EF-659B-37CEEAB9BA61}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI">
-      <UniqueIdentifier>{d77a4cd0-b64e-4e43-8389-ef4f3f01deac}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI">
+      <UniqueIdentifier>{dca7d22b-9005-41b7-accf-f0d8a93b8904}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\Controls">
-      <UniqueIdentifier>{e273fda8-063d-48c0-9987-a1d0ac8d7466}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\DSP">
+      <UniqueIdentifier>{a88a1ff7-2211-4ca1-9a9b-07a279562d3c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\Processing">
-      <UniqueIdentifier>{7de29664-706b-4922-9c6e-b9e216562129}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\Controls">
+      <UniqueIdentifier>{8d03a4ee-72f1-4e9c-9662-85ce3015d5bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\Controls\Buttons">
-      <UniqueIdentifier>{f41f956b-ad09-4845-adea-635e02adb299}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\LooksAndFeels">
+      <UniqueIdentifier>{74765f86-aba8-4a8c-97a7-9e973c4fcc2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\Controls\Dials">
-      <UniqueIdentifier>{3f9b9abd-a6d3-4826-9c88-d6e308f3aca7}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\Controls\BaseTypes">
+      <UniqueIdentifier>{121bd85c-e579-46b3-9a45-f2eeb53ffd14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\Controls\BaseTypes">
-      <UniqueIdentifier>{b258c7f1-1660-4a9d-b97e-6f5037be596f}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\Controls\Buttons">
+      <UniqueIdentifier>{dc6bce4e-b15e-4886-8b6c-8175f4afe999}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\Controls\Labels">
-      <UniqueIdentifier>{cd31ff73-f510-456d-825f-40b541c0ebe0}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\Controls\Dials">
+      <UniqueIdentifier>{906018a6-ee0b-490d-8ded-f6b458062532}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Biquad\Source\GUI\LookAndFeels">
-      <UniqueIdentifier>{b097d895-3df6-403d-b61d-06cd0da5cbd4}</UniqueIdentifier>
+    <Filter Include="HotShelf\Source\GUI\Controls\Labels">
+      <UniqueIdentifier>{478c450a-dc3a-4ece-9027-cbf137690e6c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
-      <Filter>Biquad\Source</Filter>
+      <Filter>HotShelf\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
-      <Filter>Biquad\Source</Filter>
+      <Filter>HotShelf\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>
@@ -2895,33 +2889,6 @@
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.cpp">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.cpp">
-      <Filter>JUCE Modules\juce_osc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -2970,61 +2937,58 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp">
-      <Filter>JUCE Library Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Background.cpp">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\ControlManager.cpp">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\CustomLookAndFeel.cpp">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Processing\Parameters.cpp">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Processing\BiquadProcessing.cpp">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Processing\BiquadUnit.cpp">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
+    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp">
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.cpp">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.cpp">
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Buttons\EngageButton.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Buttons</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Dials\GainDial.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Labels\StaticLabel.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.cpp">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Labels</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GUI\Controls\Labels\TitleLabel.cpp">
-      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\LookAndFeels\CustomLookAndFeel.cpp">
+      <Filter>HotShelf\Source\GUI\LooksAndFeels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DSP\BiquadProcessing.cpp">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DSP\BiquadUnit.cpp">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DSP\Parameters.cpp">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\Background.cpp">
+      <Filter>HotShelf\Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GUI\ControlManager.cpp">
+      <Filter>HotShelf\Source\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
-      <Filter>Biquad\Source</Filter>
+      <Filter>HotShelf\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
-      <Filter>Biquad\Source</Filter>
+      <Filter>HotShelf\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>
@@ -5858,86 +5822,59 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.h">
-      <Filter>JUCE Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h">
-      <Filter>JUCE Modules\juce_osc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Background.h">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\ControlManager.h">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\CustomLookAndFeel.h">
-      <Filter>Biquad\Source\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Processing\Parameters.h">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Processing\BiquadProcessing.h">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Processing\BiquadUnit.h">
-      <Filter>Biquad\Source\Processing</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomControlBase.h">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.h">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.h">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\Buttons\EngageButton.h">
-      <Filter>Biquad\Source\GUI\Controls\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.h">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h">
-      <Filter>Biquad\Source\GUI\Controls\Dials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h">
-      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\CustomLabel.h">
-      <Filter>Biquad\Source\GUI\Controls\BaseTypes</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\LatchButton.h">
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\BaseTypes\RotaryDial.h">
+      <Filter>HotShelf\Source\GUI\Controls\BaseTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Buttons\EngageButton.h">
+      <Filter>HotShelf\Source\GUI\Controls\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\BandwidthDial.h">
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\FrequencyDial.h">
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Dials\GainDial.h">
+      <Filter>HotShelf\Source\GUI\Controls\Dials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Controls\Labels\StaticLabel.h">
+      <Filter>HotShelf\Source\GUI\Controls\Labels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\GUI\Controls\Labels\TitleLabel.h">
-      <Filter>Biquad\Source\GUI\Controls\Labels</Filter>
+      <Filter>HotShelf\Source\GUI\Controls\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\LookAndFeels\CustomLookAndFeel.h">
+      <Filter>HotShelf\Source\GUI\LooksAndFeels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DSP\BiquadProcessing.h">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DSP\BiquadUnit.h">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DSP\Parameters.h">
+      <Filter>HotShelf\Source\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\Background.h">
+      <Filter>HotShelf\Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GUI\ControlManager.h">
+      <Filter>HotShelf\Source\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

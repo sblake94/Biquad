@@ -8,39 +8,39 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "GUI/CustomLookAndFeel.h"
+
+#include "DSP/Parameters.h"
+#include "GUI/LookAndFeels/CustomLookAndFeel.h"
 #include "GUI/Controls/BaseTypes/CustomControlBase.h"
 
 #include <stdlib.h>
 #include <map>
 
-using namespace GUI;
-
-/////////////////////////////////////////////////////////////////////////////////////
-BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
-    : AudioProcessorEditor(&p)
+//==============================================================================
+HotShelfAudioProcessorEditor::HotShelfAudioProcessorEditor (HotShelfAudioProcessor& p)
+    : AudioProcessorEditor (&p)
     , Slider::Listener()
     , Button::Listener()
-    , m_controlManager(m_windowWidth, m_windowHeight, new CustomLookAndFeel())
-    , m_audioProcessor(p)
+    , audioProcessor (p)
     , m_background()
+    , m_controlManager(m_windowWidth, m_windowHeight, new GUI::CustomLookAndFeel()) // Potential memory leak?
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (m_windowWidth, m_windowHeight);
+    setSize(m_windowWidth, m_windowHeight);
     setResizable(false, false);
-    
+
     // Make all controls visible
     for (BaseTypes::RotaryDial* dialPtr : m_controlManager.GetAllRotaryDials())
     {
-        dialPtr->setValue(Processing::Parameters::GetSliderParams().at(dialPtr->m_id)->get(), juce::dontSendNotification);
+        dialPtr->setValue(DSP::Parameters::GetSliderParams().at(dialPtr->m_id)->get(), juce::dontSendNotification);
         dialPtr->addListener(this);
         addAndMakeVisible(dynamic_cast<juce::Slider*>(dialPtr));
     }
 
     for (BaseTypes::LatchButton* buttonPtr : m_controlManager.GetAllLatchButtons())
     {
-        buttonPtr->setToggleState(Processing::Parameters::GetBoolParams().at(buttonPtr->m_id)->get(), juce::dontSendNotification);
+        buttonPtr->setToggleState(DSP::Parameters::GetBoolParams().at(buttonPtr->m_id)->get(), juce::dontSendNotification);
         buttonPtr->addListener(this);
         addAndMakeVisible(dynamic_cast<juce::ToggleButton*>(buttonPtr));
     }
@@ -48,25 +48,21 @@ BiquadAudioProcessorEditor::BiquadAudioProcessorEditor(BiquadAudioProcessor& p)
     for (BaseTypes::CustomLabel* labelPtr : m_controlManager.GetAllCustomLabels())
     {
         addAndMakeVisible(dynamic_cast<juce::Label*>(labelPtr));
-	}
+    }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
-BiquadAudioProcessorEditor::~BiquadAudioProcessorEditor()
+HotShelfAudioProcessorEditor::~HotShelfAudioProcessorEditor()
 {
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
-void BiquadAudioProcessorEditor::paint (juce::Graphics& g)
+//==============================================================================
+void HotShelfAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    
     m_background.paint(g, m_windowWidth, m_windowHeight);
     m_controlManager.paint(g);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
-void BiquadAudioProcessorEditor::resized()
+void HotShelfAudioProcessorEditor::resized()
 {
     // Get new window size
     m_windowWidth = getWidth();
@@ -77,45 +73,45 @@ void BiquadAudioProcessorEditor::resized()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-void BiquadAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
+void HotShelfAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 {
     // Get the slider's ID
-    juce::ParameterID sliderID = dynamic_cast<Controls::BaseTypes::CustomControlBase*>(slider)->m_id;
+    juce::ParameterID sliderID = dynamic_cast<GUI::Controls::BaseTypes::CustomControlBase*>(slider)->m_id;
 
-	// Get the slider's value
-	float sliderValue = slider->getValue();
+    // Get the slider's value
+    float sliderValue = slider->getValue();
 
-	// Update the processor
-    for (std::pair<juce::ParameterID, juce::AudioParameterFloat*> param : Processing::Parameters::GetSliderParams())
+    // Update the processor
+    for (std::pair<juce::ParameterID, juce::AudioParameterFloat*> param : DSP::Parameters::GetSliderParams())
     {
         if (param.first.getParamID() == sliderID.getParamID())
-		{
+        {
             juce::AudioParameterFloat* paramFloat = param.second;
-			*paramFloat = (float)sliderValue;
+            *paramFloat = (float)sliderValue;
             return;
-		}
+        }
     }
 
     throw new std::exception("Slider ID not found in processor");
 }
 
-void BiquadAudioProcessorEditor::buttonClicked(juce::Button* button)
+void HotShelfAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     // Get the button's ID
-	juce::ParameterID buttonID = dynamic_cast<GUI::Controls::BaseTypes::CustomControlBase*>(button)->m_id;
+    juce::ParameterID buttonID = dynamic_cast<GUI::Controls::BaseTypes::CustomControlBase*>(button)->m_id;
 
-	// Get the button's value
-	bool buttonValue = button->getToggleState();
+    // Get the button's value
+    bool buttonValue = button->getToggleState();
 
-	// Update the processor
-	for (std::pair<juce::ParameterID, juce::AudioParameterBool*> param : Processing::Parameters::GetBoolParams())
-	{
-		if (param.first.getParamID() == buttonID.getParamID())
-		{
+    // Update the processor
+    for (std::pair<juce::ParameterID, juce::AudioParameterBool*> param : DSP::Parameters::GetBoolParams())
+    {
+        if (param.first.getParamID() == buttonID.getParamID())
+        {
             param.second->setValueNotifyingHost(buttonValue);
-			return;
-		}
-	}
+            return;
+        }
+    }
 
-	throw new std::exception("Button ID not found in processor");
+    throw new std::exception("Button ID not found in processor");
 }

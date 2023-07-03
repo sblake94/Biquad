@@ -1,6 +1,6 @@
 #include "RotaryDial.h"
-#include "../../CustomLookAndFeel.h"
-#include "../../../Processing/Parameters.h"
+#include "../../LookAndFeels/CustomLookAndFeel.h"
+#include "../../../DSP/Parameters.h"
 
 using namespace GUI::Controls::BaseTypes;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ RotaryDial::RotaryDial
 		_paramID)
 {
 
-	float value = Processing::Parameters::GetSliderParams().at(_paramID)->get();
+	float value = DSP::Parameters::GetSliderParams().at(_paramID)->get();
 	this->setValue(value);
 
 

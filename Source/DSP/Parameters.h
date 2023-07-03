@@ -8,7 +8,7 @@ using namespace std;
 using FloatParamDirectory = std::map<int, juce::AudioParameterFloat*>;
 using BoolParamDirectory = std::map<int, juce::AudioParameterBool*>;
 
-namespace Processing
+namespace DSP
 {
 	/// Static Ids to be used for linging parameters to dials
 	/// NOTE ALPHA: These must be unique
@@ -34,7 +34,7 @@ namespace Processing
 	static const int s_NULL_PARAM_ID(INT_MAX);
 }
 
-namespace Processing
+namespace DSP
 {
 	//////////////////////////////////////////////////////////////////////
 	/// <summary>

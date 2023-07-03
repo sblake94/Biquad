@@ -10,20 +10,21 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "GUI/ControlManager.h"
+
 #include "GUI/Background.h"
+#include "GUI/ControlManager.h"
 
 //==============================================================================
 /**
 */
-class BiquadAudioProcessorEditor 
+class HotShelfAudioProcessorEditor  
     : public juce::AudioProcessorEditor
     , public juce::Slider::Listener
     , public juce::Button::Listener
 {
 public:
-    BiquadAudioProcessorEditor (BiquadAudioProcessor&);
-    ~BiquadAudioProcessorEditor() override;
+    HotShelfAudioProcessorEditor (HotShelfAudioProcessor&);
+    ~HotShelfAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -35,13 +36,14 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    BiquadAudioProcessor& m_audioProcessor;
-    GUI::ControlManager m_controlManager;
+    HotShelfAudioProcessor& audioProcessor;
+
     GUI::Background m_background;
-    
-    const float m_aspectRatio = 16.0f/9.0f;
+    GUI::ControlManager m_controlManager;
+
+    const float m_aspectRatio = 16.0f / 9.0f;
     int m_windowWidth = 720;
     int m_windowHeight = m_windowWidth / m_aspectRatio;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BiquadAudioProcessorEditor);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HotShelfAudioProcessorEditor)
 };

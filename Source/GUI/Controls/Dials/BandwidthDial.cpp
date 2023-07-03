@@ -1,5 +1,6 @@
 #include "BandwidthDial.h"
-#include "../../CustomLookAndFeel.h"
+#include "../../LookAndFeels/CustomLookAndFeel.h"
+
 using namespace GUI::Controls::Dials;
 
 /////////////////////////////////////////////////////////////////////////////////////

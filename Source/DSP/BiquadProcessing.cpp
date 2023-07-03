@@ -1,7 +1,7 @@
 #include "BiquadProcessing.h"
 #include "Parameters.h"
 
-using namespace Processing;
+using namespace DSP;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /// <summary>

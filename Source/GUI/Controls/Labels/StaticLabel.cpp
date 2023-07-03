@@ -10,6 +10,7 @@ GUI::Controls::Labels::StaticLabel::StaticLabel
 	const int _width, 
 	const int _height, 
 	const int _paramID,
+	const juce::Colour _textColour,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: CustomLabel(
@@ -19,6 +20,7 @@ GUI::Controls::Labels::StaticLabel::StaticLabel
 		_width,
 		_height,
 		juce::Font(12.0f),
+		_textColour,
 		1,
 		_paramID,
 		_lookAndFeel

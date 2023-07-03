@@ -25,6 +25,8 @@ using namespace GUI::Controls::Dials;
 using namespace GUI::Controls::Buttons;
 using namespace GUI::Controls::Labels;
 
+using BoundsGrid = std::vector<std::vector<juce::Rectangle<int>>>;
+
 namespace GUI
 {
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -51,6 +53,8 @@ namespace GUI
 
 		const std::vector<std::vector<juce::Component*>> GetControlGroups();
 
+		BoundsGrid GenerateGridOfBounds();
+
 	private: /////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial m_lowFreqSlider;
 		FrequencyDial m_midFreqSlider;
@@ -74,13 +78,17 @@ namespace GUI
 		GainDial m_masterGainSlider;
 		GainDial m_heatGainSlider;
 
-		TitleLabel m_titleLabel;
+		TitleLabel m_hotTitleLabel;
+		TitleLabel m_shelfTitleLabel;
+
+		BoundsGrid m_boundsGrid;
+		bool m_isGridUpdated = false;
 
 		const int m_margin = 20;
-		const int m_controlGridSizeX = 12;
-		const int m_controlGridSizeY = 8;
-		const int m_gridSpacingX = 20;
-		const int m_gridSpacingY = 20;
+		const int m_controlGridSizeX = 10;
+		const int m_controlGridSizeY = 7;
+		const int m_gridSpacingX = 8;
+		const int m_gridSpacingY = 5;
 
 		int m_controlAreaWidth;
 		int m_controlAreaHeight;

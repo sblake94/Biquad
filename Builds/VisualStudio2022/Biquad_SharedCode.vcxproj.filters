@@ -625,6 +625,9 @@
     <Filter Include="Biquad\Source\GUI\Controls\Labels">
       <UniqueIdentifier>{cd31ff73-f510-456d-825f-40b541c0ebe0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Biquad\Source\GUI\LookAndFeels">
+      <UniqueIdentifier>{b097d895-3df6-403d-b61d-06cd0da5cbd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">

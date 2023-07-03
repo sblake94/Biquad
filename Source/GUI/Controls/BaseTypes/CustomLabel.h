@@ -18,6 +18,7 @@ namespace GUI::Controls::BaseTypes
 			const int _width,
 			const int _height,
 			const juce::Font _font,
+			const juce::Colour _textColour,
 			const int _maxLines,
 			const int _parameterID,
 			juce::LookAndFeel* _lookAndFeel = nullptr);
@@ -30,7 +31,7 @@ namespace GUI::Controls::BaseTypes
 	private: /////////////////////////////////////////////////////////////////////////////////////////
 
 		const char* m_labelText;
-
+		const juce::Colour m_textColour;
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;
 		const juce::Font m_font;

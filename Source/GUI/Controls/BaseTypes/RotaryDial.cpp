@@ -84,6 +84,7 @@ void RotaryDial::paint(juce::Graphics& g)
 	// draw a Label at the top of the dial
 	g.setColour(GUI::CustomLookAndFeel::s_textColourBrightT);
 	g.setFont(GUI::CustomLookAndFeel::s_labelFont);
+	
 	g.drawText(m_labelText, 0, 0, bounds.getWidth(), m_textBoxHeight, juce::Justification::centred, true);
 
 	// Value text
@@ -91,7 +92,10 @@ void RotaryDial::paint(juce::Graphics& g)
 	static char buffer[16];
 	std::snprintf(buffer, sizeof(buffer), "%.2f", getValue());
 	const juce::String text = juce::String(buffer) + juce::String(getTextValueSuffix());
-	g.drawText(text, bounds, juce::Justification::centredBottom, true);
+
+	g.drawText(text, bounds.reduced(GUI::CustomLookAndFeel::s_controlBoundsMargin), 
+		juce::Justification::centredBottom,
+		true);
 
 	juce::Slider::paint(g);
 }

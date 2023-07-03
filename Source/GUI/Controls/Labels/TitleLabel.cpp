@@ -10,6 +10,7 @@ GUI::Controls::Labels::TitleLabel::TitleLabel
 	const int _width, 
 	const int _height, 
 	const int _parameterID,
+	const juce::Colour _textColour,
 	juce::LookAndFeel* _lookAndFeel
 )
 	: BaseTypes::CustomLabel(
@@ -19,6 +20,7 @@ GUI::Controls::Labels::TitleLabel::TitleLabel
 		_width,
 		_height,
 		GUI::CustomLookAndFeel::s_titleFont,
+		_textColour,
 		2,
 		_parameterID,
 		_lookAndFeel)
@@ -31,7 +33,5 @@ GUI::Controls::Labels::TitleLabel::~TitleLabel()
 
 void GUI::Controls::Labels::TitleLabel::paint(juce::Graphics& g)
 {
-	const juce::Rectangle<int> bounds = getLocalBounds().reduced(CustomLookAndFeel::s_controlBoundsMargin);
-
 	BaseTypes::CustomLabel::paint(g);
 }

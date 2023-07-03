@@ -1,33 +1,37 @@
 #include "CustomLookAndFeel.h"
 
 // There is probably an inbuilt way to do this in JUCE, but I haven't found it yet.
-const juce::Colour GUI::CustomLookAndFeel::s_shadowColour		= juce::Colour::fromRGBA(0u,	0u,		0u,		88u);
-const juce::Colour GUI::CustomLookAndFeel::s_highlightColour	= juce::Colour::fromRGBA(153u,	51u,	0u,		255u);
-const juce::Colour GUI::CustomLookAndFeel::s_fillColorA			= juce::Colour::fromRGBA(51u,	51u,	51u,	255u);
-const juce::Colour GUI::CustomLookAndFeel::s_fillColorB			= juce::Colour::fromRGBA(34u,	34u,	34u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_shadowColour			= juce::Colour::fromRGBA(000u,	000u,	000u,	150u);
+const juce::Colour GUI::CustomLookAndFeel::s_colour_burningOrange	= juce::Colour::fromRGBA(255u,	75u,	0u,		255u);
+const juce::Colour GUI::CustomLookAndFeel::s_colour_dustyOrange		= juce::Colour::fromRGBA(153u,	051u,	000u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_colour_cyan			= juce::Colour::fromRGBA(000u,	204u,	255u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_fillColorA				= juce::Colour::fromRGBA(051u,	051u,	051u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_fillColorB				= juce::Colour::fromRGBA(034u,	034u,	034u,	255u);
 
-const juce::Colour GUI::CustomLookAndFeel::s_textColourBright	= juce::Colour::fromRGBA(255u,	255u,	255u,	255u);
-const juce::Colour GUI::CustomLookAndFeel::s_textColourBrightT	= juce::Colour::fromRGBA(255u,	255u,	255u,	125u);
-const juce::Colour GUI::CustomLookAndFeel::s_textColourDark		= juce::Colour::fromRGBA(0u,	0u,		0u,		255u);
-const juce::Colour GUI::CustomLookAndFeel::s_textColourDarkT	= juce::Colour::fromRGBA(0u,	9u,		9u,		125u);
-const juce::Font   GUI::CustomLookAndFeel::s_labelFont			= juce::Font(12, juce::Font::plain);
-const juce::Font   GUI::CustomLookAndFeel::s_titleFont			= juce::Font(48, juce::Font::bold);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourBright		= juce::Colour::fromRGBA(255u,	255u,	255u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourBrightT		= juce::Colour::fromRGBA(255u,	255u,	255u,	125u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourDark			= juce::Colour::fromRGBA(000u,	000u,	000u,	255u);
+const juce::Colour GUI::CustomLookAndFeel::s_textColourDarkT		= juce::Colour::fromRGBA(000u,	000u,	000u,	125u);
+
+const juce::Font   GUI::CustomLookAndFeel::s_labelFont = juce::Font("Montserrat", 16, juce::Font::plain);
+const juce::Font   GUI::CustomLookAndFeel::s_titleFont = juce::Font("Devil Breeze", 48, juce::Font::bold);
 
 const float GUI::CustomLookAndFeel::s_cornerRadius = 7.0f;
-const float GUI::CustomLookAndFeel::s_dialIndicatorThickness = 10.0f;
+const float GUI::CustomLookAndFeel::s_dialIndicatorThickness = 2.0f; 
 const float GUI::CustomLookAndFeel::s_outlineThickness = 2.0f;
 const float GUI::CustomLookAndFeel::s_controlBoundsMargin = 5.0f;
 
 const juce::DropShadow GUI::CustomLookAndFeel::s_dialShadow = juce::DropShadow(
-	GUI::CustomLookAndFeel::s_shadowColour, 5, juce::Point<int>(5, 5));
+		GUI::CustomLookAndFeel::s_shadowColour, 16, juce::Point<int>(9, 9));
 
 const juce::DropShadow GUI::CustomLookAndFeel::s_buttonShadow = juce::DropShadow(
-	GUI::CustomLookAndFeel::s_shadowColour, 1, juce::Point<int>(0, 0));
+		GUI::CustomLookAndFeel::s_shadowColour, 1, juce::Point<int>(0, 0));
 
 const juce::DropShadow GUI::CustomLookAndFeel::s_panelShadow = juce::DropShadow(
-	GUI::CustomLookAndFeel::s_shadowColour, 2, juce::Point<int>(2, 2));
+		GUI::CustomLookAndFeel::s_shadowColour, 16, juce::Point<int>(9, 9));
 
 const bool GUI::CustomLookAndFeel::s_useDropShadows = true;
+
 
 /////////////////////////////////////////////////
 /// <summary>
@@ -88,7 +92,7 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 		.reduced(15.0f);
 		
 	piePath.addPieSegment(pieBounds.toFloat(), rotaryStartAngle, currentAngle, 0.0f);
-	g.setColour(GUI::CustomLookAndFeel::s_highlightColour);
+	g.setColour(GUI::CustomLookAndFeel::s_colour_burningOrange);
 	g.fillPath(piePath);
 
 	piePath.clear();
@@ -122,10 +126,11 @@ void GUI::CustomLookAndFeel::drawRotarySlider
 	// indicator
 	juce::Path p;
 	auto pointerLength = radius * 0.33f;
-	p.addEllipse(-s_dialIndicatorThickness * 0.5f, -radius, s_dialIndicatorThickness, s_dialIndicatorThickness);
+	// lotta magic numbers here, let's do better
+	p.addRoundedRectangle(-s_dialIndicatorThickness * 0.5f, -radius, s_dialIndicatorThickness, 10.0f, 2.0f);
 	p.applyTransform(juce::AffineTransform::rotation(currentAngle).translated(centreX, centreY));
 
-	g.setColour(s_highlightColour);
+	g.setColour(s_colour_burningOrange);
 	g.fillPath(p);
 
 	// outline
@@ -143,8 +148,9 @@ void GUI::CustomLookAndFeel::drawToggleButton
 )
 {
 	// draw the background behind the button text
-	const juce::Rectangle<int> buttonArea = button.getLocalBounds().reduced(s_controlBoundsMargin);
+	const juce::Rectangle<int> buttonArea = button.getLocalBounds().reduced(s_controlBoundsMargin * 3, s_controlBoundsMargin);
 	juce::Path buttonPath;
+	buttonPath.addRoundedRectangle(buttonArea.toFloat(), s_cornerRadius);
 	
 
 	// Shadow for the button
@@ -155,13 +161,20 @@ void GUI::CustomLookAndFeel::drawToggleButton
 	}
 
 	// Draw the button itself
-	const juce::ColourGradient gradFill = BackgroundGradient(buttonArea.getTopLeft().toFloat(), buttonArea.getBottomRight().toFloat());
+	const juce::ColourGradient gradFill = 
+		juce::ColourGradient(
+			s_fillColorA,
+			buttonArea.getTopLeft().toFloat(),
+			s_fillColorB,
+			buttonArea.getBottomRight().toFloat(),
+			true);
+
 	g.setGradientFill(gradFill);
 	g.fillPath(buttonPath);
-	
+
 	// draw the border around the button
 	const bool buttonState = button.getToggleState();
-	g.setColour(buttonState ? s_highlightColour : s_shadowColour);
+	g.setColour(buttonState ? s_colour_burningOrange : s_shadowColour);
 	g.drawRoundedRectangle(buttonArea.toFloat().reduced(s_outlineThickness / 3.33f), s_cornerRadius, s_outlineThickness);
 
 	// Draw the text in the button
@@ -169,6 +182,24 @@ void GUI::CustomLookAndFeel::drawToggleButton
 	g.setColour(s_textColourBright);
 	g.setFont(s_labelFont);
 	g.drawFittedText(buttonText, buttonArea, juce::Justification::centred, 2);
+}
+
+juce::Colour GUI::CustomLookAndFeel::Lighten(juce::Colour _col)
+{
+	auto H = _col.getHue();
+	auto S = juce::jmax(0.0f, _col.getSaturation() - 0.05f);
+	auto L = juce::jmin(1.0f, _col.getLightness() * 1.5f);
+
+	return juce::Colour::fromHSL(H, S, L, 1.0f);
+}
+
+juce::Colour GUI::CustomLookAndFeel::Darken(juce::Colour _col)
+{
+	auto H = _col.getHue();
+	auto S = juce::jmin(1.0f, _col.getSaturation() + 0.05f);
+	auto L = juce::jmax(0.0f, _col.getLightness() / 1.5f);
+
+	return juce::Colour::fromHSL(H, S, L, 1.0f);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

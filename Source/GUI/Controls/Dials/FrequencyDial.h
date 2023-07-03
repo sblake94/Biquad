@@ -24,7 +24,7 @@ namespace GUI::Controls::Dials
 	{
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 		FrequencyDial(
-			const char* _labelText,
+			juce::String _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
@@ -39,11 +39,10 @@ namespace GUI::Controls::Dials
 		
 		void paint(juce::Graphics& g) override;
 		
-		const char* m_labelText;
+		juce::String m_labelText;
 		int m_xPos, m_yPos;
 
 	private: /////////////////////////////////////////////////////////////////////////////////////////
-	private:
 		void SetParameterID(const juce::ParameterID _parameterID);
 		juce::ParameterID m_parameterID;
 

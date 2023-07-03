@@ -14,7 +14,7 @@ using namespace GUI::Controls::Buttons;
 /// <param name="_isEngaged"></param>
 EngageButton::EngageButton
 (
-	const char* _labelText,
+	juce::String _labelText,
 	const int _xPos,
 	const int _yPos,
 	const int _width,

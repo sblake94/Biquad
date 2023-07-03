@@ -15,7 +15,7 @@ namespace GUI::Controls::Labels
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 
 		TitleLabel(
-			const char* _labelText,
+			juce::String _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
@@ -28,5 +28,7 @@ namespace GUI::Controls::Labels
 		void paint(juce::Graphics& g) override;
 
 	private: /////////////////////////////////////////////////////////////////////////////////////////
+
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TitleLabel);
 	};
 }

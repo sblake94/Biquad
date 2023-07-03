@@ -12,7 +12,7 @@ namespace GUI::Controls::BaseTypes
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 
 		CustomLabel(
-			const char* _labelText,
+			juce::String _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
@@ -30,7 +30,7 @@ namespace GUI::Controls::BaseTypes
 
 	private: /////////////////////////////////////////////////////////////////////////////////////////
 
-		const char* m_labelText;
+		juce::String m_labelText;
 		const juce::Colour m_textColour;
 		const int m_textBoxHeight = 12;
 		const int m_textBoxWidth = 50;

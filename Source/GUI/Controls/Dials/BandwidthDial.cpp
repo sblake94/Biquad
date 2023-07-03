@@ -13,7 +13,7 @@ using namespace GUI::Controls::Dials;
 /// <param name="_lookAndFeel">The LookAndFeel of the Dial</param>
 BandwidthDial::BandwidthDial
 (
-	const char* _labelText,
+	juce::String _labelText,
 	const int _xPos,
 	const int _yPos,
 	const int _width,

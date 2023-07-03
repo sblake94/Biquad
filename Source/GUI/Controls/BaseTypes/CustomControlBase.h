@@ -16,7 +16,7 @@ namespace GUI::Controls::BaseTypes
 		/// </summary>
 		/// <param name="_paramID">The ID of the Slider</param>
 		inline CustomControlBase(
-			const char* _labelText,
+			juce::String _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
@@ -37,7 +37,7 @@ namespace GUI::Controls::BaseTypes
 		/// </summary>
 		const int m_id;
 
-		const char* m_labelText;
+		juce::String m_labelText;
 		int m_xPos, m_yPos;
 		int m_width, m_height;
 

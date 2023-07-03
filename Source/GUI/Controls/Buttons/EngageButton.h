@@ -24,7 +24,7 @@ namespace GUI::Controls::Buttons
 	public: /////////////////////////////////////////////////////////////////////////////////////////
 
 		EngageButton(
-			const char* _labelText,
+			juce::String _labelText,
 			const int _xPos,
 			const int _yPos,
 			const int _width,
@@ -37,7 +37,7 @@ namespace GUI::Controls::Buttons
 
 		void paint(juce::Graphics& g) override;
 
-		const char* m_labelText;
+		juce::String m_labelText;
 		int m_xPos, m_yPos;
 
 	private: /////////////////////////////////////////////////////////////////////////////////////////

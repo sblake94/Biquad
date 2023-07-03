@@ -15,7 +15,7 @@ using namespace GUI::Controls::BaseTypes;
 /// <param name="_lookAndFeel">The look and feel to use for the button</param>
 LatchButton::LatchButton
 (
-	const char* _labelText,
+	juce::String _labelText,
 	const int _xPos,
 	const int _yPos,
 	const int _width,

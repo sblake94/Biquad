@@ -10,9 +10,9 @@ namespace DSP
 	AudioParameterBool Parameters::s_midBandBypass = AudioParameterBool(s_midBandBypassParamID, juce::String("Mid Band Bypass"), false);
 	AudioParameterBool Parameters::s_highBandBypass = AudioParameterBool(s_highBandBypassParamID, juce::String("High Band Bypass"), false);
 
-	AudioParameterFloat Parameters::s_lowFreqCutoff = AudioParameterFloat(s_lowFreqCutoffParamID, juce::String("Low Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f);
-	AudioParameterFloat Parameters::s_midFreqCutoff = AudioParameterFloat(s_midFreqCutoffParamID, juce::String("Mid Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f);
-	AudioParameterFloat Parameters::s_highFreqCutoff = AudioParameterFloat(s_highFreqCutoffParamID, juce::String("High Frequency Cutoff"), 20.0f, 20000.0f, 2000.0f);
+	AudioParameterFloat Parameters::s_lowFreqCutoff = AudioParameterFloat(s_lowFreqCutoffParamID, juce::String("Low Frequency Cutoff"), 5.0f, 500.0f, 50.0f);
+	AudioParameterFloat Parameters::s_midFreqCutoff = AudioParameterFloat(s_midFreqCutoffParamID, juce::String("Mid Frequency Cutoff"), 100.0f, 10000.0f, 1000.0f);
+	AudioParameterFloat Parameters::s_highFreqCutoff = AudioParameterFloat(s_highFreqCutoffParamID, juce::String("High Frequency Cutoff"), 200.0f, 20000.0f, 2000.0f);
 
 	AudioParameterFloat Parameters::s_lowGain = AudioParameterFloat(s_lowGainParamID, juce::String("Low Gain"), -6.0f, 6.0f, 0.0f);
 	AudioParameterFloat Parameters::s_midGain = AudioParameterFloat(s_midGainParamID, juce::String("Mid Gain"), -6.0f, 6.0f, 0.0f);

@@ -18,7 +18,7 @@ namespace GUI
 		const int _windowHeight,
 		juce::LookAndFeel* _lookAndFeelPtr
 	)
-		: m_controlAreaHeight(_windowHeight - 2 * m_margin)
+		: m_controlAreaHeight(_windowHeight - 2 * m_margin) 
 		, m_controlAreaWidth(_windowWidth - 2 * m_margin)
 
 		, m_lowShelfBypass("Low Shelf", 0, 0, 2, 1, DSP::s_lowBandBypassParamID, true, _lookAndFeelPtr)
@@ -43,7 +43,7 @@ namespace GUI
 		, m_masterGainSlider("Output Gain", 8, 5, 2, 2, DSP::s_masterGainParamID, 0.0f, -12.0f, 12.0f, 0.0f, _lookAndFeelPtr)
 
 		, m_hotTitleLabel("HOT", 6, 0, 4, 2, DSP::s_NULL_PARAM_ID, CustomLookAndFeel::s_colour_burningOrange, _lookAndFeelPtr)
-		, m_shelfTitleLabel("SHELF", 6, 1, 4, 3, DSP::s_NULL_PARAM_ID, juce::Colours::white, _lookAndFeelPtr)
+		, m_shelfTitleLabel("SHELF", 6, 1, 4, 2, DSP::s_NULL_PARAM_ID, juce::Colours::white, _lookAndFeelPtr)
 	{
 	}
 
@@ -133,6 +133,35 @@ namespace GUI
 				_graphics.drawRoundedRectangle(ctrlGroupBounds.toFloat()
 					, GUI::CustomLookAndFeel::s_cornerRadius
 					, GUI::CustomLookAndFeel::s_outlineThickness);
+
+				// Draw four screws, one in each corner
+				_graphics.setColour(GUI::CustomLookAndFeel::Darken(GUI::CustomLookAndFeel::s_fillColorB));
+				float screwRadius = 3.0f;
+				float screwOffset = 8.0f;
+				
+				// top left
+				juce::Point<float> centre = ctrlGroupBounds.getTopLeft().toFloat();
+				centre.addXY(screwOffset, screwOffset);
+				juce::Rectangle<float> area = juce::Rectangle<float>(centre.x - screwRadius, centre.y - screwRadius, screwRadius * 2.0f, screwRadius * 2.0f);
+				_graphics.drawEllipse(area, GUI::CustomLookAndFeel::s_dialIndicatorThickness);
+
+				// top right
+				centre = ctrlGroupBounds.getTopRight().toFloat();
+				centre.addXY(-screwOffset, screwOffset);
+				area = juce::Rectangle<float>(centre.x - screwRadius, centre.y - screwRadius, screwRadius * 2.0f, screwRadius * 2.0f);
+				_graphics.drawEllipse(area, GUI::CustomLookAndFeel::s_dialIndicatorThickness);
+
+				// bottom left
+				centre = ctrlGroupBounds.getBottomLeft().toFloat();
+				centre.addXY(screwOffset, -screwOffset);
+				area = juce::Rectangle<float>(centre.x - screwRadius, centre.y - screwRadius, screwRadius * 2.0f, screwRadius * 2.0f);
+				_graphics.drawEllipse(area, GUI::CustomLookAndFeel::s_dialIndicatorThickness);
+
+				// bottom right
+				centre = ctrlGroupBounds.getBottomRight().toFloat();
+				centre.addXY(-screwOffset, -screwOffset);
+				area = juce::Rectangle<float>(centre.x - screwRadius, centre.y - screwRadius, screwRadius * 2.0f, screwRadius * 2.0f);
+				_graphics.drawEllipse(area, GUI::CustomLookAndFeel::s_dialIndicatorThickness);
 			}
 		}
 	}

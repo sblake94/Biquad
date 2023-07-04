@@ -62,6 +62,7 @@ void HotShelfAudioProcessorEditor::paint (juce::Graphics& g)
     m_controlManager.paint(g);
 }
 
+//==============================================================================
 void HotShelfAudioProcessorEditor::resized()
 {
     // Get new window size
@@ -70,6 +71,7 @@ void HotShelfAudioProcessorEditor::resized()
 
     // Resize Controls
     m_controlManager.resized(m_windowWidth, m_windowHeight);
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

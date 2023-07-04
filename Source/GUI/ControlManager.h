@@ -84,11 +84,11 @@ namespace GUI
 		BoundsGrid m_boundsGrid;
 		bool m_isGridUpdated = false;
 
-		const int m_margin = 20;
 		const int m_controlGridSizeX = 10;
 		const int m_controlGridSizeY = 7;
 		const int m_gridSpacingX = 8;
-		const int m_gridSpacingY = 5;
+		const int m_gridSpacingY = 8;
+		const int m_margin = 25;
 
 		int m_controlAreaWidth;
 		int m_controlAreaHeight;
